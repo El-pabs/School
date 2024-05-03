@@ -1,0 +1,227 @@
+@font-face {
+    font-family:"Lato";
+    src: url("fonts/Lato-Regular.ttf");
+}
+
+body{
+    margin:0; 
+    font-family: "Lato","CAlibri", sans-serif;
+    
+}
+header{
+    background-color: #e45e55;
+    padding-bottom:30px;
+}
+
+#logo {
+    width: 60%;
+    margin :0 auto;
+    padding:50px 0; 
+}
+
+#logo h1{
+    display:none;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    text-decoration:none;
+    color:#ffffff;
+    text-transform: uppercase;
+    padding: 15px;
+    display: block;
+    text-align:center;
+    font-size:1.2rem;
+    font-weight: bold;
+    
+}
+
+header nav ul li a:hover, header nav ul li a:active{
+    color:#000000;
+}
+
+header nav ul ul{
+    display:none;
+}
+
+main{
+    padding:20px;
+    background:url("img/background.jpg") #ffffff bottom center no-repeat;
+    background-size:200%;
+
+}
+
+main h2{
+    text-transform:uppercase;
+    font-size:1.6rem;
+    border-bottom:2px solid #e45e55;
+    padding-bottom:5px;
+    margin-bottom:0;
+}
+
+main section article p{
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    margin-bottom: 5px;
+}
+
+main section article p a{
+    text-decoration:none;
+    color:#e45e55;
+    
+}
+main section article p a:hover ,main section article p a:active{
+    color:#000000;
+}
+
+main aside div{
+    padding-top:25px;
+}
+
+.vignette{
+    text-decoration: none;
+    display: block;
+    float:left;
+    width: 40%;
+    margin: 5%;
+    text-align: center;
+    border-radius:10px;
+    height:0;
+    padding-bottom:40%;
+}
+
+#ral1003{background-color: #F9AB00}
+#ral2004{background-color: #E25303}
+#ral3020{background-color: #BB1E10}
+#ral4010{background-color: #BC4077}
+#ral5013{background-color: #193153}
+#ral6000{background-color: #3C7460}
+#ral6020{background-color: #37422F}
+#ral9001{background-color: #E9E0D2}
+
+.vignette h3{
+    color:#000000;
+    font-size:1.3rem;
+    margin-bottom:0
+}
+
+.vignette p{
+    color: #ffffff;
+    font-size: 0.8rem;
+}
+
+.txt-clair p {
+    color:#000000;
+
+}
+
+.end-float{
+    clear: both;
+}
+
+
+footer{
+    background-color: #e45e55;
+    color: #ffffff;
+    font-size:1.2rem;
+    font-style:italic;
+    padding: 30px;
+    text-align:center;
+}
+
+@media screen and (min-width:1024px){
+    html{
+        background:url("img/pattern.png") #ffffff top center;
+    }
+    body{
+        width: 1000px;
+        margin:0 auto;
+    }
+
+    header{
+        padding-bottom:0;
+    }
+
+    #logo{
+        width:200px;
+        float:left;
+        padding:20px 50px;
+    }
+
+    header nav{
+        float:left;
+        width: 700px;
+        text-align: right;
+
+    }
+
+    header nav ul{
+        padding: 30px ;
+    }
+
+    header nav ul li{
+        display: inline-block;
+        position: relative;
+    }
+
+    header nav ul li a{
+        font-size:1rem;
+
+    }
+    header nav ul ul {
+        position:absolute;
+        top: 49px;;
+        left:0;
+        background-color: #ffffff;
+        border:2px solid #e45e55;
+        padding:0;
+    }
+
+
+    header nav ul li:hover ul{
+        display: block;
+    }
+
+    header nav ul ul a {
+        color:#000000;
+        font-size: 0.8rem;
+        padding:10px;
+        text-align: center;
+    }
+    header nav ul ul a:hover , header nav ul ul a:active{
+        color:#e45e55;
+    }
+
+    main section article {
+        float: left;
+        width: 33.33%;
+
+    }
+
+    main h2, main section article p{
+        margin:20px; 
+    }
+
+    .vignette{
+        width: 20%;
+        margin: 2.5%;
+        padding-bottom: 20%;
+        position: relative;
+    }
+
+    .loupe{
+        background-image: url(img/icone-loupe.png);
+        background-repeat: no-repeat;
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        position: absolute;
+        top:-19px;
+        left: -19px;
+    }
+}

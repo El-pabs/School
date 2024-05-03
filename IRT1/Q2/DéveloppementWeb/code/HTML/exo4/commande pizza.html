@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzaDelaMama</title>
+</head>
+<body>
+    <form action="mailtout" method="post">
+        <fieldset>
+            <legend> <b>Commande de pizza </b></legend>
+            <p>
+                <b>Nom : </b> <br>
+                <input type="text">
+            </p>
+            <p>
+                <b> Prénom : </b> <br>
+                <input type="text">
+            </p>
+            <p>
+                <b>Pizza : </b> <br>
+                <select name="Pizza">
+                    <option value="m">Margaritha</option>
+                    <option value="m">Sperme</option>
+                    <option value="m">Livio</option>
+                </select>
+            </p>
+            <p>
+                <b>Supplément </b> <br>
+                <label><input type="checkbox" > Fromage <br> </label>
+                <label><input type="checkbox"> Olive <br> </label>
+                <label><input type="checkbox"> Jambon <br> </label>
+                <label><input type="checkbox"> Poivrons <br> </label>
+            </p>
+            <p>
+                <b>Livraison : </b> <br>
+                <label><input type="radio" name="Choix" id=".." checked>Au restaurant <br> </label>
+                <label><input type="radio" name="Choix" id=".."> Livraison a domicile <br> </label>
+                <textarea cols="30" rows="3"></textarea>
+            </p>
+            <p>
+                <b>Payement : </b> <br>
+                <label><input type="radio" name="payement" checked value="Visa">Visa</label> 
+                <label><input type="radio" name="payement" value="Paypal">Paypal</label>
+                <label><input type="radio" name="payement" value="Cash">Cash </label>     <!--value est utilisé pour reçevoir la réponse (dans ce cas ci par mail)-->
+            </p>
+            <input type="submit" value="Commander la pizza"> 
+        </fieldset>
+    </form>
+</body>
+</html>

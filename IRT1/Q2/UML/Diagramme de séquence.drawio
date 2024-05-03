@@ -1,0 +1,175 @@
+<mxfile host="Electron" modified="2024-04-08T14:27:02.788Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="c7gzwmcdukym7_sCELOD" version="24.1.0" type="device">
+  <diagram name="Page-1" id="2YBvvXClWsGukQMizWep">
+    <mxGraphModel dx="1290" dy="621" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8g5-Aexd-DtupDx7mglB-1" value="Site" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="340" y="50" width="100" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-10" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="8g5-Aexd-DtupDx7mglB-1">
+          <mxGeometry x="45" y="66" width="10" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" edge="1" parent="8g5-Aexd-DtupDx7mglB-1" source="8g5-Aexd-DtupDx7mglB-10" target="8g5-Aexd-DtupDx7mglB-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="30" y="80" />
+              <mxPoint x="30" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-25" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="8g5-Aexd-DtupDx7mglB-1">
+          <mxGeometry x="45" y="450" width="10" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-43" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="8g5-Aexd-DtupDx7mglB-1">
+          <mxGeometry x="45" y="640" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-3" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" vertex="1" parent="1">
+          <mxGeometry x="180" y="50" width="20" height="830" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-11" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="8g5-Aexd-DtupDx7mglB-3">
+          <mxGeometry x="5" y="160" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-12" value="Regarde article" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" target="8g5-Aexd-DtupDx7mglB-11" parent="8g5-Aexd-DtupDx7mglB-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="10" y="140" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="40" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-29" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="8g5-Aexd-DtupDx7mglB-3">
+          <mxGeometry x="10" y="470" width="10" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-33" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="8g5-Aexd-DtupDx7mglB-3">
+          <mxGeometry x="10" y="533" width="10" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-5" value="Client" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="90" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-8" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="180" y="130" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" edge="1" parent="1" source="8g5-Aexd-DtupDx7mglB-3" target="8g5-Aexd-DtupDx7mglB-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="130" as="sourcePoint" />
+            <mxPoint x="390" y="130" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="360" y="130" />
+              <mxPoint x="360" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-13" value="Consulte site" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="104" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-16" value="Stock" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="500" y="50" width="100" height="790" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-21" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="8g5-Aexd-DtupDx7mglB-16">
+          <mxGeometry x="45" y="270" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-40" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="8g5-Aexd-DtupDx7mglB-16">
+          <mxGeometry x="45" y="580" width="10" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-18" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="385" y="290" width="10" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-19" value="Mettre dans panier" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" edge="1" target="8g5-Aexd-DtupDx7mglB-18" parent="1" source="8g5-Aexd-DtupDx7mglB-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="295" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-20" value="Valide la requête&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" edge="1" source="8g5-Aexd-DtupDx7mglB-18" parent="1" target="8g5-Aexd-DtupDx7mglB-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-22" value="Vérifier disponibilité" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" edge="1" target="8g5-Aexd-DtupDx7mglB-21" parent="1" source="8g5-Aexd-DtupDx7mglB-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="475" y="335" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-23" value="Dispo ou non" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" edge="1" source="8g5-Aexd-DtupDx7mglB-21" parent="1" target="8g5-Aexd-DtupDx7mglB-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="475" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-24" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="190" y="280" width="10" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-27" value="Validation du panier" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" edge="1" source="8g5-Aexd-DtupDx7mglB-25" parent="1" target="8g5-Aexd-DtupDx7mglB-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="575" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-26" value="Demande de validation du panier" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" edge="1" target="8g5-Aexd-DtupDx7mglB-25" parent="1" source="8g5-Aexd-DtupDx7mglB-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="505" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-31" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="200" y="630" as="sourcePoint" />
+            <mxPoint x="389.5" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-32" value="Paiement" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="606" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-34" value="Demande d&#39;information" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=5;" edge="1" parent="1">
+          <mxGeometry x="0.027" relative="1" as="geometry">
+            <mxPoint x="385" y="550" as="sourcePoint" />
+            <mxPoint x="200" y="550" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-35" value="Informations" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=-5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="389.5" y="570" as="targetPoint" />
+            <mxPoint x="200" y="572" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="340" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-30" value="Demande de payement" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="580" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="8g5-Aexd-DtupDx7mglB-25" target="8g5-Aexd-DtupDx7mglB-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-41" value="Retrait dans le stock" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" edge="1" target="8g5-Aexd-DtupDx7mglB-40" parent="1" source="8g5-Aexd-DtupDx7mglB-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="605" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-42" value="Confirmation du retrait" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" edge="1" source="8g5-Aexd-DtupDx7mglB-40" parent="1" target="8g5-Aexd-DtupDx7mglB-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-44" value="Validation de la commande" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" edge="1" parent="1" target="8g5-Aexd-DtupDx7mglB-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="730" as="sourcePoint" />
+            <mxPoint x="300" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="8g5-Aexd-DtupDx7mglB-43" target="8g5-Aexd-DtupDx7mglB-29">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="750" />
+              <mxPoint x="340" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8g5-Aexd-DtupDx7mglB-46" value="Infos de livraison" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="730" width="80" height="26" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "harlow";
+    src: url("font/harlow.TTF");
+}
+
+html {
+    background-color: salmon;
+}
+
+body {
+    margin:0;
+    font-family: "Calibri","Arial",sans-serif;
+    font-size: 1.5rem;
+}
+
+header {
+    background-color: blue;
+    color: white;
+    text-align: center; 
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+header a:hover, header a:active{
+    background-color: rgba(0, 0,0, 0.5);
+}
+
+h1{
+    margin: 0;
+    font-family: "harlow", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navtop {
+    display: flex;
+    flex-direction: column;
+}
+#navtopright {
+    display: flex;
+    justify-content: center;
+}
+
+#logo {
+    height: 50px;
+
+}
+
+@media screen and (min-width: 1024px) {
+    html {
+        background-color: aqua;
+    }
+
+    #navtop {
+        flex-direction: row;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    header a {
+        display: flex;
+        align-items: center;
+    }
+
+    #navtopright a {
+        display: flex;
+        align-items: center;
+    }
+    
+}

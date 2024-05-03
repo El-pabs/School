@@ -1,0 +1,15 @@
+body{
+    background-color: #662233;
+}
+
+header a h1, header nav a {
+    color:#ffffff;
+}
+
+header a h1:hover, header nav a:hover {
+    color:#331122;
+}
+
+h1{
+    font-family: "Harlow Solid Italic";
+}
