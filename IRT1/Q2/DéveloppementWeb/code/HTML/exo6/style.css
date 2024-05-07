@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #222;
+}
+
+main {
+    background-color: #222;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 280px;
+    grid-template-rows: repeat(4, auto);
+    grid-gap: 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+main div, main article {
+    padding: 30px;
+}
+
+#title {
+    grid-column: span 4;
+    text-align: center;
+}
+
+#title h1 {
+    margin: 0;
+}
+
+#synopsis, #details, .character {
+    background-color: #fff;
+    color: #222;
+}
+
+#banner {
+    background: url('img/2024-04-30_18h13_24.png') #fff ;
+    background-size: cover;
+    grid-column: span 2;
+}
+
+#details {
+    grid-row: span 3;
+    align-self: start;
+}
+
+img {
+    width: 100%;
+}
+
+.character:hover {
+    scale: 1.1;
+}
+
+@media (max-width: 1300px) {
+    main {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    #title {
+        grid-column: span 2;
+        order : -2;
+    }
+    
+    main {
+        background-color: #222;
+        color: #fff;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        margin: 0 auto;
+    }
+    #synopsis, #details, .character {
+            background-color: #fff;
+            color: #222;
+        }
+    
+    #banner {
+        background: url('img/2024-04-30_18h13_24.png') #fff ;
+        background-size: cover;
+        grid-column: span 2;
+        order : -1;
+    }
+
+    #details {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+}
+
+@media (max-width: 500px) {
+    #title {
+        grid-column: span 1;
+        order : -2;
+    }
+    
+    main {
+        background-color: #222;
+        color: #fff;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+        margin: 0 auto;
+    }
+    #synopsis, #details, .character {
+            background-color: #fff;
+            color: #222;
+        }
+    
+    #banner {
+        background: url('img/2024-04-30_18h13_24.png') #fff ;
+        background-size: cover;
+        grid-column: span 1;
+        order : -1;
+    }
+
+    #details {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+}

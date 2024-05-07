@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "Victorian";
+    src: url(fonts/VictorianDecade.otf);
+}
+
+body{
+    padding:0px;
+    margin: 0px;
+}
+
+header{
+    display:grid;
+    grid-template-rows: 100px 1fr;
+    background-color: #312332;
+    justify-content: center;
+}
+
+body header h1{
+    font-size: 50px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+}
+
+
+body header h1, body main h2, body main h3, body header li{
+    font-family: Victorian, Arial, Helvetica, sans-serif ;
+    color: #ffffff;
+}
+
+body header nav{
+    text-align: center;
+}
+
+body header nav ul{
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+body header nav ul li{
+    padding: 10px;
+}
+
+body header nav ul a{
+    text-decoration: none;
+    color:#ffffff;
+}
+
+body header nav ul li:hover{
+    background-color: #000000;
+    color: #fe2e23;
+}
+
+
+main{
+    display: grid;
+    grid-template-columns: 1fr;
+    background-image: url(img/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-items: center;
+    text-align: left;
+}
+
+main article h2{
+    padding-top: 500px;
+    margin: 0px;
+    font-size: 50px;
+}
+
+main article h3{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+main article p{
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    color:#ffffff;
+    padding-bottom: 20px;
+    margin-top: 5px;
+}
+
+@media screen and (min-width:1024px){
+    header{
+        grid-template-rows: 1fr;
+        grid-template-columns:1fr 600px;
+        align-items: center;
+    }
+
+    header h1{
+        margin: 0;
+    }
+
+    header nav{
+        display:grid;
+        grid-template-columns:1fr;
+        align-items: center;
+        justify-content: end;
+        grid-column-start: 0;
+    }
+
+    header nav ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    header nav ul li{
+        font-size: 2rem;
+    }
+
+    main{
+        text-align: right;
+        justify-items: end;
+    }
+
+    main article h2{
+        padding-top: 200px;
+    }
+
+    main article p{
+        padding-bottom: 150px;
+    }
+
+    article{
+        margin-right: 30px;
+    }
+}

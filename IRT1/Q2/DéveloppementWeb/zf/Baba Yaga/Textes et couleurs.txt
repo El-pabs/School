@@ -1,0 +1,20 @@
+=== COULEURS ===
+
+Violet : 312332
+Blanc : ffffff
+Noir : 000000
+Rouge : fe2e23
+
+=== TEXTES ===
+
+(Les paragraphes sont en Calibri)
+
+Baba Yaga
+Son origine
+Son histoire
+Ses apparences
+
+Baba Yaga
+le folklore slave
+
+Baba Yaga est une figure marquante du conte russe et plus généralement slave. La baba Yaga est la figure féminine surnaturelle la plus fréquente du conte russe, elle n'existe nulle part ailleurs (ni dans la littérature russe, ni dans le reste du folklore russe).
