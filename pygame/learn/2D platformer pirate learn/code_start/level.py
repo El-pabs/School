@@ -13,9 +13,10 @@ class Level:
 		self.setup(tmx_map)
 
 	def setup(self, tmx_map):
-		# get the tiles from the Terrain layer of the tmx map and store them in a list of tuples (x, y, surface)
-		for x,y,surf in tmx_map.get_layer_by_name('Terrain').tiles():
-			Sprite((x * TILE_SIZE,y * TILE_SIZE), surf, (self.all_sprites, self.collision_sprites))
+		for layer in ['BG', 'Terrain','FG' , 'Platforms']:
+			# get the tiles from the Terrain layer of the tmx map and store them in a list of tuples (x, y, surface)
+			for x,y,surf in tmx_map.get_layer_by_name(layer).tiles():
+				Sprite((x * TILE_SIZE,y * TILE_SIZE), surf, (self.all_sprites, self.collision_sprites))
 
 		for obj in tmx_map.get_layer_by_name('Objects'):
 			if obj.name == 'player':

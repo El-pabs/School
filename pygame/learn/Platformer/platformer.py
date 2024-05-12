@@ -10,7 +10,7 @@ vec = pygame.math.Vector2 # 2 for two dimensional
 
 # constantes
 WIDTH = 400
-height = 450
+height = 600
 FPS = 60
 ACC = 0.5
 FRIC = -0.12

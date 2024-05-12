@@ -1,45 +1,55 @@
+# Import necessary modules and settings
 from settings import *
 from level import Level
 from pytmx.util_pygame import load_pygame
 from os.path import join
-from support import * 
+from support import *
 from data import Data
 from debug import debug
 from ui import UI
 from overworld import Overworld
 
+# Define the main game class
 class Game:
-	def __init__(self):
-		pygame.init()
-		self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-		pygame.display.set_caption('Super Pirate World')
-		self.clock = pygame.time.Clock()
-		self.import_assets()
+    def __init__(self):
+        # Initialize pygame and set up the display
+        pygame.init()
+        self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+        pygame.display.set_caption('Super Pirate World')
+        self.clock = pygame.time.Clock()
+        # Import game assets
+        self.import_assets()
 
-		self.ui = UI(self.font, self.ui_frames)
-		self.data = Data(self.ui)
-		self.tmx_maps = {
-			0: load_pygame(join('..', 'data', 'levels', 'omni.tmx')),
-			1: load_pygame(join('..', 'data', 'levels', '1.tmx')),
-			2: load_pygame(join('..', 'data', 'levels', '2.tmx')),
-			3: load_pygame(join('..', 'data', 'levels', '3.tmx')),
-			4: load_pygame(join('..', 'data', 'levels', '4.tmx')),
-			5: load_pygame(join('..', 'data', 'levels', '5.tmx')),
-			}
-		self.tmx_overworld = load_pygame(join('..', 'data', 'overworld', 'overworld.tmx'))
-		self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.audio_files, self.data, self.switch_stage)
-		self.bg_music.play(-1)
+        # Initialize UI and game data
+        self.ui = UI(self.font, self.ui_frames)
+        self.data = Data(self.ui)
+        # Load TMX maps for levels and overworld
+        self.tmx_maps = {
+            0: load_pygame(join('..', 'data', 'levels', 'omni.tmx')),
+            1: load_pygame(join('..', 'data', 'levels', '1.tmx')),
+            2: load_pygame(join('..', 'data', 'levels', '2.tmx')),
+            3: load_pygame(join('..', 'data', 'levels', '3.tmx')),
+            4: load_pygame(join('..', 'data', 'levels', '4.tmx')),
+            5: load_pygame(join('..', 'data', 'levels', '5.tmx')),
+            }
+        self.tmx_overworld = load_pygame(join('..', 'data', 'overworld', 'overworld.tmx'))
+        # Set the current stage to the current level
+        self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.audio_files, self.data, self.switch_stage)
+        # Start background music
+        self.bg_music.play(-1)
 
-	def switch_stage(self, target, unlock = 0):
-		if target == 'level':
-			self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.audio_files, self.data, self.switch_stage)
-			
-		else: # overworld 
-			if unlock > 0:
-				self.data.unlocked_level = 6
-			else:
-				self.data.health -= 1
-			self.current_stage = Overworld(self.tmx_overworld, self.data, self.overworld_frames, self.switch_stage)
+    # Function to switch between stages
+    def switch_stage(self, target, unlock = 0):
+        if target == 'level':
+            # Switch to a level stage
+            self.current_stage = Level(self.tmx_maps[self.data.current_level], self.level_frames, self.audio_files, self.data, self.switch_stage)
+        else: # overworld
+            # Switch to the overworld stage
+            if unlock > 0:
+                self.data.unlocked_level = 6
+            else:
+                self.data.health -= 1
+            self.current_stage = Overworld(self.tmx_overworld, self.data, self.overworld_frames, self.switch_stage)
 
 	def import_assets(self):
 		self.level_frames = {
@@ -92,23 +102,32 @@ class Game:
 		self.bg_music = pygame.mixer.Sound(join('..', 'audio', 'starlight_city.mp3'))
 		self.bg_music.set_volume(0.5)
 
+	# Function to check if the game is over
 	def check_game_over(self):
 		if self.data.health <= 0:
+			# End the game if the player's health is 0 or less
 			pygame.quit()
 			sys.exit()
 
+	# Main game loop
 	def run(self):
 		while True:
+			# Calculate delta time
 			dt = self.clock.tick() / 1000
+			# Handle events
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					pygame.quit()
 					sys.exit()
 
+			# Check if the game is over
 			self.check_game_over()
+			# Update and draw the current stage
 			self.current_stage.run(dt)
+			# Update the UI
 			self.ui.update(dt)
-			
+
+			# Update the display
 			pygame.display.update()
 
 if __name__ == '__main__':
