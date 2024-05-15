@@ -1,252 +1,74 @@
-import random
-import time
 import pygame
-from sys import exit
-import pygame.math
-from random import randint, randrange
+from random import randrange, randint
 
 pygame.init()
-vec = pygame.math.Vector2 # 2 for two dimensional
 
-# constantes
-WIDTH = 400
-HEIGHT = 450
-FPS = 60
-ACC = 0.5
-FRIC = -0.12
+width, height = 1000,800
+screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption("Game")
 
-frame = pygame.time.Clock()
+white = (255, 255, 255)
+screen.fill(white)
 
-# créer la fenêtre
-screen = pygame.display.set_mode((WIDTH,HEIGHT))
-pygame.display.set_caption("Platformer")
+# Add a timer for adding zombies
+ADDZOMBIE = pygame.USEREVENT + 1
+pygame.time.set_timer(ADDZOMBIE, 500)  # Add a zombie every 5 seconds
 
 
+dead = False
 
-#créer le joueur
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
+zombie1 = pygame.image.load("graph/player-rick.png").convert_alpha()
+zombie1 = pygame.transform.scale(zombie1, (100,100))
+zombie2 = pygame.image.load("graph/player-princess.png").convert_alpha()
+zombie2 = pygame.transform.scale(zombie2, (100,100))
+mobs = []
+
+class Mob(pygame.sprite.Sprite):
+    def __init__(self, image, x, y):
         super().__init__()
+        self.image = image
+        self.rect = self.image.get_rect(topleft=(x, y))
 
-        # créer le sprite du joueur
-        self.surf = pygame.Surface((30,30))
-        self.surf.fill((128,255,40))
-        self.rect = self.surf.get_rect()
+    def intersects(self, other):
+        return self.rect.colliderect(other.rect)
 
-        # position et vitesse du joueur
-        self.pos = vec((10,285))
-        self.vel = vec(0,0)
-        self.acc = vec(0,0)
-        self.jumping = False
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
 
-        # score
-        self.score = 45
+def add_zombie(max_mobs=4):
+    global mobs
 
-        self.upside_down = False
+    entry_point = (1000,400)
+    min_distance_from_entry = 100  # Minimum distance from entry point
+    while len(mobs) < max_mobs:
+        mob_image = zombie1 if randrange(0, 2) == 0 else zombie2
+        mob_x, mob_y = randint(0, screen.get_width()), randint(0, screen.get_height())
 
-    def move(self):
-        self.acc = vec(0,0.5)
-        if self.upside_down:  # Add this block
-            self.acc.y *= -1
-        keys = pygame.key.get_pressed()
+        if ((mob_x - entry_point[0]) ** 2 + (mob_y - entry_point[1]) ** 2) ** 0.5 < min_distance_from_entry:
+            continue
 
-        if keys[pygame.K_q]:
-            self.acc.x = -ACC
-        if keys[pygame.K_d]:
-            self.acc.x = ACC
+        mob = Mob(mob_image, mob_x, mob_y)
 
-        # équations de mouvement
-        self.acc.x += self.vel.x * FRIC
-        self.vel += self.acc
-        self.pos += self.vel + 0.5 * self.acc
+        if any(mob.intersects(other_mob) for other_mob in mobs) or mob.rect.right >= 700 or mob.rect.bottom >= 600 or mob.rect.left < 0 or mob.rect.top < 0:
+            continue
 
-        # teleportation de gauche à droite et vice versa
-        if self.pos.x > WIDTH:
-            self.pos.x = 0
-        if self.pos.x < 0:
-            self.pos.x = WIDTH
-
-        self.rect.midbottom = self.pos
+        mobs.append(mob)
+        mob.draw(screen)  # Draw the mob on the screen
 
 
-    def jump(self):
-        hits = pygame.sprite.spritecollide(player, platforms, False)
-        if hits and not self.jumping:
-            self.jumping = True
-            self.vel.y = -15 if not self.upside_down else 15  # Modify this line
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
 
+        # Add a zombie when the timer event occurs
+        if event.type == ADDZOMBIE:
+            add_zombie()
 
-    def cancel_jump(self):
-        hits = pygame.sprite.spritecollide(player, platforms, False)
-        if hits and not self.jumping:
-            self.jumping = True
-            self.vel.y = -15 if not self.upside_down else 15  # Modify this line
+    # Draw all the mobs
+    for mob in mobs:
+        mob.draw(screen)
 
-    def update(self):
-        hits = pygame.sprite.spritecollide(player, platforms, False)
-        if player.vel.y > 0 or (self.upside_down and player.vel.y < 0):
-            if hits:
-                if self.upside_down and self.pos.y < hits[0].rect.bottom or not self.upside_down and self.pos.y > hits[0].rect.top:
-                    if hits[0].point:
-                        hits[0].point = False
-                        self.score += 1
-                        if self.score == 50:  # Add this block
-                            self.upside_down = True
-                    self.pos.y = hits[0].rect.top - 1 if self.upside_down else hits[0].rect.bottom + 1
-                    self.vel.y = 0
-                    self.jumping = False
+    pygame.display.update()
 
-
-
-class Platform(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-        self.surf = pygame.Surface((randint(50,100),12))
-        self.surf.fill((0,255,0))
-        self.rect = self.surf.get_rect(center = (randint(0,WIDTH-10),randint(0,HEIGHT-10)))
-
-        # pour vérifier si le joueur a déjà touché la plateforme
-        self.point = True
-        self.moving = True
-        self.speed = random.randint(-1,1)
-
-    def move(self):
-        if self.moving == True:
-            self.rect.move_ip(self.speed,0)
-            if self.speed>0 and self.rect.left > WIDTH:
-                self.rect.right = 0
-            if self.speed<0 and self.rect.right < 0:
-                self.rect.left = WIDTH
-
-
-def check(platform, groupies):
-    if pygame.sprite.spritecollideany(platform,groupies):
-        return True
-    else:
-        for entity in groupies:
-            if entity == platform:
-                continue
-            if (abs(platform.rect.top - entity.rect.bottom) < 40) and (abs(platform.rect.bottom - entity.rect.top) < 40):
-                return True
-        C = False
-
-
-# créer une fonction pour générer des plateformes
-def plat_gen():
-    while len(platforms) < 7:
-        width = randrange(50,100)
-        C = True
-        while C:
-            p = Platform()
-            p.rect.center = (random.randrange(0,WIDTH-width),
-                             random.randrange(-50,0))
-            C = check(p, platforms)
-
-        platforms.add(p)
-        all_sprites.add(p)
-
-def reset_game():
-    global all_sprites, platforms, player
-    all_sprites.empty()
-    platforms.empty()
-
-    player = Player()
-    PT1 = Platform()
-    PT1.point = False
-    PT1.moving = False
-    PT1.surf = pygame.Surface((WIDTH, 20))
-    PT1.surf.fill((255, 0, 0))
-    PT1.rect = PT1.surf.get_rect(center=(WIDTH / 2, HEIGHT - 10))
-
-    all_sprites.add(PT1)
-    all_sprites.add(player)
-    platforms.add(PT1)
-
-    for x in range(randint(5, 6)):
-        pl = Platform()
-        C = True
-        while C:
-            pl = Platform()
-            C = check(pl, platforms)
-        platforms.add(pl)
-        all_sprites.add(pl)
-
-
-# créer le joueur
-player = Player()
-PT1 = Platform()
-PT1.point = False # pour éviter de compter le score deux fois
-PT1.moving = False # pour éviter que la plateforme ne bouge
-
-PT1.surf = pygame.Surface((WIDTH,20))
-PT1.surf.fill((255,0,0))
-PT1.rect = PT1.surf.get_rect(center = (WIDTH/2,HEIGHT-10))
-
-# ajouter les sprites à un groupe
-all_sprites = pygame.sprite.Group()
-all_sprites.add(PT1)
-all_sprites.add(player)
-platforms = pygame.sprite.Group()
-platforms.add(PT1)
-
-# ajouter des plateformes aléatoires au groupe de plateformes et de sprites all_sprites et platforms respectivement
-for x in range(randint(5,6)):
-    pl = Platform()
-    C = True
-    while C:
-        pl = Platform()
-        C = check(pl, platforms)
-    platforms.add(pl)
-    all_sprites.add(pl)
-
-def Platform_play():
-    while True:
-        player.update()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    player.jump()
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE:
-                    player.cancel_jump()
-
-        if player.rect.top <= HEIGHT /3:
-            player.pos.y += abs(player.vel.y)
-            for plat in platforms:
-                plat.rect.y += abs(player.vel.y)
-                if plat.rect.top >= HEIGHT:
-                    plat.kill()
-
-        if player.rect.top > HEIGHT:
-            for entity in all_sprites:
-                entity.kill()
-
-                return f"Score réalisé {player.score}"
-
-        plat_gen()
-
-        # dessiner la fenêtre
-        screen.fill((0,0,0))
-        player.move()
-
-        test_font = pygame.font.Font(None, 50)
-        score = test_font.render(str(player.score), True, (255,255,255))
-        screen.blit(score, (WIDTH/2, 10))
-
-        # dessiner les sprites
-        for entity in all_sprites:
-            screen.blit(entity.surf, entity.rect)
-
-        for plat in platforms:
-            plat.move()
-
-        if player.upside_down:  # Add this block
-            screen.blit(pygame.transform.flip(screen, False, True), (0, 0))
-
-        pygame.display.update()
-        frame.tick(FPS)
-
-Platform_play()
+    pygame.time.Clock().tick(60)
