@@ -30,33 +30,38 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(hero)
 
 
-def draw_text(text, font, color, surface, x, y):
-    textobj = font.render(text, True, color)
-    textrect = textobj.get_rect()
-    textrect.topleft = (x, y)
-    surface.blit(textobj, textrect)
+def pause_menu(screen, paused):
+    resume_button = Button(image=None, pos=(width // 2, height // 2 - 100), text_input='Press r to Resume', font=font, base_color=(255, 255, 255), hovering_color='Green')
+    save_button = Button(image=None, pos=(width // 2, height // 2), text_input='Press s to Save', font=font, base_color=(255, 255, 255), hovering_color='Green')
+    quit_button = Button(image=None, pos=(width // 2, height // 2 + 100), text_input='Press q to Quit', font=font, base_color=(255, 255, 255), hovering_color='Green')
 
 
-def pause_menu(screen):
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_r:  # Resume
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if resume_button.checkForInput(pygame.mouse.get_pos()):
                     return
-                elif event.key == pygame.K_s:  # Save
+                if save_button.checkForInput(pygame.mouse.get_pos()):
                     save_game()
-                elif event.key == pygame.K_q:  # Quit
+                if quit_button.checkForInput(pygame.mouse.get_pos()):
+                    pygame.quit()
+                    exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    return
+                if event.key == pygame.K_s:
+                    save_game()
+                if event.key == pygame.K_q:
                     pygame.quit()
                     exit()
 
-        screen.fill((0, 0, 0))
-        draw_text('PAUSE MENU', font, (255, 255, 255), screen, width // 2 - 100, height // 2 - 200)
-        draw_text('Press R to Resume', font, (255, 255, 255), screen, width // 2 - 150, height // 2 - 100)
-        draw_text('Press S to Save', font, (255, 255, 255), screen, width // 2 - 150, height // 2)
-        draw_text('Press Q to Quit', font, (255, 255, 255), screen, width // 2 - 150, height // 2 + 100)
+        screen.blit(paused, (0, 0))
+        resume_button.update(screen)
+        save_button.update(screen)
+        quit_button.update(screen)
 
         pygame.display.update()
         fps.tick(60)
@@ -87,7 +92,26 @@ def game(screen, pause=False):
                 exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_p:
-                    pause_menu(screen)
+                    pygame.image.save(screen, 'pause.png')
+
+                    # Load the screenshot
+                    screenshot = pygame.image.load('pause.png')
+
+                    # Create a new Surface with the same size as the screenshot
+                    grey_screenshot = pygame.Surface(screenshot.get_size())
+
+                    # Iterate over each pixel in the screenshot
+                    for x in range(screenshot.get_width()):
+                        for y in range(screenshot.get_height()):
+                            # Get the red, green, and blue values of the pixel
+                            r, g, b, a = screenshot.get_at((x, y))
+
+                            # Calculate the grey value
+                            grey = int(0.299 * r + 0.587 * g + 0.114 * b)
+
+                            # Set the pixel of the grey screenshot to the grey value
+                            grey_screenshot.set_at((x, y), (grey, grey, grey, a))
+                    pause_menu(screen, grey_screenshot)
 
         screen.blit(BG, (0, 0))
 

@@ -61,6 +61,90 @@ class Boss(Entity):
         self.Id = 3
         self.health = 1000
         self.last_spawn_time = pygame.time.get_ticks()
+        self.movement_timer = 0
+        self.change_movement_time = 5000
+        self.change_movement()
+
+    def change_movement(self):
+        possible_movements = ["up-down", "down-up", "left-right", "right-left", "carré", "losange", "diagonale"]
+        self.mouvements = random.choice(possible_movements)
+
+    def move_up_down(self):
+        self.rect.y += self.speed
+        if self.rect.top < 0:
+            self.rect.top = 0
+            self.speed = -self.speed
+        elif self.rect.bottom > HAUTEUR:
+            self.rect.bottom = HAUTEUR
+            self.speed = -self.speed
+
+    def move_left_right(self):
+        self.rect.x += self.speed
+        if self.rect.left < 0:
+            self.rect.left = 0
+            self.speed = -self.speed
+        elif self.rect.right > LARGEUR:
+            self.rect.right = LARGEUR
+            self.speed = -self.speed
+
+    def move_square(self):
+        self.rect.x += self.speed
+        self.rect.y += self.speed
+        if self.rect.left < 0 or self.rect.right > LARGEUR or self.rect.top < 0 or self.rect.bottom > HAUTEUR:
+            self.speed = -self.speed
+
+    def move_losange(self):
+        if self.rect.left <= 0 or self.rect.right >= LARGEUR or self.rect.top <= 0 or self.rect.bottom >= HAUTEUR:
+            self.speed = -self.speed
+        if self.speed > 0:
+            if self.rect.left > LARGEUR // 2:
+                self.rect.x -= self.speed
+                self.rect.y += self.speed
+            else:
+                self.rect.x += self.speed
+                self.rect.y -= self.speed
+        else:
+            if self.rect.left > LARGEUR // 2:
+                self.rect.x += self.speed
+                self.rect.y -= self.speed
+            else:
+                self.rect.x -= self.speed
+                self.rect.y += self.speed
+
+    def move_diagonal(self):
+        self.rect.x += self.speed
+        self.rect.y += self.speed
+        if self.rect.left < 0:
+            self.rect.left = 0
+            self.speed = -self.speed
+        elif self.rect.right > LARGEUR:
+            self.rect.right = LARGEUR
+            self.speed = -self.speed
+        elif self.rect.top < 0:
+            self.rect.top = 0
+            self.speed = -self.speed
+        elif self.rect.bottom > HAUTEUR:
+            self.rect.bottom = HAUTEUR
+            self.speed = -self.speed
+
+    def update(self):
+        super().update()
+        if self.movement_timer < self.change_movement_time:
+            self.movement_timer += pygame.time.get_ticks()
+        else:
+            self.change_movement()
+            self.movement_timer = 0
+
+        if self.mouvements in ["up-down", "down-up"]:
+            self.move_up_down()
+        elif self.mouvements in ["left-right", "right-left"]:
+            self.move_left_right()
+        elif self.mouvements == "carré":
+            self.move_square()
+        elif self.mouvements == "losange":
+            self.move_losange()
+        elif self.mouvements == "diagonale":
+            self.move_diagonal()
 
     def load_boss_data(self, path):
         try:

@@ -37,7 +37,7 @@ class Hero(Entity):
         self.crosshair_pos = [0, 0]  # Initialize the position of the crosshair
         self.heart_image = pygame.transform.scale((pygame.image.load("assets/Graphics/HUD/HUD_heart.png")), (40, 40))
         self.shield_image = pygame.transform.scale((pygame.image.load("assets/Graphics/HUD/HUD_shield.png")), (50, 50))
-        self.in_boss_room = False
+        self.in_boss_room = True
         self.mouvements = "perso"
 
 
@@ -59,7 +59,6 @@ class Hero(Entity):
             print(f"Error loading hero data from JSON: {e}")
 
     def attack(self, mobs):
-        from Mob import Mob
         mouse_pressed = pygame.mouse.get_pressed()
         if mouse_pressed[0]:  # If left mouse button is clicked
             current_time = pygame.time.get_ticks()
@@ -69,9 +68,14 @@ class Hero(Entity):
                         dist = sqrt((self.rect.x - mob.rect.x) ** 2 + (self.rect.y - mob.rect.y) ** 2)
                         if dist <= self.knife_range:
                             mob.hurt(20, mobs)  # Call the hurt method of the Mob class
+                elif isinstance(self.weapon, Sword):
+                    for mob in mobs:
+                        dist = sqrt((self.rect.x - mob.rect.x) ** 2 + (self.rect.y - mob.rect.y) ** 2)
+                        if dist <= self.sword_range:
+                            mob.hurt(self.weapon.damage, mobs)  # Call the hurt method of the Mob class
                 elif isinstance(self.weapon, Gun):
                     self.weapon.fire(self, mobs)
-                self.last_attack_time = current_time  # Update the last attack time
+                self.last_attack_time = current_time  # Update the l
 
     def hurt(self, damage):
         if self.shield_state and self.shield > 0:
