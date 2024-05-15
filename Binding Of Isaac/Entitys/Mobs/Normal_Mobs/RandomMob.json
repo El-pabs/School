@@ -1,0 +1,10 @@
+{
+  "speed": 1.0,
+  "bonus": [ "Strength", "Agility" ],
+  "weapons": [ "Sword", "Bow" ],
+  "shield": "Wooden Shield",
+  "image_path": "",
+  "name": "Amerindien",
+  "health": 100,
+  "Level": 1,
+}

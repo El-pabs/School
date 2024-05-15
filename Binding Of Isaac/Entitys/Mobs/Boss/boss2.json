@@ -1,0 +1,12 @@
+{
+    "speed": 3.0,
+    "strength_power": 5,
+    "health": 1000,
+    "max_health": 1000,
+    "image_path": "assets/Graphics/Boss/caporal.png",
+    "name": "Caporal",
+    "fury_mode": true,
+    "resistance": 50,
+    "mouvements": "up-down",
+    "id": 3,
+}
