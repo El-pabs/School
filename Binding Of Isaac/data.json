@@ -1,4 +1,0 @@
-{
-    "doors": ["nord", "sud", "est", "ouest"],
-    "map_dir": "./maps/"
-}
