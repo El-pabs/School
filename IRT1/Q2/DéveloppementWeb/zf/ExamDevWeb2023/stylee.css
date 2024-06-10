@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "Victorian";
+    src: url(fonts/VictorianDecade.otf);
+}
+
+body{
+    padding:0px;
+    margin: 0px;
+}
+
+header{
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    background-color: #312332;
+    justify-content: center;
+}
+
+header h1{
+    font-size: 50px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+}
+
+h1, h2, h3, li{
+    font-family: Victorian, Arial, Helvetica, sans-serif ;
+    color: #ffffff;
+}
+
+nav{
+    text-align: center;
+}
+
+nav ul{
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li{
+    padding: 10px;
+}
+
+nav ul a{
+    text-decoration: none;
+    color:#ffffff;
+}
+
+nav ul li:hover{
+    background-color: #000000;
+    color: #fe2e23;
+    transition: 2s;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr;
+    background-image: url(img/background.png);
+    background-size: cover;
+    background-position: center;
+    justify-items: center;
+    text-align: left;
+}
+
+main article h2{
+    padding-top: 500px;
+    margin: 0px;
+    font-size: 50px;
+}
+
+main article h3{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+main article p{
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    color:#ffffff;
+    padding-bottom: 20px;
+    margin-top: 5px;
+}

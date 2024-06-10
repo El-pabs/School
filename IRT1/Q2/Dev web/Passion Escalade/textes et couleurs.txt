@@ -1,0 +1,19 @@
+--- Contenu :
+
+PASSION ESCALADE
+
+Stage d'escalade au Capitole
+
+La journée de stage organisée par l'école Oath Keepers, le 6 janvier dernier, s'est déroulée parfaitement. Les participants amateurs d'escalade se sont montrés particulièrement nombreux et motivés. Un concours de vitesse a même été organisé, et son vainqueur s'est vu remporter un trophée sous la forme très symbolique d'une tête de bison. Cliquez ici pour en savoir plus.
+
+--- Polices :
+
+Calibri
+
+--- Couleurs :
+
+Fond du menu (gris) : #69615e
+Textes du menu (blanc) : #ffffff
+Textes en hover sur le menu (cyan) : #00fd97
+Textes du contenu (blanc) : #ffffff + ombre
+Ligne horizontale du contenu (cyan) : #00fd97

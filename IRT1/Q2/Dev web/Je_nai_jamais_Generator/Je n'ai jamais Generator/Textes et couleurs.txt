@@ -1,0 +1,17 @@
+=== COULEURS ===
+
+Taupe : caa97f
+Blanc : ffffff
+Cyan : 00bfff
+
+=== TEXTES ===
+
+Je n'ai jamais Generator
+Accueil
+Autres jeux
+Historique
+Contact
+
+Je n'ai jamais... Voyagé en Australie !
+
+Générer

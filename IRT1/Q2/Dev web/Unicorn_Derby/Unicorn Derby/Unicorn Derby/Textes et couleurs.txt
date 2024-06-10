@@ -1,0 +1,30 @@
+=== COULEURS ===
+
+Bleu sarcelle : 4c9ba4
+Mauve : ffccff
+Noir : 252525
+Blanc : ffffff
+
+=== TEXTES ===
+
+(Les listes sont en Arial)
+
+Unicorn Derby
+Mes licornes
+Live et replay
+Se connecter
+
+Valkyrie
+• rapide sur les courtes distances
+• efficace sur les obstacles
+• moins à l’aise en fin de course
+
+Angel
+• imperturbable
+• préfère les lignes droites
+• moins à l’aise sur les obstacles
+
+Stardust
+• rapide dans les trajectoires
+• bon sur les obstacles
+• caractère bien trempé

@@ -1,0 +1,157 @@
+/* Applique des styles de base au corps de la page */
+body {
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les espacements internes par défaut */
+    font-family: Arial, sans-serif; /* Définit la police de caractères */
+    background: url('img/background.jpg') no-repeat center center fixed; /* Définit l'image de fond, centrée et fixe */
+    background-size: cover; /* Redimensionne l'image pour couvrir tout l'écran */
+}
+
+/* Styles pour le header */
+header {
+    background: linear-gradient(rgba(0, 0, 0, 0.8)); /* Applique un fond semi-transparent */
+    position: fixed; /* Fixe le header en haut de la page */
+    width: 100%; /* Prend toute la largeur de la page */
+    top: 0; /* Positionne en haut */
+    left: 0; /* Positionne à gauche */
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    flex-direction: column; /* Aligne les enfants en colonne */
+    align-items: center; /* Centre horizontalement les enfants */
+    justify-content: center; /* Centre verticalement les enfants */
+}
+
+/* Styles pour le conteneur de titre */
+#title {
+    text-align: center; /* Centre le texte */
+    transform: translate(0, 100%); /* Décale verticalement le texte */
+    color: white; /* Définit la couleur du texte en blanc */
+    margin: 10px 0; /* Ajoute une marge verticale */
+}
+
+/* Styles pour le titre h1 dans le conteneur de titre */
+#title h1 {
+    margin: 0; /* Supprime les marges par défaut */
+    font-size: 24px; /* Définit la taille de la police */
+    color: #caa97f; /* Définit la couleur du texte */
+}
+
+/* Styles pour le span dans le conteneur de titre */
+#title span {
+    font-size: 14px; /* Définit la taille de la police */
+}
+
+/* Styles pour la navigation */
+nav {
+    width: 100%; /* Prend toute la largeur disponible */
+}
+
+/* Styles pour la liste non ordonnée dans la navigation */
+nav ul {
+    list-style: none; /* Supprime les puces de la liste */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les espacements internes par défaut */
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    justify-content: space-around; /* Espace uniformément les éléments */
+    width: 100%; /* Prend toute la largeur disponible */
+}
+
+/* Styles pour les liens dans les éléments de liste */
+nav ul li a {
+    color: white; /* Définit la couleur du texte en blanc */
+    text-decoration: none; /* Supprime la décoration par défaut des liens (soulignement) */
+    font-size: 20px; /* Définit la taille de la police */
+    display: block; /* Affiche les liens comme des blocs */
+}
+
+/* Change la couleur des liens lorsqu'ils sont survolés ou mis au focus */
+nav ul li a:hover, nav ul li a:focus {
+    color: #00aaff; /* Définit la couleur de survol en bleu clair */
+}
+
+/* Styles pour l'article */
+article {
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    justify-content: center; /* Centre horizontalement les enfants */
+    position: relative; /* Position relative par rapport à son emplacement normal */
+    top: 50vh; /* Décale de 50% de la hauteur de la fenêtre */
+    color: white; /* Définit la couleur du texte en blanc */
+}
+
+/* Styles pour l'élément avec l'ID 'jamais' */
+#jamais {
+    color: #caa97f; /* Définit la couleur du texte */
+}
+
+/* Styles pour les boutons */
+button {
+    position: absolute; /* Positionne l'élément par rapport à son parent */
+    bottom: -20px; /* Décale de 20 pixels vers le bas */
+    height: 25px; /* Définit la hauteur à 25 pixels */
+}
+
+/* Media query pour les écrans de moins de 1090 pixels de large */
+@media(max-width: 1090px) {
+    #title h1 {
+        font-size: 20px; /* Réduit la taille de la police */
+    }
+    #title span {
+        font-size: 12px; /* Réduit la taille de la police */
+    }
+}
+
+/* Media query pour les écrans de moins de 900 pixels de large */
+@media(max-width: 900px) {
+    #title {
+        transform: translate(0, 125%); /* Décale verticalement le texte */
+    }
+
+    #title h1 {
+        font-size: 16px; /* Réduit la taille de la police */
+    }
+    #title span {
+        font-size: 10px; /* Réduit la taille de la police */
+    }
+}
+
+/* Media query pour les écrans de moins de 768 pixels de large */
+@media (max-width: 768px) {
+    header {
+        align-items: flex-start; /* Aligne les enfants en haut */
+        background-color: rgba(0, 0, 0, 0.6); /* Change la couleur de fond */
+    }
+
+    #title {
+        width: 100%; /* Prend toute la largeur disponible */
+        text-align: center; /* Centre le texte */
+        margin-bottom: 10px; /* Ajoute une marge en bas */
+    }
+
+    #title h1 {
+        font-size: 20px; /* Définit la taille de la police */
+    }
+
+    #title span {
+        font-size: 12px; /* Définit la taille de la police */
+    }
+
+    nav ul {
+        padding-top: 50px; /* Ajoute un padding en haut */
+        flex-direction: column; /* Aligne les enfants en colonne */
+        align-items: center; /* Centre horizontalement les enfants */
+    }
+
+    nav ul li {
+        width: 100%; /* Prend toute la largeur disponible */
+        text-align: center; /* Centre le texte */
+    }
+
+    nav ul li a {
+        padding: 20px; /* Ajoute un padding autour des liens */
+    }
+
+    article {
+        top: 70vh; /* Décale de 70% de la hauteur de la fenêtre */
+        display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+        flex-wrap: wrap; /* Permet de passer à la ligne pour les enfants */
+    }
+}

@@ -1,128 +1,149 @@
+/* Définir une nouvelle police appelée 'Victorian' */
 @font-face {
-    font-family: "Victorian";
-    src: url(fonts/VictorianDecade.otf);
+    font-family: "Victorian"; /* Nom de la police */
+    src: url(fonts/VictorianDecade.otf); /* Chemin vers le fichier de la police */
 }
 
-body{
-    padding:0px;
-    margin: 0px;
+/* Styles de base pour le corps de la page */
+body {
+    padding: 0px; /* Supprime les espacements internes par défaut */
+    margin: 0px; /* Supprime les marges par défaut */
 }
 
-header{
-    display:grid;
-    grid-template-rows: 100px 1fr;
-    background-color: #312332;
-    justify-content: center;
+/* Styles pour l'en-tête */
+header {
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    background-color: #312332; /* Définit la couleur de fond */
+    flex-direction: column; /* Aligne les enfants en colonne */
+    justify-content: center; /* Centre verticalement les enfants */
+    align-items: center; /* Centre horizontalement les enfants */
 }
 
-body header h1{
-    font-size: 50px;
-    padding-top: 20px;
-    margin-bottom: 5px;
+/* Styles pour le titre h1 dans l'en-tête */
+body header h1 {
+    font-size: 50px; /* Définit la taille de la police */
+    padding-top: 20px; /* Ajoute un espacement en haut */
+    margin-bottom: 5px; /* Ajoute une marge en bas */
+    padding-left: 25px; /* Ajoute un espacement à gauche */
+    align-self: center; /* Centre horizontalement le titre */
 }
 
-
-body header h1, body main h2, body main h3, body header li{
-    font-family: Victorian, Arial, Helvetica, sans-serif ;
-    color: #ffffff;
+/* Styles pour les titres h1, h2, h3 et les éléments de liste */
+body header h1, body main h2, body main h3, body header li {
+    font-family: Victorian, Arial, Helvetica, sans-serif; /* Utilise la police 'Victorian', ou Arial, Helvetica, sans-serif si indisponible */
+    color: #ffffff; /* Définit la couleur du texte en blanc */
 }
 
-body header nav{
-    text-align: center;
+/* Styles pour la navigation dans l'en-tête */
+body header nav {
+    order: 2; /* Définit l'ordre des éléments (le nav viendra après le h1) */
+    align-items: flex-end; /* Aligne les enfants à la fin (en bas) */
+    text-align: center; /* Centre le texte */
 }
 
-body header nav ul{
-    list-style: none;
-    padding: 0;
-    width: 100%;
+/* Styles pour la liste non ordonnée dans la navigation */
+body header nav ul {
+    list-style: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime les espacements internes par défaut */
 }
 
-body header nav ul li{
-    padding: 10px;
+/* Styles pour les éléments de liste dans la navigation */
+body header nav ul li {
+    font-size: 20px; /* Définit la taille de la police */
+    padding: 15px; /* Ajoute un espacement interne */
 }
 
-body header nav ul a{
-    text-decoration: none;
-    color:#ffffff;
+/* Styles pour les liens dans la navigation */
+body header nav ul a {
+    width: 100%; /* Prend toute la largeur disponible */
+    text-decoration: none; /* Supprime la décoration par défaut des liens (soulignement) */
+    color: #ffffff; /* Définit la couleur du texte en blanc */
 }
 
-body header nav ul li:hover{
-    background-color: #000000;
-    color: #fe2e23;
+/* Change la couleur et le fond des éléments de liste lorsqu'ils sont survolés */
+body header nav ul li:hover {
+    background-color: #000000; /* Change la couleur de fond en noir */
+    color: #fe2e23; /* Change la couleur du texte */
+    transition: 2s; /* Définit une transition de 2 secondes pour ces changements */
 }
 
-
-main{
-    display: grid;
-    grid-template-columns: 1fr;
-    background-image: url(img/background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    justify-items: center;
-    text-align: left;
+/* Styles pour le conteneur principal */
+main {
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    background-image: url(img/background.png); /* Définit l'image de fond */
+    background-size: cover; /* Redimensionne l'image pour couvrir tout l'écran */
+    background-position: center; /* Centre l'image */
+    justify-content: center; /* Centre horizontalement les enfants */
+    align-items: center; /* Centre verticalement les enfants */
+    text-align: left; /* Aligne le texte à gauche */
 }
 
-main article h2{
-    padding-top: 500px;
-    margin: 0px;
-    font-size: 50px;
+/* Styles pour le titre h2 dans un article */
+main article h2 {
+    padding-top: 500px; /* Ajoute un espacement en haut */
+    margin: 0px; /* Supprime les marges par défaut */
+    font-size: 50px; /* Définit la taille de la police */
 }
 
-main article h3{
-    margin-top: 0;
-    margin-bottom: 5px;
+/* Styles pour le titre h3 dans un article */
+main article h3 {
+    margin-top: 0; /* Supprime la marge en haut */
+    margin-bottom: 5px; /* Ajoute une marge en bas */
 }
 
-main article p{
-    font-family: Calibri, 'Trebuchet MS', sans-serif;
-    color:#ffffff;
-    padding-bottom: 20px;
-    margin-top: 5px;
+/* Styles pour les paragraphes dans un article */
+main article p {
+    font-family: Calibri, 'Trebuchet MS', sans-serif; /* Utilise la police Calibri, ou Trebuchet MS, sans-serif si indisponible */
+    color: #ffffff; /* Définit la couleur du texte en blanc */
+    padding-bottom: 20px; /* Ajoute un espacement en bas */
+    margin-top: 5px; /* Ajoute une marge en haut */
 }
 
-@media screen and (min-width:1024px){
-    header{
-        grid-template-rows: 1fr;
-        grid-template-columns:1fr 600px;
-        align-items: center;
+/* Media query pour les écrans d'au moins 700 pixels de large */
+@media screen and (min-width: 700px) {
+    header {
+        display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+        flex-direction: row; /* Aligne les enfants en ligne */
+        justify-content: space-between; /* Espace les enfants uniformément */
     }
 
-    header h1{
-        margin: 0;
+    header h1 {
+        margin: 0; /* Supprime les marges par défaut */
     }
 
-    header nav{
-        display:grid;
-        grid-template-columns:1fr;
-        align-items: center;
-        justify-content: end;
-        grid-column-start: 0;
+    header nav {
+        display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+        align-items: center; /* Centre verticalement les enfants */
+        justify-content: end; /* Aligne les enfants à la fin (à droite) */
     }
 
-    header nav ul{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+    header nav ul {
+        display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+        align-items: center; /* Centre verticalement les enfants */
     }
 
-    header nav ul li{
-        font-size: 2rem;
+    header nav ul li {
+        display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+        transform: translate(-15px);
+        width: 87%; /* Définit la largeur à 87% */
+        margin-right: 10px; /* Ajoute une marge à droite */
+        font-size: 2rem; /* Définit la taille de la police */
     }
 
-    main{
-        text-align: right;
-        justify-items: end;
+    main {
+        text-align: right; /* Aligne le texte à droite */
+        justify-content: end; /* Aligne les enfants à la fin (à droite) */
     }
 
-    main article h2{
-        padding-top: 200px;
+    main article h2 {
+        padding-top: 200px; /* Ajoute un espacement en haut */
     }
 
-    main article p{
-        padding-bottom: 150px;
+    main article p {
+        padding-bottom: 150px; /* Ajoute un espacement en bas */
     }
 
-    article{
-        margin-right: 30px;
+    article {
+        margin-right: 30px; /* Ajoute une marge à droite */
     }
 }

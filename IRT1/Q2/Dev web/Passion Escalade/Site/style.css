@@ -1,0 +1,169 @@
+/* Applique une police de caractère et retire les marges et les paddings par défaut du corps de la page */
+body {
+    font-family: 'Calibri', sans-serif; /* Définit la police de caractère à 'Calibri' */
+    margin: 0; /* Retire les marges par défaut */
+    padding: 0; /* Retire les paddings par défaut */
+}
+
+/* Style pour l'image dans le header */
+header img {
+    width: 150px; /* Définit la largeur de l'image à 150 pixels */
+    height: 150px; /* Définit la hauteur de l'image à 150 pixels */
+    position: relative; /* Position relative par rapport à son emplacement normal */
+    left: 270px; /* Décale l'image de 270 pixels vers la droite */
+    top: 20px; /* Décale l'image de 20 pixels vers le bas */
+}
+
+/* Style pour le header */
+header {
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    background-color: #69615e; /* Définit la couleur de fond du header */
+    width: 100%; /* Prend toute la largeur disponible */
+    height: 100px; /* Définit la hauteur du header à 100 pixels */
+    color: #ffffff; /* Couleur du texte en blanc */
+    position: relative; /* Position relative par rapport à son emplacement normal */
+}
+
+/* Style pour la navigation */
+nav {
+    position: absolute; /* Positionne l'élément par rapport à son parent */
+    bottom: 10px; /* Décale l'élément de 10 pixels vers le haut à partir du bas du parent */
+    transform: translate(500px); /* Décale l'élément de 500 pixels vers la droite */
+}
+
+/* Style pour la liste non ordonnée (ul) à l'intérieur de la navigation */
+nav ul {
+    list-style: none; /* Supprime les puces de la liste */
+    margin: 0; /* Retire les marges par défaut */
+    padding: 0; /* Retire les paddings par défaut */
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+}
+
+/* Style pour les liens (a) à l'intérieur de la liste non ordonnée */
+nav ul li a {
+    text-decoration: none; /* Supprime la décoration par défaut des liens (soulignement) */
+    color: white; /* Définit la couleur du texte des liens en blanc */
+}
+
+/* Style pour les éléments de liste (li) à l'intérieur de la liste non ordonnée */
+nav ul li {
+    font-size: 20px; /* Définit la taille de la police à 20 pixels */
+    padding: 10px; /* Ajoute un padding de 10 pixels autour de chaque élément */
+    margin-right: 20px; /* Ajoute une marge de 20 pixels à droite de chaque élément */
+    cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
+}
+
+/* Change la couleur des éléments de liste lorsqu'ils sont survolés par la souris */
+nav ul li a:hover {
+    color: #00fd97; /* Change la couleur du texte à un vert clair */
+}
+
+/* Style pour le conteneur principal */
+main {
+    background-image: linear-gradient(rgba(4,1,0,0.2), rgba(4,9,30,0.7)), url('img/background.jpg'); /* Applique un dégradé semi-transparent sur une image de fond */
+    background-size: cover; /* Couvre toute la surface du conteneur avec l'image */
+    background-position: center; /* Centre l'image de fond */
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    flex-direction: column; /* Aligne les enfants en colonne (verticalement) */
+    justify-content: center; /* Centre les éléments enfants verticalement */
+    align-items: center; /* Centre les éléments enfants horizontalement */
+    height: 100vh; /* Définit la hauteur à 100% de la hauteur de la fenêtre */
+    color: #ffffff; /* Définit la couleur du texte en blanc */
+    text-shadow: 2px 3px 2px black; /* Ajoute une ombre portée au texte */
+    text-align: left; /* Aligne le texte à gauche */
+    padding: 20px; /* Ajoute un padding de 20 pixels autour du conteneur */
+}
+
+/* Style pour les articles */
+article {
+    padding: 20px; /* Ajoute un padding de 20 pixels autour de chaque article */
+    border-radius: 10px; /* Arrondit les coins des articles */
+    max-width: 800px; /* Limite la largeur des articles à 800 pixels */
+}
+
+/* Style pour les titres de premier niveau (h1) */
+h1 {
+    font-size: 50px; /* Définit la taille de la police à 50 pixels */
+    margin: 0; /* Retire les marges par défaut */
+    border-bottom: 5px solid #00fd97; /* Ajoute une bordure inférieure verte de 5 pixels */
+}
+
+/* Style pour les paragraphes (p) */
+p {
+    font-size: 20px; /* Définit la taille de la police à 20 pixels */
+}
+
+/* Style pour les liens (a) à l'intérieur des paragraphes */
+p a {
+    color: #00fd97; /* Définit la couleur du texte des liens en vert clair */
+    text-decoration: none; /* Supprime la décoration par défaut des liens (soulignement) */
+}
+
+/* Change la décoration des liens lorsqu'ils sont survolés par la souris */
+p a:hover {
+    text-decoration: underline; /* Souligne le texte des liens */
+}
+
+/* Styles pour les écrans dont la largeur est inférieure ou égale à 980 pixels */
+@media screen and (max-width: 980px) {
+    header {
+        flex-direction: column; /* Aligne les enfants en colonne (verticalement) */
+        align-items: center; /* Centre les éléments enfants horizontalement */
+        width: auto; /* Adapte la largeur automatiquement */
+        height: 275px; /* Définit la hauteur du header à 275 pixels */
+        padding: 20px 0; /* Ajoute un padding de 20 pixels en haut et en bas */
+    }
+
+    header img {
+        height: 150px; /* Définit la hauteur de l'image à 150 pixels */
+        position: static; /* Position statique (positionnement par défaut) */
+    }
+
+    nav {
+        position: static; /* Position statique (positionnement par défaut) */
+        transform: translate(0); /* Retire la translation */
+        margin-top: 10px; /* Ajoute une marge de 10 pixels en haut */
+    }
+
+    nav ul {
+        flex-direction: column; /* Aligne les enfants en colonne (verticalement) */
+        align-items: center; /* Centre les éléments enfants horizontalement */
+    }
+
+    nav ul a {
+        display: block; /* Affiche les liens comme des blocs */
+        margin: 5px 0; /* Ajoute une marge de 5 pixels en haut et en bas */
+    }
+
+    nav ul li {
+        margin-right: 0; /* Retire la marge à droite */
+    }
+
+    main {
+        padding: 0; /* Retire le padding */
+        margin: 0; /* Retire les marges */
+        display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+        flex-direction: row; /* Aligne les enfants en ligne (horizontalement) */
+        justify-content: center; /* Centre les éléments enfants horizontalement */
+        align-items: flex-start; /* Aligne les éléments enfants en haut */
+    }
+
+    article {
+        padding: 10px; /* Ajoute un padding de 10 pixels autour de chaque article */
+    }
+
+    h1 {
+        margin-top: 20%; /* Ajoute une marge en haut de 20% de la hauteur du conteneur */
+        font-size: 50px; /* Définit la taille de la police à 50 pixels */
+        border-bottom: 3px solid #00fd97; /* Ajoute une bordure inférieure verte de 3 pixels */
+        margin-bottom: 10px; /* Ajoute une marge de 10 pixels en bas */
+    }
+
+    p {
+        font-size: 16px; /* Définit la taille de la police à 16 pixels */
+    }
+
+    p a {
+        font-size: 16px; /* Définit la taille de la police à 16 pixels pour les liens */
+    }
+}
