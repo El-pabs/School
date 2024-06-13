@@ -1,0 +1,130 @@
+/* Définir une nouvelle police appelée 'MermaidBabies' */
+@font-face {
+    font-family: 'Artistic-calligraphy'; /* Nom de la police */
+    src: url(fonts/Artistic-Calligraphy.otf); /* Chemin vers le fichier de la police */
+}
+
+/* Styles de base pour le corps de la page */
+body {
+    margin: 0px; /* Supprime les marges par défaut */
+    padding: 0px; /* Supprime les espacements internes par défaut */
+}
+
+/* Styles pour l'en-tête */
+header {
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    justify-content: space-between; /* Espace les enfants uniformément */
+    align-items: center; /* Aligne les enfants au centre verticalement */
+    font-family: 'Artistic-Calligraphy'; /* Utilise la police 'MermaidBabies' */
+    background-color: #5e1a16; /* Définit la couleur de fond */
+    color: white; /* Définit la couleur du texte en blanc */
+}
+
+/* Styles pour le titre h1 dans l'en-tête */
+header h1 {
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les espacements internes par défaut */
+    font-size: 50px; /* Définit la taille de la police */
+}
+
+/* Styles pour la navigation dans l'en-tête */
+header nav {
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    justify-content: flex-end; /* Aligne les enfants à la fin */
+}
+
+/* Styles pour la liste non ordonnée dans la navigation */
+header nav ul {
+    list-style: none; /* Supprime les puces de la liste */
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+}
+
+/* Styles pour les liens dans la navigation */
+header a {
+    color: white; /* Définit la couleur du texte en blanc */
+    text-decoration: none; /* Supprime la décoration par défaut des liens (soulignement) */
+    padding: 10px; /* Ajoute un espacement interne */
+}
+
+/* Styles pour les éléments de liste dans la navigation */
+header nav li {
+    font-size: 30px; /* Définit la taille de la police */
+    padding : 0 20px
+}
+
+/* Change la couleur des liens lorsqu'ils sont survolés */
+header nav a:hover {
+    color: #ffd600; /* Définit la couleur de survol */
+    border-bottom: 1px solid white; /* Ajoute une bordure inférieure jaune */
+}
+
+article#banner {
+    padding: 0;
+    margin: 0;
+    background-image: url(img/background.jpg); /* Définit l'image de fond */
+    background-size: cover; /* Redimensionne l'image pour couvrir tout l'écran */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    background-position: center; /* Centre l'image */
+    position: relative; /* Positionne relativement à son parent */
+    width: 100%; /* Prend toute la largeur disponible */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    font-family: 'Artistic-calligraphy';
+    display: inline-flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    justify-content: center; /* Centre horizontalement les enfants */
+    align-items: center; /* Aligne les enfants en bas */
+}
+
+/* Styles pour l'article */
+article {
+    display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
+    justify-content: space-around; /* Espace les enfants uniformément */
+    width: 80%; /* Définit la largeur à 80% */
+    padding: 20px; /* Ajoute un espacement interne */
+    border-radius: 10px; /* Ajoute des coins arrondis */
+}
+
+/* Styles pour les figures */
+figure {
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les espacements internes par défaut */
+    text-align: left; /* Aligne le texte à gauche */
+}
+
+/* Styles pour les images dans les figures */
+figure img {
+    width: 300px; /* Définit la largeur */
+    height: auto; /* Ajuste la hauteur automatiquement */
+    border-radius: 10px; /* Ajoute des coins arrondis */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les espacements internes par défaut */
+}
+
+/* Styles pour les titres h2 */
+h2 {
+    font-family: 'MermaidBabies'; /* Utilise la police 'MermaidBabies' */
+    font-size: 24px; /* Définit la taille de la police */
+    color: #4c9ba4; /* Définit la couleur du texte */
+    text-align: center; /* Centre le texte */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les espacements internes par défaut */
+}
+
+/* Styles pour les listes non ordonnées dans le conteneur principal */
+main ul {
+    font-size: 16px; /* Définit la taille de la police */
+    padding: 0; /* Supprime les espacements internes par défaut */
+    margin: 0; /* Supprime les marges par défaut */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #quelques-toiles .toile {
+        display: block;
+        margin: 20px auto;
+    }
+}

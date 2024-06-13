@@ -1,0 +1,26 @@
+=== COULEURS ===
+
+Jaune : fcb434
+Noir : 000000
+Blanc : ffffff
+
+=== TEXTES ===
+
+(Les paragraphes sont en Calibri)
+
+(Les transparences sont de 50%)
+
+Le Sourificator
+
+Langues
+Boutique
+Essai
+
+Module de traduction souris-humain
+
+Bienvenue dans le monde de la traduction révolutionnaire humain-souris ! Notre module technologique de pointe repousse les limites de la communication interespèces en permettant une traduction fluide et précise entre les humains et les souris.
+
+Imaginez-vous pouvoir établir une connexion directe avec nos amis à petites pattes,
+comprendre leurs besoins, leurs désirs et même échanger des idées complexes. Grâce à notre module de traduction humain-souris, cette vision devient réalité.
+
+Notre technologie repose sur des algorithmes avancés, fruit de nombreuses années de recherche et développement. Elle permet de décoder les signaux vocaux des souris, qui sont ensuite convertis en un langage humain compréhensible.
