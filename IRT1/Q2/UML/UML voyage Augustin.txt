@@ -1,0 +1,46 @@
+classe utilisateur
+-nom : str
+-email : str
+-tel : int
+-notif : Bool
++moyen payment: str
+-deja une reservation ? : bool
+----------
++activer notif
++creer reservation (composition de reservation) si pas reservation --------- envoyé notif + date
++sup reservation (changer validité)
++modifier resa ------------ envoyé notif + date
++show info
+
+
+classe reservation
+-date : date
+-lieu : str
+-date reservation : date
+-reservation valide : True
+---------
++endroit voyage (composition voyage) et check si nbr max place pas atteint sinon print(plus dispo)
++payment (composition payment)
++modifier validité (reserv valide en False et payment valide en false) --------- envoyé notif + date
++show info
+
+
+AVOIR UNE INCREMENTATION DE 1 DE NBR PLACE
+classe voyage
+-lieu : list
+-h vol : str
+-cout voyage : float
+-nbr place : int
+-max place : int
+---------------
++show info
+
+
+classe payment
+-montant
+-date payment
+-moyen payment : str
+-payment valide : bool
+---------------
+
+
