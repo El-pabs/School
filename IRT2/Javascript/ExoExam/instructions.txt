@@ -1,0 +1,19 @@
+Examen de JavaScript et jQuery
+
+Au chargement, la page comporte 10 cases et 10 jetons.
+Les cases sont vides mais les jetons contiennent les mystérieuses lettres suivantes : a, a, i, s, c, j, v, t, r et p.
+Les 10 cases sont alignées en haut.
+Les 10 jetons sont invisibles au tout début et subissent d'abord une modification de leur position, puis un effet d'apparition par opacit�. 
+La position des jetons est aléatoire, mais ils se tiennent tous à au moins 100px des bords de l'écran !
+
+Au survol, un jeton change de couleur.
+Au clic aussi.
+Le dernier jeton cliqué est noir. Seulement le dernier cliqué !
+PS : il est conseillé de travaillé avec une classe "noir" que l'on ajoute et enlève... et qui sera utile à l'étape suivante.
+
+Au clic sur une case, le jeton noir se déplace (animation en 800ms) afin de recouvrir la case cliqu�e.
+
+
+
+
+

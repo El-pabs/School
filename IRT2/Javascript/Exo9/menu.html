@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Exercice : menu mobile</title>
+	<style>
+		html {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			background-color: #eee;
+			color: #444;
+			font-family: Calibri;
+			padding: 0;
+			margin: 0;
+		}
+
+		#header {
+			background-color: #444;
+			color: #fff;
+			padding: 6px;
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+		}
+
+		#header a {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		#header h1 {
+			margin: 0;
+		}
+
+		#burger {
+			height: 40px;
+			width: 40px;
+			border: #888 1px solid;
+			background-image: url(menu.svg);
+			background-position: center center;
+			background-size: 30px 30px;
+			background-repeat: no-repeat;
+			cursor: pointer;
+		}
+
+		#burger:hover,
+		#burger:focus {
+			background-color: #888;
+		}
+
+		#burger:active {
+			background-color: #ccc;
+		}
+
+		#navTop {
+			background-color: #444;
+			display: none;
+			flex-flow: column nowrap;
+		}
+
+		#navTop a {
+			display: block;
+			border-top: #888 1px solid;
+			color: #fff;
+			text-decoration: none;
+			padding: 6px;
+		}
+
+		#navTop a:hover,
+		#navTop a:focus {
+			background-color: #888;
+		}
+
+		#navTop a:active {
+			background-color: #ccc;
+		}
+
+		#main {
+			padding: 6px;
+		}
+
+		@media screen and (min-width: 600px) {
+			#burger{
+				display:none;
+			}
+
+			#navTop{
+				display:grid !important;
+				grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			}
+  		}
+	</style>
+	<script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<header id="header">
+		<a href="menu.html">
+			<h1>Exercice</h1>
+		</a>
+		<div id="burger"></div>
+	</header>
+	<div class="volet">
+		<nav id="navTop">
+			<a href="menu.html">Accueil</a>
+			<a href="#">Conseils</a>
+			<a href="#">Réalisations</a>
+			<a href="#">Équipe</a>
+			<a href="#">Contact</a>
+		</nav>
+	</div>
+	<main id="main">
+		<h2>Bienvenue</h2>
+		<p>Exercice jQuery</p>
+	</main>
+</body>
+<script src="script.js"></script>
+</html>

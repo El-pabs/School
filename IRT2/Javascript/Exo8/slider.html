@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Exercice : Slider</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 0;
+			margin: 16px;
+			color: #444;
+			background-color: #111;
+		}
+
+		#lucarne {
+			width: 800px;
+			height: 600px;
+			overflow: hidden;
+			position: relative;
+			top: 0;
+			left: 0;
+			margin: 0 auto;
+		}
+
+		#plateau {
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: 1s;
+		}
+
+		#plateau img {
+			width: 800px;
+			height: 600px;
+			display: block;
+		}
+
+		#num {
+			font-size: 48px;
+			font-weight: bold;
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			background-color: #fff8;
+			width: 52px;
+			height: 52px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="lucarne">
+		<div id="plateau">
+			<img src="landscape1.jpg" alt="">
+			<img src="landscape2.jpg" alt="">
+			<img src="landscape3.jpg" alt="">
+			<img src="landscape4.jpg" alt="">
+			<img src="landscape5.jpg" alt="">
+			<img src="landscape.jpg" alt="">
+		</div>
+		<div id="num">1</div>
+	</div>
+	<script src="jquery.min.js"></script>
+	<script src="script.js"> </script>
+</body>
+</html>

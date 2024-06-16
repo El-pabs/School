@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 6</title>
+</head>
+<body>
+    <form>
+        <select id="sel" onchange="calculPrix()" >
+            <option value="8">Margherita</option>
+            <option value="10">Regina</option>
+            <option value="11">Capricciosa</option>
+            <option value="10.50">Quattro Formaggi</option>
+            <option value="9.50">Diavola</option>
+            <option value="12.50">Marinara</option>
+        </select>
+        <br>
+        <label>Avec Supplément</label>
+        <input type="radio" name="Supplement" onclick="checkSup(this)" value="Avec">
+
+        <label>Sans Supplément</label>
+        <input type = "radio" name="Supplement" onclick="checkSup(this)" value="Sans">
+
+        <div id="Supplements">
+            <form>
+                <label>Anchois</label>
+                <input type="checkbox" value="Anchois" class="sup"onclick="calculPrix()">
+
+                <label>Frites</label>
+                <input type="checkbox" value="Frites" class="sup"onclick="calculPrix()">
+
+                <label>Olives</label>
+                <input type="checkbox" value="Olives" class="sup"onclick="calculPrix()">
+            </form>
+        </div>
+
+        <br>
+        <br>
+        <label>Cash</label>
+        <input type="radio" name="payement" onclick="calculPrix()" value="Cash">
+
+        <label>Visa</label>
+        <input type="radio" name="payement" onclick="calculPrix()" value="Visa" id="visa">
+
+        <br>
+
+        <p>Prix:</p>
+        <p id="prix">€</p>
+
+        <input type="submit" value="Commandez !">
+    </form>
+</body>
+
+<script>
+    function checkSup(radio){
+        divSup = document.getElementById("Supplements");
+
+
+        if(radio.value == "Avec"){
+            divSup.style.display = "";
+        }
+        else{
+            divSup.style.display = "none";
+        }
+    
+    calculPrix();
+    }
+
+    function calculPrix(){
+        let supp = document.getElementsByClassName("sup");
+        let select = document.getElementById("sel");
+        let prixPizza = parseFloat(select.value);
+        let moyPaiement = document.getElementById("visa");
+        let pPrix = document.getElementById("prix");
+
+
+
+        for(let sup of supp){
+            if(sup.checked){
+                prixPizza += 0.50 ;
+            }
+        }
+        if (moyPaiement.checked){
+            prixPizza += 2;
+        }
+        
+        pPrix.innerHTML = prixPizza + "€" ;
+
+
+    }
+
+    calculPrix();
+
+</script>
+</html>

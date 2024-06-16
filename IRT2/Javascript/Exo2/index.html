@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2</title>
+</head>
+<body>
+    <form>
+        <span>Vous avez commandé</span>
+        <input type="number" name="quantite" id="quantite" oninput="majTotal()">
+        <span id="art">article</span>
+        <span>à 12.50€</span>
+    </form>
+
+    <span>Total : </span><span id="total">12.50€</span>
+</body>
+
+<script>
+    function majTotal(){
+        let baliseInput = document.getElementById("quantite");
+        let input = baliseInput.value ;
+        console.log(input);
+
+        let total = document.getElementById("total");
+        let calcul = input * 12.50
+        total.innerHTML = calcul + "€";
+
+        if (input > 1){
+            let article = document.getElementById("art");
+            article.innerHTML = "articles";
+        }
+        else {
+            let article = document.getElementById("art");
+            article.innerHTML = "article";
+        }
+    }
+</script>
+</html>

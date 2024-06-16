@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img onclick="change(this)" src="img/Minecraft.jpg">
+    <img onclick="change(this)" src="img/cod.jpg">
+</body>
+
+<script>
+    function change(img){
+        if(img.src.includes('cod')){
+            img.src = 'img/Minecraft.jpg';
+        }else{
+            img.src = 'img/cod.jpg';
+        }
+    }
+</script>
+
+</html>

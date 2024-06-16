@@ -1,0 +1,55 @@
+html{
+    background-color: #334454;
+}
+
+header{
+    display:grid;
+    grid-template-columns: repeat(10 , 50px);
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.cases{
+    background-color: #ffffff;
+    height: 50px;
+    border-radius: 10px;
+    -webkit-box-shadow: 2px 2px 11px 0px rgba(144, 144, 144, 0.75);
+    -moz-box-shadow: 2px 2px 11px 0px rgba(144, 144, 144, 0.75);
+    box-shadow: 2px 2px 11px 0px rgba(144, 144, 144, 0.75);
+}
+
+.cases:hover{
+    background-color: #FFD700;
+    -webkit-box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+    -moz-box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+    box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+}
+
+.letters{
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    display:grid;
+    align-items: center;
+    transition: 1s;
+}
+
+.letters:hover{
+    background-color: #FFD700;
+    -webkit-box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+    -moz-box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+    box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+}
+
+.choix{
+    background-color: #FFD700;
+    z-index: 99;
+    -webkit-box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+    -moz-box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+    box-shadow: 2px 2px 11px 0px rgba(218, 186, 2, 0.75);
+}

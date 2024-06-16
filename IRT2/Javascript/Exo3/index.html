@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 3</title>
+</head>
+<body>
+    <form>
+        <label>Mot De Passe: </label><br>
+        <input type="password" id="mot2Passe" oninput="changePasswd()"> <meter optimum="15" min ="0" high="10" low="5" max="15" value="0" id="meter"></meter><br>
+        <input type = "checkbox" id="showMot2Passe" oninput="showPasswd()"> <span>Afficher le Mot de Passe</span>
+    </form>
+</body>
+
+<script>
+
+    function changePasswd(){
+        let listeBlanche = ["123456", "12345", "1234", "abc123", "abc",
+        "pwd", "password", "mypassword", "dragon", "monkey", "shadow",
+        "master", "superman", "spiderman", "batman", "god", "sex", "boobs",
+        "azerty", "qwerty", "iloveyou", "computer", "welcome", "matrix",
+        "secret", "login"];
+        let baliseMdp = document.getElementById("mot2Passe");
+        let mdp = baliseMdp.value;
+        let longMdp = mdp.length;
+        let meter = document.getElementById("meter")
+
+        meter.setAttribute("value", longMdp);
+        if (listeBlanche.includes(mdp)){
+            meter.setAttribute("value", "1");
+        }
+    }
+
+    function showPasswd(){
+        let checkbox = document.getElementById("showMot2Passe");
+        let baliseMdp = document.getElementById("mot2Passe");
+
+        if (checkbox.checked){
+            baliseMdp.setAttribute("type", "text");
+        }
+        else {
+            baliseMdp.setAttribute("type", "password");
+        }
+    }
+</script>
+
+</html>
+
+
+

@@ -1,0 +1,16 @@
+img{
+    display: block;
+}
+
+section{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 100px;
+}
+
+div{
+    background-color: aqua;
+    position: relative;
+    transition: linear 1s;
+
+}

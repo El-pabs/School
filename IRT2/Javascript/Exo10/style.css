@@ -1,0 +1,73 @@
+html {
+    background-color: #2b2a33;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 12% 1fr;
+}
+
+#burger {
+    height: 40px;
+    width: 40px;
+    border: #888 1px solid;
+    background-image: url(img/menu.svg);
+    background-position: center center;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#burger:hover,
+#burger:focus {
+    background-color: #888;
+}
+
+#burger:active {
+    background-color: #ccc;
+}
+
+#navSide {
+    background-color: #1c1b22;
+    width: 200%;
+    display: none;
+    flex-flow: column nowrap;
+}
+
+div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    margin: 0;
+}
+
+div figure {
+    display: grid;
+    width: 250px;
+    background-color: #fff;
+    height: 200px;
+    justify-content: center;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+div figure img {
+    padding-top: 10px;
+    width: 240px;
+    height: 150px;
+}
+
+#lightbox {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#big {
+    width: 1000px;
+    margin: 10px;
+}
