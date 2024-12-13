@@ -1,0 +1,84 @@
+Résumé de ce qu'on pourrait avoir à faire : (quand on devra redémarrer un truc faites le direct / quand je dis win+r des fois ça fonctionne juste en allant dans la barre de rechercher Windows mais pas toujours donc retenez win+r) 
+
+1. La machine démarre, direct :
+- Change le nom 
+	- Win+R, sysdm.cpl, Change 
+	- Server Manager, Configure this local server, clic gauche sur Computer name, Change (plus facile)
+- Change l'IP : 
+	- Win+R, ncpa.cpl, clic droit, properties, clic gauche internet Protocol Version 4, Properties et on met nos données (plus facile)
+	- Control Panel, Network and Internet, Network and Sharing Center, Change adapter settings, la fin comme au dessus 
+	- Peut faire avec netsh mais vous avez vraiment pas envie 
+- Vérif règle de Firewall (si besoin de ping ce qui est mieux) : 
+	- Windows Defender Firewall with Advanced Security, dans Inboud Rules puis Outbound Rules vous allez aller jusqu'à "Protocol" et cliquez dessus pour trier, dès que vous voyez des trucs ICMP vous vérifiez si c'est bien actif si pas clic droit puis "enable rule" 
+
+2. DHCP (vous faites comme vous voulez mais perso je préfère) : 
+- On installe le rôle DHCP 
+- On s'y rend via Tools -> DHCP
+- Sur IPv4, clic droit, "New scope" 
+	- Dedans on met plage, exclusion, bail, + Router / DNS si on veut  
+	- Ne pas oublier règle des 20% pour filaire et x3 pour Wi-Fi basé sur les infos données par le cahier des charges 
+- Define User class 
+	- met le nom et ASCII (à retenir le ASCII pour après sur le client)
+- Policy
+	- Criteria : User Class, Operator : Equals, Value : Votre User Class  
+	- Activer le 044 WINS avec une IP pas encore utilisée 
+-- Je me rends sur le client --
+- Je me rends dans les trucs ipv4 et vérif que j'ai pas une ip déjà attribuée via ncpa.cpl si c'est le cas jme mets en "Obtenir une adresse IP automatiquement"
+- Barre de recherche, PowerShell, je clic droit dessus et exec en admin
+- ipconfig /all ou netsh interface ipv4 show interfaces pour connaitre le nom de ma carte 
+- ipconfig /setclassid "nom de la carte que vous avez (surement Ethernet)" ASCII de votre user class 
+- ipconfig /release si besoin de lacher son IP et /renew si besoin d'en récup une 
+
+3. AD DS 
+- Install rôle AD DS (ça devrait demander de redémarrer le serveur si pas faites le quand même)
+- Allez sur le drapeau avec triangle, clic sur "Promote this server to a domain controller"
+- new forêt + nom
+- vérif si DNS est coché + mettre un mdp 
+- Skip tout le reste puis Install
+- Retournez dans le DHCP, clic droit sur votreserv.lan et authorize (se désac quand on met l'AD)
+- Comme services DNS mis, on peut déjà créer une zone inverse et un PTR si on veut + un Conditionnal Forwarders si besoin de résoudre des noms de domaines spécifiques et environnement complèxe 
+- Renommer le site dans Sites and Services avec un nom correspondant au site de travail (ex : Campus-Technique)
+- Si demandé, vérif complexité mdp : 
+	- Group Policy Management, clic droit sur sur Default Domain Policy (DDP inverse de PDD) puis Edit
+	- Dans DDP, Computer Config, Policies, Win Settings, Security, Account, Password
+- Me rends dans ADUC et crée mon arborescence (jdonne ma façon mais obligatoire d'utiliser AGDLP dans tous les cas) : 
+	- Arbo donnée dans le cahier des charges créée -> on place nos users dans chaque OU nécessaire 
+	- Puis OU en + que je nomme "Groupes" ou dedans je crée 2 OU (une GG et une GL) 
+	- Dans GL, 2 GL pour chaque dossier de partage (ex : Direction aura GL_Direction_RW et GL_Direction_RO) 
+	- Le nommage est important mais R ou RO / - ou _ c'est pas bien important tant que ça se comprend 
+	- Retenir que GG = arbo des OU, GL = arbo des partages et toujours 2 GL par dossier
+- Je vais créer mes profils ittinérants parce que souvent livio est bourré donc au moins il pourra se co sur n'importe quel PC :
+	- Crée dossier profils$($ à la fin pour cacher) à la racine du C:(ou autre) puis je le partage via clic droit -> Properties -> Sharing -> Advanced Sharing -> coche Share this folder -> lui mets un nom (ça peut rester le meme avec le $ pour être caché) puis permissions et applique les perms de partages que je veux) 
+	- Je me rends dans les properties d'un user via ADUC et dans Profile puis Profile path je mets \\<IP serv ou son nom direct>\<nomdossier>\%username% (ex : \\Gustin-SRV01\profils$\%username%)
+- Tant que j'y suis, je vais dans Account et je mets les logon hours 
+- Ceci fait, y aura surement un casse-couille qui aura besoin d'un UPN diff donc : 
+	- Domain and Trusts, clic droit sur "Active Directory blabla", Properties et vous mettez le truc (ex : com.lan)
+	- Sur l'utilisateur maintenant, dans la section Account, vous pourrez lui changer le User logon name au lieu de @livio.lan vous mettrez @com.lan
+- Pour la shadow copy :
+	- Sur le lecteur C:, clic droit, Configure Shadow Copies, Enable 
+	- Si prof demande de générer un truc qui le fait par ex toutes les semaine -> Setting -> Schedule 
+- Corbeille AD :
+	- Administrative Center, clic gauche ou droit sur livio, Enable Recycle Bin 
+- Quota : 
+	- Install File Server Ressource Manager (se trouve dans File and Storage Services puis File and iSCI puis il sera là)
+	- Vous allez dedans via Tools 
+	- Quota Management, Quota Template, clic droit, Create Quota Template (vous mettez nom, limite + notif si besoin et surtout faites gaffe au % de notif si le prof demande) 
+	- Soit clic droit dessus direct et Create Quota From Template et vous choisissez le dossier (car oui un quota en win ça s'applique à un dossier)  
+	- Soit vous allez dans Quotas, clic droit, Create Quota et vous remplissez en sélectionnant bien le quota properties que vous avez créé
+- Pour Backup : 
+	- Install Windows Server Backup (c'est un feature pas un rôle) 
+	- clic droit sur Local Backup, vous lisez tout ce qui s'affiche 
+	- Le prof demandera de noter sur feuille ce que vous auriez fait pour que ça fonctionne car trop long à faire donc vous direz que vous auriez ajouté un disque sur la même vm et donc vous auriez choisi local drive pour backup dedans ou alors sur la vm cliente et vous auriez créé un dossier partagé auquel vous aurez mis des perm pour que vous puissez y accéder depuis le serv et y backup dedans. Si il demande en + la fréquence des backups comment faire tout ça, vous chiez sur votre feuille.
+
+4. DNS (là rien de sur mais c'est moi qui l'ai compris comme ça) :
+- Comme le prof a demandé que www.livio.lan pointe vers une IP différente (qui serait un serveur web fictif) : 
+	- Je me rends dans DNS
+	- Sur Livio.lan, clic droit, new Host, name : www, ip : 192.168.20.2 (pour moi), vous pouvez cocher le Create PTR en +, vérif dans la reverse si le PTR y est bien 
+
+
+5. Bonus / Conseils : 
+- Pour les partages, ne partager que le dossier principal (donc partage par exemple) surtout pas les sous-dossiers(direction, comm,...) pour les perms de partage mettez un truc genre Domain Users ou Users en modif puis ce seront les perm NTFS (sécurité) qui vont restreindre si besoin. Parce que si jamais vous mettez que lecture sur vos perm de partage tout le long vous allez être comme des golmons à pouvoir rien faire ackually
+- Si jamais besoin de supr UO:
+	- Soit Administrative Center, livio, clic droit sur le truc à supr, properties et décocher Protect from accidental blabla
+	- Soit quand vous êtes dans ADUC, vous cliquez sur View et vous metez Advanced Features, ça permettra de pouvoir direct décocher dans les properties du truc sans devoir aller jusqu'à l'admin center 
+- Si votre client veut pas se co, cliquez en haut dans la page Hyper-V sur Session étendue 
