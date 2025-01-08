@@ -50,7 +50,7 @@ if (isset($_GET['liste'])) {
         if ($i < 4){
             echo '<b>';
         }
-        echo '<a href="?liste='.$pays['id_ville'].'">'.$i. ' ' .$pays['nom_ville'].' : </b> <img src="flags/'.$pays['code_pays'].'" alt=""> ' .$pays['nom_pays'].' : ';
+        echo '<a href="?liste='.$pays['id_ville'].'">'.$i. ' ' .$pays['nom_ville'].' : </b> <img src="flags/'.$pays['code_pays'].'" alt=""> </a> ' .$pays['nom_pays'].' : ';
         while ($compte != 0){
             echo '<img src="icones/restaurant.png" alt="restaurant" width=30>';
             $compte -= 1;

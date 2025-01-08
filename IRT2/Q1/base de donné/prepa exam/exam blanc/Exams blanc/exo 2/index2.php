@@ -2,7 +2,7 @@
 
 include_once('_connexionBD.PHP');
 
-$req_restaurant = $bd->query('SELECT r.ouvert, r.nom, r.description, r.id_restaurant, GROUP_CONCAT(e.nom) AS travailleur, SUM(e.manager) AS manager, v.ville, v.code_pays 
+$req_restaurant = $bd->query('SELECT r.nom, r.description, r.id_restaurant, GROUP_CONCAT(e.nom) AS travailleur, SUM(e.manager) AS manager, v.ville, v.code_pays 
         FROM restaurants r 
         LEFT JOIN employes e ON r.id_restaurant = e.id_restaurant 
         LEFT JOIN villes v ON r.id_ville = v.id_ville 

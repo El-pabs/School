@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $bd->prepare('INSERT INTO citations (id_heros, id_film, citation) VALUES (?, ?, ?)');
         $stmt->execute([$hero_id, $film_id, $citation]);
 
-        header('Location: _index.php?hero_id=' . $hero_id);
+        header('Location: _index_jedi.php?hero_id=' . $hero_id);
         exit;
     }
 }
