@@ -1,0 +1,29 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXO2</title>
+   </head> 
+<body>
+
+    <h1>Commande</h1>
+    <p>Vous avez commandé <input type="number" id="articles" title="Nombre d'articles" placeholder="0"> 
+    <span id="a">article</span> à <span id="pu">12.50</span>€</p>
+    <p>Total:<span id="total">0</span>€</p>
+
+
+    <script>
+        document.getElementById('articles').addEventListener('change', function(){
+            const total = document.getElementById('total');
+            const pu = document.getElementById('pu');
+            const articles = document.getElementById('articles');
+            total.innerText = articles.value * pu.innerText;
+
+            const a = document.getElementById('a');
+            if (articles.value > 1) a.innerText = 'articles';
+            else a.innerText = 'article';
+        });
+
+    </script>
+</body>
+</html>

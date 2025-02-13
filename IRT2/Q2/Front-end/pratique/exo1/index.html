@@ -1,0 +1,34 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXO1</title>
+   </head> 
+<body>
+
+    <img src="quentin.png" alt="marcel" id="image" width="200px" height="200px">
+
+    <script>
+    /* EXO 1
+        const image = document.getElementById('image');
+        console.log(image);
+        image.addEventListener('click', function(){
+            image.src = 'traumatized.webp';
+            // ou this.src = 'asset/son_of_marcel_mango.png';
+        });
+    */
+
+        // EXO 2
+        const image = document.getElementById('image');
+        console.log(image);
+        image.addEventListener('click', function(){
+            if(image.src.includes('quentin.png')){
+                image.src = 'traumatized.webp';
+            }else{
+                image.src = 'quentin.png';
+            }
+        });
+    </script>
+
+</body>
+</html>
