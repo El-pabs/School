@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 4</title>
+</head>
+<body>
+    <form>
+        <label>Ton Nom: </label><br>
+        <input type="text" id="nom" oninput="Upper()">
+    </form>
+</body>
+
+<script>
+    function Upper(){
+    let baliseNom = document.getElementById("nom");
+    let nom = baliseNom.value;
+
+    let newNom = nom.charAt(0).toUpperCase() + nom.slice(1);
+
+    baliseNom.value = newNom;
+}
+</script>
+</html>

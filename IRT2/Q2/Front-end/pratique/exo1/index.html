@@ -6,28 +6,19 @@
    </head> 
 <body>
 
-    <img src="quentin.png" alt="marcel" id="image" width="200px" height="200px">
+    <img src="quentin.png" alt="sauce" id="image" width="200px" height="200px">
 
     <script>
-    /* EXO 1
-        const image = document.getElementById('image');
-        console.log(image);
-        image.addEventListener('click', function(){
-            image.src = 'traumatized.webp';
-            // ou this.src = 'asset/son_of_marcel_mango.png';
-        });
-    */
-
-        // EXO 2
-        const image = document.getElementById('image');
-        console.log(image);
-        image.addEventListener('click', function(){
-            if(image.src.includes('quentin.png')){
-                image.src = 'traumatized.webp';
-            }else{
-                image.src = 'quentin.png';
+        let count = 2;
+        document.getElementById('image').addEventListener('click', change);
+        function change() {
+            if (count % 2 == 0) {
+                this.src = "traumatized.webp";
+            } else {
+                this.src = "quentin.png";
             }
-        });
+            count++;
+        }
     </script>
 
 </body>
