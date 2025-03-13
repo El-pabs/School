@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Loading Demo</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            height: 500px;
+            margin-bottom: 500px;
+            color: white;
+            padding: 20px;
+        }
+        
+        /* Transition pour l'apparition */
+        .apparition {
+            transition: opacity 1s;
+        }
+        
+        /* Style pour les éléments invisibles */
+        .invisible {
+            opacity: 0;
+            transition: opacity 0s;
+        }
+
+        /* Media queries pour rendre le site réactif */
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+            .content {
+                padding: 10px;
+            }
+            .apparition h2 {
+                font-size: 1.5em;
+            }
+            .apparition p {
+                font-size: 1em;
+            }
+            .apparition img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 1024px) {
+            body {
+                font-size: 16px;
+            }
+            .content {
+                padding: 15px;
+            }
+            .apparition h2 {
+                font-size: 2em;
+            }
+            .apparition p {
+                font-size: 1.2em;
+            }
+            .apparition img {
+                width: 80%;
+                height: auto;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            body {
+                font-size: 18px;
+            }
+            .content {
+                padding: 20px;
+            }
+            .apparition h2 {
+                font-size: 2.5em;
+            }
+            .apparition p {
+                font-size: 1.5em;
+            }
+            .apparition img {
+                width: 60%;
+                height: auto;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br> Voluptatum modi maxime sit iusto quas nesciunt ut omnis earum, <br>voluptatibus error eius, odit perferendis excepturi<br> consectetur aspernatur labore dolor quam quae?</div>
+    <div class="apparition">
+        <h2>Titre avec apparition</h2>
+        <p>Ce paragraphe apparaîtra progressivement.</p>
+    </div>
+    <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br> Voluptatum modi maxime sit iusto quas nesciunt ut omnis earum, <br>voluptatibus error eius, odit perferendis excepturi<br> consectetur aspernatur labore dolor quam quae?</div>
+    <div class="apparition">
+        <img src="../Exo 11/img/max1.jpg" alt="Image avec apparition">
+    </div>
+    <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br> Voluptatum modi maxime sit iusto quas nesciunt ut omnis earum, <br>voluptatibus error eius, odit perferendis excepturi<br> consectetur aspernatur labore dolor quam quae?</div>
+
+    <script>
+        $(document).ready(function() {
+            // Ajoute la classe 'invisible' à tous les éléments avec la classe 'apparition'
+            $('.apparition').addClass('invisible');
+
+            // Fonction pour vérifier si un élément est visible
+            function isElementVisible($elem) {
+                var docViewTop = $(window).scrollTop();
+                var docViewBottom = docViewTop + $(window).height();
+                var elemTop = $elem.offset().top;
+                var elemBottom = elemTop + $elem.outerHeight();
+
+                // Vérifie si la moitié de l'élément est visible
+                return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop) ||
+                        (elemTop <= docViewBottom) && (elemBottom >= docViewTop));
+            }
+
+            // Gestion du scroll
+            $(window).scroll(function() {
+                $('.invisible').each(function() {
+                    if (isElementVisible($(this))) {
+                        $(this).removeClass('invisible');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

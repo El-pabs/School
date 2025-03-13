@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effet Parallaxe</title>
+    <style>
+        /* Style général pour la page */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Section avec effet de parallaxe */
+        .parallax {
+            height: 500px; /* Hauteur de la section */
+            background-attachment: fixed; /* Permet le semi-fixe */
+            background-size: cover; /* Ajuste l'image à la taille de la section */
+            background-position: center; /* Centre l'image */
+            background-image: url(max1.jpg);
+        }
+
+        /* Contenu de remplissage pour le défilement */
+        .content {
+            height: 500px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="content">
+        <h1>Bienvenue sur la page avec effet parallaxe</h1>
+    </div>
+    <div class="parallax"></div>
+    <div class="content">
+        <p>Défilez pour voir l'effet parallaxe en action.</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Écouteur d'événement scroll sur la fenêtre
+            $(window).scroll(function() {
+                // Récupère le niveau de scroll
+                var scrollTop = $(window).scrollTop();
+
+                // Modifie la position verticale du background en fonction du niveau de scroll
+                $('.parallax').css('background-position', 'center ' + (scrollTop * -0.5) + 'px');
+                // Ici, le facteur 0.5 ralentit le déplacement du background par rapport au scroll
+            });
+        });
+    </script>
+</body>
+</html>

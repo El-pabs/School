@@ -6,10 +6,14 @@
     <title>Galerie de Vignettes</title>
     <style>
         body {
+            background-color: red;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
         figure {
             margin: 0;
@@ -17,6 +21,7 @@
             width: 300px;
             text-align: center;
             transition: transform 0.3s;
+            cursor: pointer;
         }
         figure:hover {
             transform: scale(1.05);
@@ -24,7 +29,6 @@
         img {
             width: 100%;
             height: auto;
-            cursor: pointer;
         }
         figcaption {
             padding: 10px;
@@ -45,55 +49,112 @@
             max-width: 90%;
             max-height: 90%;
         }
+        #hamburger {
+            position: fixed;
+            background-color: black;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            background-image: url('menu.svg');
+            background-size: cover;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        #hamburger.open {
+            background-image: url('cross.svg');
+            transition: 0.3s ease;
+            left: 260px;
+        }
+        #nav {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+        #nav.open {
+            left: 0;
+        }
+        #nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #nav ul li {
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+        #nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            #hamburger {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
-    <figure>
-        <img src="img/max1.jpg" alt="Description de l'image 1" onclick="openLightbox(this.src)">
+    <div id="hamburger"></div>
+    <nav id="nav">
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Galerie</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <figure onclick="openLightbox('img/max1.jpg')">
+        <img src="img/max1.jpg" alt="Description de l'image 1">
         <figcaption>Description de l'image 1</figcaption>
     </figure>
-    <figure>
-        <img src="img/max2.jpg" alt="Description de l'image 2" onclick="openLightbox(this.src)">
+    <figure onclick="openLightbox('img/max2.jpg')">
+        <img src="img/max2.jpg" alt="Description de l'image 2">
         <figcaption>Description de l'image 2</figcaption>
     </figure>
-    <figure>
-        <img src="img/max3.jpg" alt="Description de l'image 3" onclick="openLightbox(this.src)">
+    <figure onclick="openLightbox('img/max3.jpg')">
+        <img src="img/max3.jpg" alt="Description de l'image 3">
         <figcaption>Description de l'image 3</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max4.jpg" alt="Description de l'image 4" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max4.jpg')">
+        <img src="img/max4.jpg" alt="Description de l'image 4">
         <figcaption>Description de l'image 4</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max5.jpg" alt="Description de l'image 5" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max5.jpg')">
+        <img src="img/max5.jpg" alt="Description de l'image 5">
         <figcaption>Description de l'image 5</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max6.jpg" alt="Description de l'image 6" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max6.jpg')">
+        <img src="img/max6.jpg" alt="Description de l'image 6">
         <figcaption>Description de l'image 6</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max7.jpg" alt="Description de l'image 7" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max7.jpg')">
+        <img src="img/max7.jpg" alt="Description de l'image 7">
         <figcaption>Description de l'image 7</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max8.jpg" alt="Description de l'image 8" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max8.jpg')">
+        <img src="img/max8.jpg" alt="Description de l'image 8">
         <figcaption>Description de l'image 8</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max9.jpg" alt="Description de l'image 9" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max9.jpg')">
+        <img src="img/max9.jpg" alt="Description de l'image 9">
         <figcaption>Description de l'image 9</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max10.jpg" alt="Description de l'image 10" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max10.jpg')">
+        <img src="img/max10.jpg" alt="Description de l'image 10">
         <figcaption>Description de l'image 10</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max11.jpg" alt="Description de l'image 11" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max11.jpg')">
+        <img src="img/max11.jpg" alt="Description de l'image 11">
         <figcaption>Description de l'image 11</figcaption>
-        </figure>
-        <figure>
-        <img src="img/max12.jpg" alt="Description de l'image 12" onclick="openLightbox(this.src)">
+    </figure>
+    <figure onclick="openLightbox('img/max12.jpg')">
+        <img src="img/max12.jpg" alt="Description de l'image 12">
         <figcaption>Description de l'image 12</figcaption>
     </figure>
 
@@ -110,6 +171,26 @@
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
         }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('nav').classList.toggle('open');
+            document.getElementById('hamburger').classList.toggle('open');
+        });
+
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('nav');
+            const hamburger = document.getElementById('hamburger');
+            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.classList.remove('open');
+                hamburger.classList.remove('open');
+            }
+        });
     </script>
 </body>
-</html></div>
+</html>
