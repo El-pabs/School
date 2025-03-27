@@ -1,0 +1,350 @@
+/* Style général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Couleur de fond par défaut */
+    color: #333; /* Couleur du texte par défaut */
+}
+
+
+h1, h2 {
+    color: #333; /* Couleur des titres */
+}
+
+a {
+    color: #007BFF; /* Couleur des liens */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Bouton Mode Nuit/Jour */
+#theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+#theme-icon {
+    width: 30px;
+    color: black; /* Couleur par défaut de l'icône */
+}
+
+body.dark #theme-icon {
+    color: yellow; /* Couleur pour l'icône lune en mode nuit */
+}
+
+/* Section centrale */
+.central-header {
+    text-align: center;
+    background-color: #007BFF; /* Couleur de fond du header */
+    color: white; /* Couleur du texte dans le header */
+    padding: 20px 0;
+}
+
+.central-header h1 {
+    font-size: 2.5em;
+}
+
+.profile-photo {
+    width: auto;
+    height: 500px;
+    margin-top: -200px;
+    border: 10px solid;
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+    animation: 10s rotate linear infinite;
+}
+
+/* Positionnement des sections dans la grille */
+.top-left {
+    grid-column: 1 / span 1;
+}
+
+.top-right {
+    grid-column: 3 / span 1;
+}
+
+.bottom-left {
+    grid-column: 1 / span 1;
+}
+
+.bottom-right {
+    grid-column: 3 / span 1;
+}
+
+
+/* Photo au centre */
+.center-photo {
+    grid-column: 2 / span 1; /* Centré dans la colonne du milieu */
+    grid-row: 2 / span 1;    /* Centré dans la rangée du milieu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Listes de compétences */
+.skills li {
+    display: inline-block; /* Affichage en ligne pour les compétences */
+    margin-right: 10px; /* Espacement entre les compétences */
+}
+
+/* Mode nuit */
+body.dark {
+    background-color: #121212; /* Fond sombre pour le mode nuit */
+    color: white; /* Texte blanc pour le mode nuit */
+}
+
+body.dark .central-header {
+    background-color: #555; /* Couleur de fond plus claire pour le header en mode nuit */
+}
+
+body.dark .box {
+    background-color: #222; /* Fond sombre pour les sections en mode nuit */
+}
+
+/* Animation au défilement (ScrollMagic) */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease-in-out;
+}
+
+section {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Impression optimisée */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 12px; /* Réduire la taille de la police pour tout faire tenir */
+    }
+
+    .grid-layout {
+        display: grid;
+        grid-template-columns: auto 1fr; /* Deux colonnes : photo à gauche, infos à droite */
+        grid-template-rows: auto auto auto auto auto; /* Reste des sections en dessous */
+        gap: 10px; /* Espacement entre les éléments */
+        padding: 0;
+    }
+
+    .photo-container {
+        grid-column: 1 / span 1; /* Photo dans la première colonne */
+        grid-row: 1 / span 1; /* Photo en haut */
+        justify-self: start; /* Aligner à gauche */
+    }
+
+    .profile-photo {
+        height: 150px; /* Réduire la taille de la photo pour économiser de l'espace */
+        margin: 0;
+        animation: none; /* Désactiver l'animation de rotation */
+        border-image: none; /* Supprimer la bordure animée */
+        border: 0px solid black; /* Ajouter une bordure simple noire */
+    }
+
+    .header-print {
+        font-weight: bold;
+        margin-bottom: 10px; /* Espacement entre le contenu du header et les infos personnelles */
+    }    
+
+    #infos-personnelles {
+        grid-column: 2 / span 1; /* Infos personnelles dans la deuxième colonne */
+        grid-row: 1 / span 1; /* Aligner avec la photo */
+        display: grid;
+        gap: 5px; /* Espacement entre les colonnes */
+        align-items: start; /* Aligner les éléments en haut */
+        width: 500px;
+    }
+
+    #experiences,
+    #formation,
+    #competences-techniques{
+        grid-column: 1 / span 2; /* Les autres sections prennent toute la largeur */
+        margin-top: -20px;
+    }
+
+    .box {
+        page-break-inside: avoid; /* Éviter les coupures de section */
+        margin: 5px 0; /* Réduire les marges entre les sections */
+        box-shadow: none; /* Supprimer les ombres pour économiser de l'espace */
+    }
+
+    header, footer, #theme-toggle, #theme-icon {
+        display: none; /* Masquer les éléments inutiles pour l'impression */
+    }
+
+    .central-header {
+        display: none;
+    }
+
+    h1, h2 {
+        font-size: 16px; /* Réduire la taille des titres */
+    }
+
+    a {
+        color: black; /* Supprimer les couleurs des liens pour l'impression */
+        text-decoration: none;
+    }
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+/* Mise en page en grille */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 20px; /* Espacement entre les sections */
+    padding: 20px;
+    box-sizing: border-box; /* Assurer que la grille s'adapte à la largeur de l'écran */
+    max-width: 100%; /* Empêcher la grille de dépasser la largeur de l'écran */
+    overflow-x: hidden; /* Empêcher le débordement horizontal */
+}
+
+/* Style des sections */
+.box {
+    padding: 20px;
+    background-color: white; /* Couleur de fond des sections */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    box-sizing: border-box; /* Assurer que les boîtes s'adaptent à la largeur de l'écran */
+    max-width: 100%; /* Empêcher les boîtes de dépasser la largeur de l'écran */
+    overflow-x: hidden; /* Empêcher le débordement horizontal */
+}
+
+@media (max-width: 1200px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        padding: 10px; /* Réduire le padding pour les petits écrans */
+    }
+
+    .center-photo {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .top-left, .top-right, .bottom-left, .bottom-right {
+        grid-column: 1 / span 1;
+    }
+
+    .top-left {
+        grid-row: 2 / span 1;
+    }
+
+    .top-right {
+        grid-row: 3 / span 1;
+    }
+
+    .bottom-left {
+        grid-row: 4 / span 1;
+    }
+
+    .bottom-right {
+        grid-row: 5 / span 1;
+    }
+
+    .profile-photo {
+        margin-top: 0px; /* Ajustement pour les écrans moyens */
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        padding: 10px; /* Réduire le padding pour les petits écrans */
+    }
+
+    .center-photo {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .top-left, .top-right, .bottom-left, .bottom-right {
+        grid-column: 1 / span 1;
+    }
+
+    .top-left {
+        grid-row: 2 / span 1;
+    }
+
+    .top-right {
+        grid-row: 3 / span 1;
+    }
+
+    .bottom-left {
+        grid-row: 4 / span 1;
+    }
+
+    .bottom-right {
+        grid-row: 5 / span 1;
+    }
+
+    .profile-photo {
+        height: 300px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        padding: 10px; /* Réduire le padding pour les petits écrans */
+    }
+
+    .center-photo {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .top-left, .top-right, .bottom-left, .bottom-right {
+        grid-column: 1 / span 1;
+    }
+
+    .top-left {
+        grid-row: 2 / span 1;
+    }
+
+    .top-right {
+        grid-row: 3 / span 1;
+    }
+
+    .bottom-left {
+        grid-row: 4 / span 1;
+    }
+
+    .bottom-right {
+        grid-row: 5 / span 1;
+    }
+
+    .profile-photo {
+        height: 200px;
+        margin-top: 0;
+    }
+
+    .box {
+        padding: 10px;
+    }
+}
