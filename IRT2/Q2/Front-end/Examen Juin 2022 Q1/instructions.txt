@@ -1,0 +1,27 @@
+Examen de Développement front-end, juin 2022
+
+Internet, GSM et clés USB sont interdits.
+Il est interdit d'ouvrir d'autres fichiers que ceux distribués pour cette épreuve.
+
+La page représente des conteneurs à déchets.
+Les 4 conteneurs disposent chacun d'une étiquette reprenant un titre, la contennace et le contenu du conteneur.
+
+Au chargement de la page,
+	les contenances sont piochées aléatoirement parmi le tableau ci-dessous, et injectées dans la page
+	Pour chaque conteneur, 
+		un nombre de déchets x est généré aléatoirement entre 1 et 5.
+		x déchets sont alors générés et injectés dans le conteneur correspondant (utilisez la classe "dechet").
+		Chaque déchet reprend un intitulé aléatoire (parmi le tableau ci-dessous) et un volume aléatoire entre 1 et 7.
+	On évalue les contenus.
+
+Évaluation des contenus :
+	Le contenu de chaque conteneur est calculé comme étant la somme de volumes des déchets et affiché.
+	Si un conteneur contient plus de déchet que sa contenance, la classe "trop" est ajoutée au contenu afin de l'afficher en rouge.
+	
+Au clic sur un déchet,
+	Ce déchet est supprimé.
+	On évalue les contenus.
+
+var contenances = new Array(8,10,12,15,20);	// en m³
+var dechets = new Array('planches', 'bricaillons', 'briques', 'carrelages', 'poutres', 'sable', 'contreplaqués', 
+

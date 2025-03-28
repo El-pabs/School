@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Examen Développement front-end 2022 : conteneurs</title>
+	<meta name="author" content=" votre nom ici ">
+	<style>
+		body { font-family:calibri; background-color:#ddb; font-size:1.25rem; text-align:center; margin:0; padding:0; color:#222; }
+		h1, h2, h3, h4, h5, h6, p { margin:0.25em 0; }
+		#main { 
+			max-width:1000px;
+			margin:0 auto;
+			display:grid; 
+			grid-template-columns:1fr 240px; 
+			gap:1rem; 
+			padding:1rem; 
+		}
+		.conteneur, .etiquette { background-color:#fff; padding:0.5rem; }
+		.conteneur { display:flex; flex-flow:row wrap; }
+		#conteneur1 { grid-row:1; grid-column:1; }
+		#conteneur2 { grid-row:2; grid-column:1; }
+		#conteneur3 { grid-row:3; grid-column:1; }
+		#conteneur4 { grid-row:4; grid-column:1; }
+		#conteneur1-etiquette { grid-row:1; grid-column:2; }
+		#conteneur2-etiquette { grid-row:2; grid-column:2; }
+		#conteneur3-etiquette { grid-row:3; grid-column:2; }
+		#conteneur4-etiquette { grid-row:4; grid-column:2; }
+		
+		.dechet {  background-color:#ddd; padding:1rem; margin:0.5rem; cursor:pointer; user-select:none; }
+		.dechet:hover { background-color:#bbb;  }
+		.dechet:active { background-color:#d40;  }
+		
+		.contenance { font-weight:bold; color:#0ab;}
+		.contenu { font-weight:bold; color:#0b0;}
+		.contenu.trop { color:#b10;}
+	</style>
+</head>
+<body>
+	<main id="main">
+		<div id="conteneur1" class="conteneur"></div>
+		<section id="conteneur1-etiquette" class="etiquette">
+			<h2>Conteneur 1</h2>
+			<p>Contenance max : <span class="contenance">0</span> m³</p>
+			<p>Contenu : <span class="contenu">0</span> m³</p>
+		</section>
+		<div id="conteneur2" class="conteneur"></div>
+		<section id="conteneur2-etiquette" class="etiquette">
+			<h2>Conteneur 2</h2>
+			<p>Contenance max : <span class="contenance">0</span> m³</p>
+			<p>Contenu : <span class="contenu">0</span> m³</p>
+		</section>
+		<div id="conteneur3" class="conteneur"></div>
+		<section id="conteneur3-etiquette" class="etiquette">
+			<h2>Conteneur 3</h2>
+			<p>Contenance max : <span class="contenance">0</span> m³</p>
+			<p>Contenu : <span class="contenu">0</span> m³</p>
+		</section>
+		<div id="conteneur4" class="conteneur"></div>
+		<section id="conteneur4-etiquette" class="etiquette">
+			<h2>Conteneur 4</h2>
+			<p>Contenance max : <span class="contenance">0</span> m³</p>
+			<p>Contenu : <span class="contenu">0</span> m³</p>
+		</section>
+	</main>
+</body>
+<script>
+    // Initialisation des conteneurs
+    document.addEventListener("DOMContentLoaded", function () {
+        const contenances = [8, 10, 12, 15, 20]; // Capacités des conteneurs
+        const dechets = ['planches', 'bricaillons', 'briques', 'carrelages', 'poutres', 'sable', 'contreplaqués']; // Types de déchets
+
+        for (let i = 1; i <= 4; i++) {
+            const conteneur = document.getElementById(`conteneur${i}`);
+            const contenanceSpan = document.querySelector(`#conteneur${i}-etiquette .contenance`);
+            const contenuSpan = document.querySelector(`#conteneur${i}-etiquette .contenu`);
+
+            // Définir une contenance aléatoire
+            const contenance = contenances[Math.floor(Math.random() * contenances.length)];
+            contenanceSpan.textContent = contenance;
+
+            // Générer un nombre aléatoire de déchets
+            let contenuTotal = 0;
+            const nombreDechets = Math.floor(Math.random() * 5) + 1;
+
+            for (let j = 0; j < nombreDechets; j++) {
+                const dechetNom = dechets[Math.floor(Math.random() * dechets.length)];
+                const dechetVolume = Math.floor(Math.random() * 7) + 1;
+                contenuTotal += dechetVolume;
+
+                // Créer et ajouter un déchet
+                const dechetElement = document.createElement("div");
+                dechetElement.className = "dechet";
+                dechetElement.textContent = `${dechetNom} (${dechetVolume} m³)`;
+                dechetElement.dataset.volume = dechetVolume;
+
+                // Supprimer le déchet au clic
+                dechetElement.onclick = function () {
+                    contenuTotal -= parseInt(dechetElement.dataset.volume);
+                    dechetElement.remove();
+                    contenuSpan.textContent = contenuTotal;
+                    contenuSpan.classList.toggle("trop", contenuTotal > contenance);
+                };
+
+                conteneur.appendChild(dechetElement);
+            }
+
+            // Afficher le contenu initial
+            contenuSpan.textContent = contenuTotal;
+            contenuSpan.classList.toggle("trop", contenuTotal > contenance);
+        }
+    });
+</script>
+</html>
