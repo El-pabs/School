@@ -1,3 +1,41 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const loadingBarContainer = document.getElementById("loading-bar-container");
+    const loadingBar = document.getElementById("loading-bar");
+    const loadingPercent = document.getElementById("loading-percent");
+
+    // Attendre au moins 3 secondes avant de masquer la barre
+    const minLoadingTime = 3000;
+    const startTime = Date.now();
+
+    let percent = 0;
+    const interval = setInterval(() => {
+        if (percent < 100) {
+            percent += 1;
+            loadingBar.style.width = `${percent}%`;
+            loadingPercent.textContent = `${percent}%`;
+        }
+    }, minLoadingTime / 100);
+
+    window.addEventListener("load", function () {
+        const elapsedTime = Date.now() - startTime;
+        const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            loadingBar.style.width = `100%`;
+            loadingPercent.textContent = `100%`;
+
+            // Ajouter une classe pour afficher le site avec un fade-in
+            document.body.classList.add("loaded");
+
+            // Supprimer le conteneur de la barre après le fade-out
+            setTimeout(() => {
+                loadingBarContainer.style.display = "none";
+            }, 500); // Durée du fade-out
+        }, remainingTime);
+    });
+});
+
 // Mode nuit/jour avec changement d'icône
 $(document).ready(function () {
     const themeToggle = $('#theme-toggle');
@@ -7,9 +45,9 @@ $(document).ready(function () {
         
         const icon = $('#theme-icon');
         if ($('body').hasClass('dark')) {
-            icon.removeClass('lnr-moon').addClass('lnr-sun'); // Icône lune
+            icon.removeClass('lnr-moon').addClass('lnr-sun');
         } else {
-            icon.removeClass('lnr-sun').addClass('lnr-moon'); // Icône soleil
+            icon.removeClass('lnr-sun').addClass('lnr-moon'); 
         }
     });
 });
@@ -19,13 +57,13 @@ $(document).ready(function () {
     $('.profile-photo').hover(
         function () {
             $(this).css({
-                'border-color': '#FFD700', // Couleur dorée
+                'border-color': '#FFD700', 
                 'transition': 'border-color 0.5s ease-in-out'
             });
         },
         function () {
             $(this).css({
-                'border-color': '#007BFF', // Couleur originale
+                'border-color': '#007BFF', 
                 'transition': 'border-color 0.5s ease-in-out'
             });
         }
@@ -34,21 +72,16 @@ $(document).ready(function () {
 
 // Animation avec ScrollMagic
 $(document).ready(function () {
-    if ($(window).width() > 850) { // Désactiver ScrollMagic pour les petits écrans
-        const controller = new ScrollMagic.Controller();
-        
-        $('section').each(function () {
-            new ScrollMagic.Scene({
-                triggerElement: this,
-                triggerHook: 0.8
-            })
-            .setClassToggle(this, 'fade-in')
-            .addTo(controller);
-        });
-    } else {
-        // Afficher toutes les sections sans animation pour les petits écrans
-        $('section').addClass('fade-in');
-    }
+    const controller = new ScrollMagic.Controller();
+    
+    $('section').each(function () {
+        new ScrollMagic.Scene({
+            triggerElement: this,
+            triggerHook: 0.8
+        })
+        .setClassToggle(this, 'fade-in')
+        .addTo(controller);
+    });
 });
 
 // Déplacer le contenu du header dans #infos-personnelles lors de l'impression

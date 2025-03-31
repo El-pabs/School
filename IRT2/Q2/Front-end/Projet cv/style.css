@@ -125,80 +125,6 @@ section {
     transform: translateY(20px);
 }
 
-@media print {
-    body {
-        margin: 0;
-        padding: 0;
-        font-size: 12px;
-    }
-
-    .grid-layout {
-        display: grid;
-        grid-template-columns: auto 1fr; /* Deux colonnes : photo à gauche, infos à droite */
-        grid-template-rows: auto auto auto auto auto; /* Reste des sections en dessous */
-        gap: 10px; 
-        padding: 0;
-    }
-
-    .photo-container {
-        grid-column: 1 / span 1; 
-        grid-row: 1 / span 1; 
-        justify-self: start; 
-    }
-
-    .profile-photo {
-        height: 150px; 
-        margin: 0;
-        animation: none; /* Désactiver l'animation de rotation */
-        border-image: none; /* Supprimer la bordure animée */
-        border: 0px solid black; 
-    }
-
-    .header-print {
-        font-weight: bold;
-        margin-bottom: 10px;
-    }    
-
-    #infos-personnelles {
-        grid-column: 2 / span 1; 
-        grid-row: 1 / span 1; 
-        display: grid;
-        gap: 5px; 
-        align-items: start; 
-        width: 500px;
-    }
-
-    #experiences,
-    #formation,
-    #competences-techniques{
-        grid-column: 1 / span 2; 
-        margin-top: -20px;
-    }
-
-    .box {
-        page-break-inside: avoid; 
-        margin: 5px 0; 
-        box-shadow: none; 
-    }
-
-    header, footer, #theme-toggle, #theme-icon {
-        display: none; /* Masquer les éléments inutiles pour l'impression */
-    }
-
-    .central-header {
-        display: none;
-    }
-
-    h1, h2 {
-        font-size: 16px; 
-    }
-
-    a {
-        color: black; 
-        text-decoration: none;
-    }
-}
-
 @keyframes rotate {
     to {
         --angle: 360deg;
@@ -231,6 +157,75 @@ section {
     max-width: 100%; 
     overflow-x: hidden; 
 }
+
+/* Barre de chargement */
+#loading-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: cyan; 
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; 
+}
+
+#loading-bar {
+    position: relative;
+    width: 80%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#loading-bar span#loading-percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: #333; 
+}
+
+#loading-bar div {
+    height: 100%;
+    background-color: #007BFF; 
+    width: 0;
+    transition: width 0.1s linear;
+}
+
+/* Masquer le site tant que le chargement n'est pas terminé */
+body:not(.loaded) main,
+body:not(.loaded) header,
+body:not(.loaded) footer,
+body:not(.loaded) #theme-toggle {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; 
+}
+
+/* Masquer la barre après le chargement */
+body.loaded #loading-bar-container {
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+/* Afficher le site après le chargement */
+body.loaded main,
+body.loaded header,
+body.loaded footer,
+body.loaded #theme-toggle {
+    display: grid;
+    opacity: 1; 
+}
+
 
 @media (max-width: 1200px) {
     .grid-layout {
@@ -346,5 +341,80 @@ section {
 
     .box {
         padding: 10px;
+    }
+}
+
+/* Styles spécifiques pour l'impression */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+    }
+
+    .grid-layout {
+        display: grid;
+        grid-template-columns: auto 1fr; /* Deux colonnes : photo à gauche, infos à droite */
+        grid-template-rows: auto auto auto auto auto; /* Reste des sections en dessous */
+        gap: 10px; 
+        padding: 0;
+    }
+
+    .photo-container {
+        grid-column: 1 / span 1; 
+        grid-row: 1 / span 1; 
+        justify-self: start; 
+    }
+
+    .profile-photo {
+        height: 150px; 
+        margin: 0;
+        animation: none; /* Désactiver l'animation de rotation */
+        border-image: none; /* Supprimer la bordure animée */
+        border: 0px solid black; 
+    }
+
+    .header-print {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }    
+
+    #infos-personnelles {
+        grid-column: 2 / span 1; 
+        grid-row: 1 / span 1; 
+        display: grid;
+        gap: 5px; 
+        align-items: start; 
+        width: 500px;
+    }
+
+    #experiences,
+    #formation,
+    #competences-techniques{
+        grid-column: 1 / span 2; 
+        margin-top: -20px;
+    }
+
+    .box {
+        page-break-inside: avoid; 
+        margin: 5px 0; 
+        box-shadow: none; 
+    }
+
+    header, footer, #theme-toggle, #theme-icon {
+        display: none; /* Masquer les éléments inutiles pour l'impression */
+    }
+
+    .central-header {
+        display: none;
+    }
+
+    h1, h2 {
+        font-size: 16px; 
+    }
+
+    a {
+        color: black; 
+        text-decoration: none;
     }
 }
