@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CV professionnel en ligne">
+    <meta name="author" content="Robin Gillard">
     <title>CV - Robin Gillard</title>
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
     <link href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Barre de chargement -->
     <div id="loading-bar-container">
         <div id="loading-bar">
             <span id="loading-percent">0%</span>
         </div>
     </div>
+
+    <!-- Bouton thème -->
     <button id="theme-toggle" aria-label="Changer de thème">
         <i id="theme-icon" class="lnr lnr-moon"></i>
     </button>
 
+    <!-- Header -->
     <header class="central-header">
         <div class="header-text">
             <h1>Robin Gillard</h1>
@@ -27,6 +32,7 @@
     </header>
 
 
+    <!-- Contenu principal -->
     <main class="grid-layout">
         <section id="infos-personnelles" class="box top-left">
             <h2>Informations personnelles</h2>
@@ -67,31 +73,45 @@
                 <li>Linux</li>
                 <li>Windows Server</li>
             </ul>
-            <h2>Compétences générales</h2>
-            <ul class="skills">
-                <li>Attentif</li>
-                <li>Adaptif</li>
-                <li>Esprit d'équipe</li>
-                <li>Motivé</li>
-                <li>Curieux</li>
-            </ul>
-        </section>
+            <h2>Mes qualités :</h2>
+            <div class="animated-softskills">
+                <ul class="text">
+                    <li class="word wisteria">Attentif.</li>
+                    <li class="word midnight">Adaptif.</li>
+                    <li class="word belize">Esprit d'équipe.</li>
+                    <li class="word pomegranate">Motivé.</li>
+                    <li class="word green">Curieux.</li>
+                    <li class="word belize">Consciencieux.</li>
+                    <li class="word wisteria">Sociable.</li>
+                </ul>
+            </div>
             
+        </section>
+
         <div class="photo-container center-photo">
             <img src="images/robin.png" alt="Photo de Robin Gillard" class="profile-photo">
         </div>
     </main>
 
+    <!-- Pied de page -->
     <footer class="footer-center">
-        © 2025 Robin Gillard. Tous droits réservés.
+        © 2025 Robin Gillard. Tous droits réservés.                                                                 
+        <button id="print-btn">🖨️ Imprimer le CV</button>
     </footer>
 
-
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
-
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+<script>
+  VanillaTilt.init(document.querySelectorAll(".box"), {
+    max: 10,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2
+  });
+</script>
 
 </body>
 </html>

@@ -1,0 +1,12 @@
+
+Réponse a la question b : on utilise un mock pour simuler un retour de valeur qu'aurait pu nous donné le capteur thermique (qui est dans notre cas fictif)
+
+
+Réponse question 4 :
+Utilisez @patch si le mock est nécessaire pour toute la méthode de test.
+Utilisez with patch si le mock est nécessaire uniquement pour une partie du test ou si on a besoin de plusieurs mocks dans des contextes différents.
+
+Question bonus : 
+
+Il faudrait rajouter une fonction de test qui n'envoie pas de valeur, et donc voir si le retour est bien Capteur HS 
+en utilisant un assertEqual
