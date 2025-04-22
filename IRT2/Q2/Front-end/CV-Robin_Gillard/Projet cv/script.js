@@ -91,6 +91,23 @@ document.getElementById("print-btn").addEventListener("click", () => {
     }, 800); // 800ms pour laisser le temps au scroll/animations de se finir
 });
 
+window.addEventListener('beforeprint', function () {
+    document.body.classList.remove('dark');
+    const icon = document.getElementById('theme-icon');
+    if (icon) icon.classList.remove('lnr-sun');
+
+    const linkedinLink = document.querySelector('a[href*="linkedin.com"]');
+    if (linkedinLink) {
+        linkedinLink.textContent = linkedinLink.href;
+    }
+});
+
+window.addEventListener('afterprint', function () {
+    const linkedinLink = document.querySelector('a[href*="linkedin.com"]');
+    if (linkedinLink) {
+        linkedinLink.textContent = "mon profil";
+    }
+});
 
 
 

@@ -290,6 +290,10 @@ body.loaded #theme-toggle {
         font-size: 12px;
     }
 
+    a {
+        font-style: none;
+    }
+
     #print-btn {
         display: none;
     }
