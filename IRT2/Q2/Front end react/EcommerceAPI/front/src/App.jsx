@@ -1,19 +1,25 @@
-import { CartProvider } from './components/Cart/CartContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './components/Cart/CartContext'; // Importez CartProvider
 import Header from './components/Layout/Header';
 import Products from './components/Product/Products';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ProductDetails from './components/Product/ProductDetails';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
     <CartProvider>
-      <div className="App">
+      <Router>
         <Header />
         <main>
-          <Products />
+          <Routes>
+            <Route path="/" element={<Products />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </main>
-      </div>
+      </Router>
     </CartProvider>
   );
 }
 
-export default App
+export default App;

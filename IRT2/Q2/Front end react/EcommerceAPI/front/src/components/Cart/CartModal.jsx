@@ -1,16 +1,12 @@
 import { Button, Modal } from "react-bootstrap";
 import { useCart } from "./CartContext";
+import trashIcon from "../../assets/trash.svg"; // Assurez-vous que l'icône existe
 
 function CartModal({ open, onClose }) {
-  const { items, clearCart } = useCart();
+  const { items, removeFromCart, clearCart } = useCart();
 
-  // Tâche 5 reduce()
-  const totalAmount = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-  const handleOrder = () => {
-    alert("Commande passée avec succès!");
-    clearCart();
-    onClose();
+  const handleRemove = (product) => {
+    removeFromCart(product);
   };
 
   return (
@@ -29,7 +25,7 @@ function CartModal({ open, onClose }) {
                   <th scope="col">Name</th>
                   <th scope="col">Price (€)</th>
                   <th scope="col">Quantity</th>
-                  <th scope="col">Total</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -38,12 +34,23 @@ function CartModal({ open, onClose }) {
                     <td>{item.name}</td>
                     <td>{item.price}</td>
                     <td>{item.quantity}</td>
-                    <td>{item.price * item.quantity}€</td>
+                    <td>
+                      <button
+                        onClick={() => handleRemove(item)}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <img src={trashIcon} alt="Remove" style={{ width: "20px", height: "20px" }} />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <h4 className="text-end fw-bold">Total Amount: {totalAmount}€</h4>
+            <h4 className="text-end fw-bold">Total Amount: {items.reduce((sum, item) => sum + item.price * item.quantity, 0)}€</h4>
           </>
         )}
       </Modal.Body>
@@ -51,7 +58,18 @@ function CartModal({ open, onClose }) {
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleOrder} disabled={items.length === 0}>
+        <Button variant="danger" onClick={clearCart} disabled={items.length === 0}>
+          Clear Cart
+        </Button>
+        <Button 
+          variant="success" 
+          onClick={() => {
+            alert('Commande passée avec succès !'); // Remplacez par votre logique de commande
+            clearCart(); // Vide le panier après la commande
+            onClose(); // Ferme la modale
+          }} 
+          disabled={items.length === 0}
+        >
           Order
         </Button>
       </Modal.Footer>

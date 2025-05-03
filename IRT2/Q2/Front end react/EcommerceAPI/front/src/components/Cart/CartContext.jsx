@@ -69,7 +69,24 @@ export function CartProvider({ children }) {
   const [cartState, dispatch] = useReducer(cartReducer, initialState);
 
   // Actions disponibles
-  const addToCart = (product, quantity) => dispatch({ type: ACTIONS.ADD_TO_CART, payload: { product, quantity } });
+  const addToCart = (product, quantity) => {
+    const existingItem = cartState.items.find((item) => item._id === product._id);
+    const totalQuantityInCart = existingItem ? existingItem.quantity + quantity : quantity;
+  
+    if (product.isOutOfStock || product.quantity - product.sold <= 0) {
+      alert(`Le produit "${product.name}" n'est plus disponible.`);
+      return;
+    }
+  
+    if (totalQuantityInCart > product.quantity - product.sold) {
+      alert(
+        `Le produit "${product.name}" n'est disponible qu'en ${product.quantity - product.sold} exemplaire(s).`
+      );
+      return;
+    }
+  
+    dispatch({ type: ACTIONS.ADD_TO_CART, payload: { product, quantity } });
+  };
   const removeFromCart = (product) => dispatch({ type: ACTIONS.REMOVE_FROM_CART, payload: product });
   const clearCart = () => dispatch({ type: ACTIONS.CLEAR_CART });
 
