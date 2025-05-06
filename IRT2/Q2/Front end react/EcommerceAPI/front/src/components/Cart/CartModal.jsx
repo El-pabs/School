@@ -43,7 +43,7 @@ function CartModal({ open, onClose }) {
                           cursor: "pointer",
                         }}
                       >
-                        <img src={trashIcon} alt="Remove" style={{ width: "20px", height: "20px" }} />
+                        <img src={trashIcon} alt="Remove" style={{ width: "20px", height: "20px", filter: "brightness(0) saturate(100%) invert(20%)" }} />
                       </button>
                     </td>
                   </tr>
