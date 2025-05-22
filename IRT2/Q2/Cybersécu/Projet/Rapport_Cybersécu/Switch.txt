@@ -1,0 +1,417 @@
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname G2-SWT-AG008-00-P-201
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 16384
+enable password 7 030752180500
+!
+username admin privilege 15 secret 5 $1$Xz2p$Z27zLvR.VcHFDQrtYy2.U/
+login on-success log
+no aaa new-model
+system mtu routing 1500
+!
+!
+!
+!
+!
+ip arp inspection vlan 10,15,20,25,30,35,40,45,50,60,65,100
+ip arp inspection validate src-mac dst-mac ip
+ip arp inspection filter STATIC-ARP vlan 50
+!
+!
+ip dhcp snooping vlan 10,15,20,25,30,35,40,45,50,60,65,100
+ip domain-name prod.ag008.heh.local
+login block-for 120 attempts 3 within 60
+!
+mls qos
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree portfast default
+spanning-tree portfast bpduguard default
+spanning-tree extend system-id
+spanning-tree vlan 1-100 priority 4096
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ description LAG vers FortiGate
+ switchport trunk native vlan 100
+ switchport trunk allowed vlan 10,15,20,25,30,35,40,45,50,55,60,65,100
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ description VLAN 10 - Informatique (Utilisateurs IT)
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip verify source port-security
+!
+interface FastEthernet0/2
+ description VLAN 15 - Commerciaux
+ switchport access vlan 15
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip verify source port-security
+!
+interface FastEthernet0/3
+ description VLAN 20 - Technique
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/4
+ description VLAN 25 - Finances
+ switchport access vlan 25
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/5
+ description VLAN 30 - Marketing
+ switchport access vlan 30
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/6
+ description VLAN 35 - Recherche et DC)veloppement
+ switchport access vlan 35
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/7
+ description VLAN 40 - RH
+ switchport access vlan 40
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/8
+ description VLAN 45 - Direction
+ switchport access vlan 45
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/9
+ description VLAN 50 - Gestion Reseau
+ switchport access vlan 50
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/10
+ description Trunk vers distrib
+ switchport trunk native vlan 100
+ switchport trunk allowed vlan 10,15,20,25,30,35,40,45,50,60,65,100
+ switchport mode trunk
+ switchport nonegotiate
+ ip arp inspection trust
+ ip arp inspection limit rate 100
+ spanning-tree guard loop
+!
+interface FastEthernet0/11
+ description VLAN 60 - Serveurs
+ switchport access vlan 60
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ ip verify source port-security
+!
+interface FastEthernet0/12
+ description VLAN 65 - Voix IP
+ switchport access vlan 65
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ mls qos trust device cisco-phone
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/13
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/14
+ description VLAN 100 - Natif (Non-Tag)
+ switchport access vlan 100
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/15
+ description VLAN 199 - Poubelle (Port Actif)
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/16
+ description VLAN 199 - Poubelle (Port Actif)
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/17
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/18
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/19
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/20
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/21
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/22
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/23
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/24
+ description VLAN 199 - Port Inactif/Isolation
+ switchport access vlan 199
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ shutdown
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet0/1
+ description LAG vers FortiGate - Lien 1
+ switchport trunk native vlan 100
+ switchport trunk allowed vlan 10,15,20,25,30,35,40,45,50,55,60,65,100
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/2
+ description LAG vers FortiGate - Lien 2
+ switchport trunk native vlan 100
+ switchport trunk allowed vlan 10,15,20,25,30,35,40,45,50,55,60,65,100
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ description VLAN 10 - Informatique
+ ip address 172.27.10.70 255.255.255.0
+!
+interface Vlan15
+ description VLAN 15 - Commerciaux
+ ip address 172.27.15.70 255.255.255.0
+!
+interface Vlan20
+ description VLAN 20 - Technique
+ ip address 172.27.20.70 255.255.255.0
+!
+interface Vlan25
+ description VLAN 25 - Finances
+ ip address 172.27.25.70 255.255.255.0
+!
+interface Vlan30
+ description VLAN 30 - Marketing
+ ip address 172.27.30.70 255.255.255.0
+!
+interface Vlan35
+ description VLAN 35 - Recherche et DC)veloppement
+ ip address 172.27.35.70 255.255.255.0
+!
+interface Vlan40
+ description VLAN 40 - Ressources Humaines
+ ip address 172.27.40.70 255.255.255.0
+!
+interface Vlan45
+ description VLAN 45 - Direction Generale
+ ip address 172.27.45.70 255.255.255.0
+!
+interface Vlan50
+ description VLAN 50 - Gestion RC)seau
+ ip address 172.27.50.70 255.255.255.0
+!
+interface Vlan55
+ description VLAN 55 - Transit Routeur-Firewall
+ ip address 172.27.55.70 255.255.255.0
+!
+interface Vlan60
+ description VLAN 60 - Serveurs
+ ip address 172.27.60.70 255.255.255.0
+!
+interface Vlan65
+ description VLAN 65 - Voix IP
+ ip address 172.27.65.70 255.255.255.0
+!
+interface Vlan100
+ description description VLAN Natif (Non-Tague)
+ ip address 172.27.100.70 255.255.255.0
+!
+interface Vlan199
+ description VLAN Poubelle (Isolation des ports inutilises)
+ no ip address
+!
+ip default-gateway 172.27.0.1
+ip http server
+ip http secure-server
+ip ssh time-out 60
+ip ssh authentication-retries 2
+ip ssh version 2
+!
+logging trap notifications
+logging console critical
+!
+arp access-list STATIC-ARP
+no vstack
+banner motd ^C
+UNAUTHORIZED ACCESS TO THIS DEVICE IS PROHIBITED.
+
+
+You must have explicit, authorized permission to access or configure this device. Unauthorized attempts and actions to access or use this system may result in civil and/or criminal penalties. All activities performed on this device are logged.^C
+!
+line con 0
+ exec-timeout 4 0
+ password 7 110A1016141D
+ login
+line vty 0 4
+ exec-timeout 4 0
+ login local
+ transport input ssh
+line vty 5 15
+ exec-timeout 4 0
+ login local
+ transport input ssh
+!
+end
