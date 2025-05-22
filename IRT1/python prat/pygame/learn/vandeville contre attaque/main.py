@@ -61,7 +61,7 @@ allFloor = pygame.sprite.Group()
 allFloor.add(f1)
 allFloor.add(f2)
 
-vandepute = pygame.image.load("img/vandepute.png")
+vandeville = pygame.image.load("img/vandeville.png")
 
 def reset_phoenix_game():
     global p1, allEnnemies, allPlayerAndEnnemies, Ennemy
@@ -128,7 +128,7 @@ def phoenix_play():
                 surface.blit(thisFloor.surf, thisFloor.rect)
             for thisSprite in allPlayerAndEnnemies:
                 surface.blit(thisSprite.surf, thisSprite.rect)
-            surface.blit(vandepute, (WIDTHH - 200, 20))
+            surface.blit(vandeville, (WIDTHH - 200, 20))
             if pygame.sprite.spritecollideany(p1, allEnnemies):
                 pygame.mixer.music.stop()
                 pygame.mixer.music.load("Sound/Allahu Akbar Sound Effect - Free Download HD.mp3")
@@ -143,3 +143,4 @@ def phoenix_play():
 
             clock.tick(30)
 
+phoenix_play()

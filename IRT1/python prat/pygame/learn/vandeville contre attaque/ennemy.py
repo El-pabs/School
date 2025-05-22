@@ -11,7 +11,7 @@ class Ennemy(pygame.sprite.Sprite):
 		self.surf = pygame.image.load(image).convert_alpha()
 		self.rect = self.surf.get_rect(
 			center=(random.randint(WIDTH - 20, WIDTH + 100),
-					random.randint(0, HEIGHT)))a
+					random.randint(0, HEIGHT)))
 		self.speed = random.randint(5, 25)
 
 	def update(self):
