@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import { useCart } from "../Cart/CartContext";
@@ -29,23 +30,30 @@ function ProductItemForm({ product }) {
         setQuantity(1);
     };
 
-    return (
-        <form onSubmit={handleSubmit} style={{ display: "flex", alignItems: "center" }}>
-            <label htmlFor="quantity" style={{ fontSize: "0.8rem" }}>
-                <input
-                    type="number"
-                    id="quantity"
-                    name="quantity"
-                    min="1"
-                    value={quantity}
-                    onChange={handleQuantityChange}
-                    onBlur={handleBlur}
-                    style={{ marginRight: "10px" }}
-                />
-            </label>
-            <Button variant="primary" type="submit">Add</Button>
-        </form>
-    );
+ return (
+    <form onSubmit={handleSubmit} style={{ display: "flex", alignItems: "center" }}>
+    <label htmlFor="quantity" style={{ fontSize: "0.8rem" }}>
+    Quantité
+    <input
+        id="quantity"
+        name="quantity"
+        type="number"
+        min="1"
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+        style={{ marginRight: "10px" }}
+        disabled={product.isOutOfStock}
+    />
+    </label>
+      <button
+        className="btn btn-primary"
+        type="submit"
+        disabled={product.isOutOfStock}
+      >
+        Add
+      </button>
+    </form>
+  );
 }
 
 export default ProductItemForm;

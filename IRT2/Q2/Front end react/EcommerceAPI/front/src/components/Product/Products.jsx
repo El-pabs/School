@@ -1,3 +1,4 @@
+import React from "react";
 import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap'; // Importez Spinner et Alert
 import ProductItem from './ProductItem';
 import { useEffect, useState } from 'react';
