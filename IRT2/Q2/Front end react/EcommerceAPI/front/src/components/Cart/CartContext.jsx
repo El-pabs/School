@@ -106,8 +106,7 @@ export function CartProvider({ children }) {
   return <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>;
 }
 
-// Hook personnalisé pour utiliser le contexte du panier
-// eslint-disable-next-line react-refresh/only-export-components
+
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {

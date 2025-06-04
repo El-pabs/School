@@ -23,8 +23,8 @@ function ProductItem(props) {
           alt={props.name}
           style={{
             width: "100%",
-            height: "200px",      // Hauteur fixe pour toutes les images
-            objectFit: "cover",   // Remplit le cadre, rogne si besoin
+            height: "200px",      
+            objectFit: "cover",   
             objectPosition: "center"
           }}
         />

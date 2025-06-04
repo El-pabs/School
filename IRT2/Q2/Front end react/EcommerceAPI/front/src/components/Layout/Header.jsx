@@ -11,10 +11,10 @@ function Header() {
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
                 <Navbar.Brand
-                    onClick={() => navigate(-1)} // Revient à la page précédente
+                    onClick={() => navigate('/')} // Revient à la page d'accueil
                     style={{ cursor: 'pointer' }} // Ajoute un curseur pour indiquer que c'est cliquable
                 >
-                    E-commerce
+                    Robin's Kitchen
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

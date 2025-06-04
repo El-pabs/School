@@ -1,6 +1,6 @@
 import { Button, Modal } from "react-bootstrap";
 import { useCart } from "./CartContext";
-import trashIcon from "../../assets/trash.svg"; // Assurez-vous que l'icône existe
+import trashIcon from "../../assets/trash.svg";
 
 function CartModal({ open, onClose }) {
   const { items, removeFromCart, clearCart } = useCart();
@@ -64,9 +64,9 @@ function CartModal({ open, onClose }) {
         <Button 
           variant="success" 
           onClick={() => {
-            alert('Commande passée avec succès !'); // Remplacez par votre logique de commande
-            clearCart(); // Vide le panier après la commande
-            onClose(); // Ferme la modale
+            alert('Commande passée avec succès !'); 
+            clearCart(); 
+            onClose(); 
           }} 
           disabled={items.length === 0}
         >

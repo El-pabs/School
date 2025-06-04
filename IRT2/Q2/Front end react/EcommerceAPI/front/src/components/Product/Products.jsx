@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap'; // Importez Spinner et Alert
+import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap'; 
 import ProductItem from './ProductItem';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
