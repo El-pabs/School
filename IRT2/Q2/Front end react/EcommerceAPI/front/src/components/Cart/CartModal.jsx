@@ -10,7 +10,7 @@ function CartModal({ open, onClose }) {
   };
 
   return (
-    <Modal show={open} onHide={onClose} centered>
+    <Modal show={open} onHide={onClose} backdrop="static" centered>
       <Modal.Header closeButton>
         <Modal.Title>Cart</Modal.Title>
       </Modal.Header>
@@ -43,14 +43,24 @@ function CartModal({ open, onClose }) {
                           cursor: "pointer",
                         }}
                       >
-                        <img src={trashIcon} alt="Remove" style={{ width: "20px", height: "20px", filter: "brightness(0) saturate(100%) invert(20%)" }} />
+                        <img
+                          src={trashIcon}
+                          alt="Remove"
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            filter: "brightness(0) saturate(100%) invert(20%)",
+                          }}
+                        />
                       </button>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <h4 className="text-end fw-bold">Total Amount: {items.reduce((sum, item) => sum + item.price * item.quantity, 0)}€</h4>
+            <h4 className="text-end fw-bold">
+              Total Amount: {items.reduce((sum, item) => sum + item.price * item.quantity, 0)}€
+            </h4>
           </>
         )}
       </Modal.Body>
@@ -61,13 +71,13 @@ function CartModal({ open, onClose }) {
         <Button variant="danger" onClick={clearCart} disabled={items.length === 0}>
           Clear Cart
         </Button>
-        <Button 
-          variant="success" 
+        <Button
+          variant="success"
           onClick={() => {
-            alert('Commande passée avec succès !'); 
-            clearCart(); 
-            onClose(); 
-          }} 
+            alert('Commande passée avec succès !');
+            clearCart();
+            onClose();
+          }}
           disabled={items.length === 0}
         >
           Order

@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
-import { useCart } from "../Cart/CartContext"; // <-- Ajout
+import { useCart } from "../Cart/CartContext";
 
+/**
+ * Affiche les détails d'un produit avec gestion du chargement, des erreurs et du panier.
+ */
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { items } = useCart(); // <-- Ajout
+  const { items } = useCart();
 
   useEffect(() => {
     const API_URL = "http://127.0.0.1:3000/api";
@@ -20,7 +22,7 @@ function ProductDetails() {
         setError("Le chargement prend trop de temps. Veuillez réessayer plus tard.");
         setLoading(false);
       }
-    }, 2000);
+    }, 5000);
 
     axios
       .get(`${API_URL}/product/${id}`)
@@ -31,7 +33,7 @@ function ProductDetails() {
           setLoading(false);
         }
       })
-      .catch((err) => {
+      .catch(() => {
         if (!didCancel) {
           clearTimeout(timeout);
           setError("Impossible de charger les détails du produit.");
@@ -62,7 +64,6 @@ function ProductDetails() {
     return <p>{error}</p>;
   }
 
-  // Cherche le produit dans le panier
   const itemInCart = items.find((item) => item._id === product._id);
 
   return (
