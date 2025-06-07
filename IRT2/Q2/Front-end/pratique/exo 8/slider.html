@@ -29,14 +29,14 @@
             let position = 1;
             let nbImages = $('#plateau img').length;
 
-            $('#lucarne').click(function() {
+            $('img').click(function() {
                 if (position < nbImages) {
                     position++;
                 } else {
                     position = 1;
                 }
 
-                let newTop = -(position - 1) * 600 + 'px';
+                let newTop = -(position -1) * 600 + 'px';
                 $('#plateau').css('top', newTop);
                 $('#num').text(position);
             });

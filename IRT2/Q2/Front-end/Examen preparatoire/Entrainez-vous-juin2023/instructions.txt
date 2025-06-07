@@ -1,0 +1,30 @@
+Examen de développement front-end, septembre 2021 : jeu du 44
+
+L'examen dure 1h30 ; 2h00 pour les étudiants à PAI. 
+La documentation suivante est permise : syllabus papier, notes manuscrites, ouvrages (livres). 
+Les autres imprimés sont interdits : photocopies et documents imprimés.
+Il est interdit d'utiliser internet, d'utiliser un smartphone, d'utiliser de la documentation informatique.
+
+Pour cet examen, vous recevez un dossier contenant :
+ - la bibliothèque jQuery
+ - un fichier txt d'instructions
+ - un fichier html avec une base HTML/CSS à compléter et à modifier selon vos besoins
+
+
+Contexte :
+La page contient un bouton "Pioche", 5 "cartouches" (des petits ronds verts), 6 jetons, un total, une petite phrase explicative dans le bas et un message "Victoire !" caché par défaut.
+
+Au départ, les 6 jetons sont "libres". Quand les jetons sont libres, ils sont gris. Sinon, ils sont noirs.
+
+Au chargement de la page, un piochage a lieu : chaque jeton libre reçoit pour nouvelle valeur un nombre entier aléatoire entre 1 et 9 ET le total est mis à jour.
+
+Au clic sur un jeton , il change d'état : libre ou pas.
+
+Au clic sur le bouton pioche, une nouvelle action de piochage a lieu. Une cartouche est vidée : elle passe en rouge.
+
+Si le total atteint ou dépasse 44, le message de victoire apparait (fade in jQuery).
+Sinon, si la dernière cartouche passe en rouge, le message de défaite apparait (fade in jquery).
+
+
+
+

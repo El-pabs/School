@@ -1,0 +1,19 @@
+Examen de JavaScript et jQuery
+
+Le sujet est une interface permettant d'encoder des noms d'�tudiants et leurs points.
+
+Au chargement de la page,
+La page comporte un champ texte (pour le nom), un champ nombre (pour la cote), un bloc "Ajouter" cliquable, un bloc central tout vide (on ne le voit pas), un bloc "Couleurs" survolable et un bloc "Nombre".
+
+Lors du clic sur "Ajouter",
+Si le champ nombre a une valeur non vide et non comprise entre 0 et 20, le champ nombre devient rouge.
+Sinon, le champ nombre devient blanc et on teste le nom :
+	Si le champ texte n'est pas vide, un �l�ment contenant la cote et le nom de l'�tudiant est ajout� au bloc central ; cet �l�ment est anim� pour s'�carter du bord gauche d'un nombre de pixels valant 20 fois sa cote ; puis les champs texte et nombre sont vid�s ; puis le nombre d'�tudiants est incr�ment� et affich� dans le bloc "Nombre".
+
+Lors du survol du bloc "Couleurs",
+Tous les �l�ments contenant des cotes et des noms d'�tudiants se colorient : en rouge les cotes inf�rieures � 10/20, en vert les autres.
+
+Lorsqu'on arr�te de survoler le bloc "Couleurs", 
+Tous les �l�ments redeviennent gris clair.
+
+

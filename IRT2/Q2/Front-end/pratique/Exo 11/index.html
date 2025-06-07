@@ -109,87 +109,95 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-    <figure onclick="openLightbox('img/max1.jpg')">
+    <figure>
         <img src="img/max1.jpg" alt="Description de l'image 1">
         <figcaption>Description de l'image 1</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max2.jpg')">
+    <figure>
         <img src="img/max2.jpg" alt="Description de l'image 2">
         <figcaption>Description de l'image 2</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max3.jpg')">
+    <figure>
         <img src="img/max3.jpg" alt="Description de l'image 3">
         <figcaption>Description de l'image 3</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max4.jpg')">
+    <figure>
         <img src="img/max4.jpg" alt="Description de l'image 4">
         <figcaption>Description de l'image 4</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max5.jpg')">
+    <figure>
         <img src="img/max5.jpg" alt="Description de l'image 5">
         <figcaption>Description de l'image 5</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max6.jpg')">
+    <figure>
         <img src="img/max6.jpg" alt="Description de l'image 6">
         <figcaption>Description de l'image 6</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max7.jpg')">
+    <figure>
         <img src="img/max7.jpg" alt="Description de l'image 7">
         <figcaption>Description de l'image 7</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max8.jpg')">
+    <figure>
         <img src="img/max8.jpg" alt="Description de l'image 8">
         <figcaption>Description de l'image 8</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max9.jpg')">
+    <figure>
         <img src="img/max9.jpg" alt="Description de l'image 9">
         <figcaption>Description de l'image 9</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max10.jpg')">
+    <figure>
         <img src="img/max10.jpg" alt="Description de l'image 10">
         <figcaption>Description de l'image 10</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max11.jpg')">
+    <figure>
         <img src="img/max11.jpg" alt="Description de l'image 11">
         <figcaption>Description de l'image 11</figcaption>
     </figure>
-    <figure onclick="openLightbox('img/max12.jpg')">
+    <figure>
         <img src="img/max12.jpg" alt="Description de l'image 12">
         <figcaption>Description de l'image 12</figcaption>
     </figure>
 
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox" id="lightbox">
         <img id="lightbox-img" src="">
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
-        }
+        $(function() {
+            // Lightbox ouverture
+            $("figure").on("click", function() {
+                let src = $(this).find("img").attr("src");
+                $("#lightbox-img").attr("src", src);
+                $("#lightbox").css("display", "flex");
+            });
 
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
+            // Lightbox fermeture
+            $("#lightbox").on("click", function() {
+                $(this).css("display", "none");
+            });
 
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeLightbox();
-            }
-        });
+            // Fermer lightbox avec Escape
+            $(document).on("keydown", function(e) {
+                if (e.key === "Escape") {
+                    $("#lightbox").css("display", "none");
+                }
+            });
 
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('nav').classList.toggle('open');
-            document.getElementById('hamburger').classList.toggle('open');
-        });
+            // Hamburger menu toggle
+            $("#hamburger").on("click", function(e) {
+                $("#nav").toggleClass("open");
+                $(this).toggleClass("open");
+                e.stopPropagation();
+            });
 
-        document.addEventListener('click', function(event) {
-            const nav = document.getElementById('nav');
-            const hamburger = document.getElementById('hamburger');
-            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
-                nav.classList.remove('open');
-                hamburger.classList.remove('open');
-            }
+            // Fermer menu si clic en dehors
+            $(document).on("click", function(e) {
+                if (!$(e.target).closest("#nav, #hamburger").length) {
+                    $("#nav").removeClass("open");
+                    $("#hamburger").removeClass("open");
+                }
+            });
         });
     </script>
 </body>

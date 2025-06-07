@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu des formes</title>
+    <style>
+        body { background: #e0e0e0; font-family: Arial, sans-serif; }
+        .main-container {
+            background: #fff;
+            max-width: 700px;
+            margin: 40px auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #0002;
+            padding: 30px 30px 40px 30px;
+        }
+        h1 { text-align: center; margin-bottom: 30px; }
+        .ligne {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+        .forme {
+            width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: filter 0.2s;
+            position: relative;
+        }
+        .forme.badjob { filter: grayscale(1) brightness(0.7); }
+        .forme.goodjob { box-shadow: 0 0 0 4px #4caf50; }
+        /* Styles pour chaque forme */
+        .triangle {
+            width: 0; height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 60px solid #2196f3;
+            background: none;
+        }
+        .cercle {
+            width: 54px; height: 54px;
+            border-radius: 50%;
+            background: #f44336;
+        }
+        .carré {
+            width: 54px; height: 54px;
+            background: #ff9800;
+        }
+        .pentagone {
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 0 27px 38px 27px;
+            border-color: transparent transparent #9c27b0 transparent;
+            position: relative;
+        }
+        .pentagone:after {
+            content: "";
+            position: absolute;
+            top: 22px; left: -27px;
+            width: 54px; height: 27px;
+            background: #9c27b0;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        .trapèze {
+            width: 54px; height: 0;
+            border-bottom: 54px solid #009688;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+        }
+        .parallélogramme {
+            width: 54px; height: 54px;
+            background: #607d8b;
+            transform: skew(-20deg);
+        }
+        .losange {
+            width: 38px; height: 38px;
+            background: #8bc34a;
+            transform: rotate(45deg);
+            margin: 8px;
+        }
+        .octogone {
+            width: 54px; height: 54px;
+            background: #ffc107;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        }
+        .forme-label {
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85em;
+            color: #444;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1 id="titre"></h1>
+        <div id="principal"></div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script>
+        var formes = ["triangle", "cercle", "carré", "pentagone", "trapèze", "parallélogramme", "losange", "octogone"];
+        var formeAchercher = "";
+
+        function nouvelleLigne() {
+            // Choisir la forme à chercher
+            formeAchercher = formes[Math.floor(Math.random() * formes.length)];
+            $('#titre').text("Trouve tous les " + formeAchercher + "s !");
+            // Générer une nouvelle ligne
+            var $ligne = $('<div class="ligne"></div>');
+            // Générer 7 formes aléatoires
+            var formesLigne = [];
+            for (let i = 0; i < 7; i++) {
+                formesLigne.push(formes[Math.floor(Math.random() * formes.length)]);
+            }
+            // S'assurer qu'il y a au moins une forme recherchée
+            var pos = Math.floor(Math.random() * 8);
+            formesLigne.splice(pos, 0, formeAchercher);
+            // Générer les éléments HTML
+            for (let i = 0; i < 8; i++) {
+                var nom = formesLigne[i];
+                var $f = $('<div class="forme"></div>');
+                $f.addClass(nom);
+                $f.attr('data-nom', nom);
+                // Ne pas ajouter de label texte
+                $ligne.append($f);
+            }
+            // Ajouter la ligne en haut du conteneur principal
+            $('#principal').prepend($ligne);
+        }
+
+        // Gestion du clic sur une forme
+        $(document).on('click', '.forme', function() {
+            var nom = $(this).attr('data-nom');
+            if ($(this).hasClass('badjob') || $(this).hasClass('goodjob')) return; // déjà cliquée
+            if (nom !== formeAchercher) {
+                $(this).addClass('badjob');
+            } else {
+                $(this).addClass('goodjob');
+                // Vérifier si toutes les formes recherchées sont vertes
+                var $ligne = $(this).closest('.ligne');
+                var reste = $ligne.find('.forme[data-nom="'+formeAchercher+'"]:not(.goodjob)');
+                if (reste.length === 0) {
+                    setTimeout(nouvelleLigne, 600);
+                }
+            }
+        });
+
+        // Initialisation
+        $(function() {
+            nouvelleLigne();
+        });
+    </script>
+</body>
+</html>

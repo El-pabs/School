@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.cases {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.case {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background: #fff;
+    box-sizing: border-box;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.jetons {
+    position: relative;
+    width: 100vw;
+    height: 400px;
+}
+
+.jeton {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #4CAF50;
+    color: #fff;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, opacity 0.5s;
+    user-select: none;
+}
+
+.jeton.survol {
+    background: #ff9800;
+    color: #222;
+}
+
+.jeton.noir {
+    background: #000 !important;
+    color: #fff !important;
+}

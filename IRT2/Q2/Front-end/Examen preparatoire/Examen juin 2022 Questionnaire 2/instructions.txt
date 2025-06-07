@@ -1,0 +1,22 @@
+Examen de Développement front-end, juin 2022
+
+Internet, GSM et clés USB sont interdits.
+Il est interdit d'ouvrir d'autres fichiers que ceux distribués pour cette épreuve.
+
+La page présente un titre et un conteneur principal blanc reprenant des formes.
+Le but du jeu est de trouver les formes annoncées dans le titre. Lorsqu'on les a toutes trouvées, une nouvelle ligne de formes est générée.
+
+Au chargement de la page,
+	Une forme est piochée parmi le tableau ci-dessous. Cette forme sera La forme à trouver et son nom est placé dans le titre de la page.
+	Une ligne (<div class="ligne">) est générée dans le conteneur principal.
+	8 formes sont générées dans cette ligne. Chaque forme est aléatoire parmi les formes reprises dans le tableau ci-dessous. Attention, au moins une de ces formes doit être La forme recherchée !
+	
+Au clic sur une forme,
+	Si cette forme n'est pas La forme recherchée, 
+		Elle devient grise (classe "badjob").
+	Sinon,
+		Elle devient verte (classe "goodjob").
+		On vérifie si toutes les formes de la forme recherchée sont vertes. Si c'est le cas, une nouvelle ligne de 8 formes est générée audessus de la précédente et c'est reparti...
+	
+var formes = new Array("triangle", "cercle", "carré", "pentagone", "trapèze", "parallélogramme", "losange", "octogone");
+

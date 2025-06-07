@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu du 44</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+        .container { max-width: 500px; margin: 40px auto; background: #fff; padding: 30px 20px 20px 20px; border-radius: 10px; box-shadow: 0 2px 8px #0002; }
+        .cartouches { display: flex; gap: 10px; margin-bottom: 20px; }
+        .cartouche {
+            width: 30px; height: 30px; border-radius: 50%; background: #4caf50;
+            display: inline-block; border: 2px solid #333;
+            transition: background 0.3s;
+        }
+        .cartouche.vide { background: #e53935; }
+        .jetons { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; }
+        .jeton {
+            width: 50px; height: 50px; border-radius: 50%; background: #bbb;
+            color: #222; font-size: 1.5em; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; border: 2px solid #333; transition: background 0.2s, color 0.2s;
+            user-select: none;
+        }
+        .jeton.actif { background: #222; color: #fff; }
+        #total { font-size: 1.3em; margin-bottom: 10px; text-align: center; }
+        #pioche { padding: 10px 25px; font-size: 1.1em; border-radius: 6px; border: none; background: #2196f3; color: #fff; cursor: pointer; }
+        #explication { margin-top: 20px; color: #555; text-align: center; }
+        #victoire, #defaite { display: none; font-size: 1.5em; text-align: center; margin-top: 20px; }
+        #victoire { color: #388e3c; }
+        #defaite { color: #e53935; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cartouches">
+            <div class="cartouche"></div>
+            <div class="cartouche"></div>
+            <div class="cartouche"></div>
+            <div class="cartouche"></div>
+            <div class="cartouche"></div>
+        </div>
+        <div class="jetons"></div>
+        <div id="total">Total : 0</div>
+        <button id="pioche">Pioche</button>
+        <div id="explication">Clique sur les jetons pour les activer/désactiver. Atteins 44 ou plus pour gagner !</div>
+        <div id="victoire">Victoire !</div>
+        <div id="defaite">Défaite !</div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function() {
+            const NB_CARTOUCHES = 5;
+            const NB_JETONS = 6;
+            let cartouchesRestantes = NB_CARTOUCHES;
+            let jetons = [];
+            // 0 = libre (gris), 1 = actif (noir)
+            let etats = Array(NB_JETONS).fill(0);
+
+            // Génération des jetons
+            for(let i=0; i<NB_JETONS; i++) {
+                $('.jetons').append('<div class="jeton" data-index="'+i+'">0</div>');
+            }
+
+            function pioche() {
+                // Pour chaque jeton libre, nouvelle valeur aléatoire
+                $('.jeton').each(function(i) {
+                    if(etats[i] === 0) {
+                        const val = Math.floor(Math.random()*9)+1;
+                        $(this).text(val);
+                        jetons[i] = val;
+                    }
+                });
+                updateTotal();
+            }
+
+            function updateTotal() {
+                let total = 0;
+                $('.jeton').each(function(i) {
+                    if(etats[i] === 1) total += parseInt($(this).text());
+                });
+                $('#total').text('Total : ' + total);
+                if(total >= 44) {
+                    $('#victoire').fadeIn();
+                    $('#defaite').hide();
+                    $('#pioche').prop('disabled', true);
+                }
+            }
+
+            // Initialisation
+            pioche();
+
+            // Clic sur jeton : change d'état
+            $('.jeton').click(function() {
+                const i = $(this).data('index');
+                if(etats[i] === 0) {
+                    etats[i] = 1;
+                    $(this).addClass('actif');
+                } else {
+                    etats[i] = 0;
+                    $(this).removeClass('actif');
+                }
+                updateTotal();
+            });
+
+            // Clic sur pioche
+            $('#pioche').click(function() {
+                if(cartouchesRestantes > 0) {
+                    pioche();
+                    cartouchesRestantes--;
+                    $('.cartouche').eq(NB_CARTOUCHES-cartouchesRestantes-1).addClass('vide');
+                    if(cartouchesRestantes === 0) {
+                        // Défaite si pas de victoire
+                        let total = 0;
+                        $('.jeton').each(function(i) {
+                            if(etats[i] === 1) total += parseInt($(this).text());
+                        });
+                        if(total < 44) {
+                            $('#defaite').fadeIn();
+                            $('#victoire').hide();
+                            $('#pioche').prop('disabled', true);
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

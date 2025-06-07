@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Évaluation étudiants</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; }
+        .container { max-width: 500px; margin: 40px auto; background: #fff; padding: 30px 20px 20px 20px; border-radius: 10px; box-shadow: 0 2px 8px #0002; }
+        .ligne { display: flex; gap: 10px; margin-bottom: 15px; }
+        #nom, #cote { padding: 7px; border-radius: 5px; border: 1px solid #aaa; }
+        #cote.erreur { border: 2px solid #e53935; background: #ffebee; }
+        #ajouter { background: #2196f3; color: #fff; border: none; border-radius: 5px; padding: 8px 18px; cursor: pointer; }
+        #ajouter:hover { background: #1976d2; }
+        #central {
+            min-height: 200px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 20px 0;
+            position: relative;
+            background: #fafafa;
+            border: 1px solid #ddd;
+        }
+        .etudiant {
+            background: #eee; border-radius: 6px; margin-bottom: 7px; padding: 7px 15px;
+            transition: background 0.3s, color 0.3s, left 0.7s;
+            color: #222; position: absolute; left: 0; width: 220px;
+        }
+        #couleurs {
+            background: #bdbdbd; color: #333; padding: 8px 0; border-radius: 5px; text-align: center;
+            margin-bottom: 15px; cursor: pointer; user-select: none;
+            transition: background 0.3s;
+        }
+        #nombre { font-weight: bold; text-align: right; }
+        .rouge { background: #ffcdd2 !important; color: #b71c1c !important; }
+        .vert { background: #c8e6c9 !important; color: #1b5e20 !important; }
+        #moyenne {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ligne">
+            <input type="text" id="nom" placeholder="Nom de l'étudiant">
+            <input type="number" id="cote" placeholder="Cote (0-20)" min="0" max="20">
+            <button id="ajouter">Ajouter</button>
+        </div>
+        <div id="central"></div>
+        <div id="couleurs">Couleurs</div>
+        <div id="nombre">Nombre d'étudiants : 0</div>
+        <div id="moyenne">Moyenne : 0</div>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        $(function() {
+            let nbEtudiants = 0;
+            let totalCotes = 0;
+            let etudiants = [];
+
+            function updateMoyenne() {
+                let moyenne = nbEtudiants ? (totalCotes / nbEtudiants).toFixed(2) : 0;
+                $('#moyenne').text("Moyenne : " + moyenne);
+            }
+
+            $('#ajouter').click(function() {
+                let nom = $('#nom').val().trim();
+                let cote = $('#cote').val().trim();
+                cote = cote.replace(',', '.'); // gestion virgule
+                let coteNum = parseFloat(cote);
+
+                // Validation de la cote
+                if (cote === "" || isNaN(coteNum) || coteNum < 0 || coteNum > 20) {
+                    $('#cote').addClass('erreur');
+                    return;
+                } else {
+                    $('#cote').removeClass('erreur');
+                }
+
+                // Validation du nom
+                if (nom !== "") {
+                    // Ajout dans le tableau pour recalculer la position
+                    etudiants.push({nom: nom, cote: coteNum});
+                    nbEtudiants++;
+                    totalCotes += coteNum;
+
+                    // Re-affichage de tous les étudiants pour recalculer la position
+                    $('#central').empty();
+                    let centralWidth = $('#central').width() - 240; // 240 = largeur .etudiant + marge
+                    let ligneHeight = 38; // hauteur d'une ligne .etudiant + margin
+                    etudiants.forEach(function(etud, idx) {
+                        let $etu = $('<div class="etudiant"></div>');
+                        $etu.text(etud.cote + "/20 - " + etud.nom);
+                        // Calcul du left proportionnel à la note
+                        let left = 10 + (centralWidth) * (etud.cote / 20);
+                        $etu.css({
+                            top: (idx * ligneHeight) + 'px',
+                            left: left + 'px'
+                        });
+                        $('#central').append($etu);
+                    });
+
+                    // Vider les champs
+                    $('#nom').val('');
+                    $('#cote').val('');
+
+                    // Incrémenter le nombre et la moyenne
+                    $('#nombre').text("Nombre d'étudiants : " + nbEtudiants);
+                    updateMoyenne();
+                }
+            });
+
+            // Survol du bloc Couleurs
+            $('#couleurs').hover(
+                function() {
+                    $('.etudiant').each(function() {
+                        let txt = $(this).text();
+                        let cote = parseFloat(txt.split('/')[0]);
+                        if (cote < 10) {
+                            $(this).addClass('rouge').removeClass('vert');
+                        } else {
+                            $(this).addClass('vert').removeClass('rouge');
+                        }
+                    });
+                },
+                function() {
+                    $('.etudiant').removeClass('rouge vert');
+                }
+            );
+        });
+    </script>
+</body>
+</html>
