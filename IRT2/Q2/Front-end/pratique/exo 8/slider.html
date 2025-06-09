@@ -25,22 +25,20 @@
     </div>
     <script src="jquery-3.7.1.min.js"></script>
     <script>
-        $(document).ready(function() {
-            let position = 1;
-            let nbImages = $('#plateau img').length;
+        $(document).ready(function(){
+            let pos = 1;
+            let max = $('#plateau img').length; // Correction pour le nombre d'images
+            $('#plateau img').on('click', function(){
 
-            $('img').click(function() {
-                if (position < nbImages) {
-                    position++;
-                } else {
-                    position = 1;
+                pos++;
+                if(pos > max){
+                    pos = 1;
                 }
-
-                let newTop = -(position -1) * 600 + 'px';
-                $('#plateau').css('top', newTop);
-                $('#num').text(position);
+                $('#plateau').css('top', -(pos-1)*600 + 'px');
+                $('#num').text(pos);
+                console.log($('#plateau').css('top'))
             });
-        });
+        })
     </script>
 </body>
 </html>

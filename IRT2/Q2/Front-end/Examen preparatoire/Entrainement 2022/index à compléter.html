@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Examen Développement front-end 2022 : training !</title>
+	<style>
+	body { padding:0; margin:0; font-family:Calibri; font-size:1.5rem; background-color:#a8a;}
+	#main { width:500px; margin:0 auto;}
+	#header { height:100px; padding-top:10px;  text-align:center; }
+	#header .voyant { width:80px; margin:10px; display:inline-block; font-size:3rem; border:2px solid black; }
+	#header .voyant.vert { background-color:#4e4; }
+	
+	#diviseurs h2 { padding:0; margin:0;}
+	
+	#trucometre { height:20px; border:2px solid black; margin-bottom:8px;}
+	#metre { background-color:orange; height:20px; }
+	
+	.case { width:50px; height:38px; font-weight:bold; border:2px solid black; display:inline-block; text-align:center; padding-top:12px; cursor:pointer;}
+	.case:hover { background-color:#fec; }
+	.case.moiaussi { background-color:#fec; }
+	</style>
+</head>
+<body>
+	<main id="main">
+		<header id="header">
+			<div id="div2" class="voyant">2</div>
+			<div id="div3" class="voyant">3</div>
+			<div id="div5" class="voyant">5</div>
+			<div id="div7" class="voyant">7</div>
+		</header>
+		<div id="diviseurs"><h2>Nombre de diviseurs premiers : <span id="nb">0</span></h2></div>
+		<div id="trucometre"><div id="metre"></div></div>
+		<div id="grille">
+		</div>
+	</main>
+	<script src="jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			let number = []
+			for (i=0; i<=81; i++) {
+				
+			}
+		})
+	</script>
+</body>
+</html>

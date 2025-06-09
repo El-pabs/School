@@ -43,21 +43,15 @@
         $(document).ready(function() {
             $('#menu a').hover(
                 function() {
-                    let $this = $(this);
-                    let position = $this.position();
-                    let width = $this.outerWidth();
-                    let height = $this.outerHeight();
-                    
+                    let $this = $(this)
+                    let pos = $this.position()
                     $('#bubulle').css({
-                        left: position.left,
-                        width: width,
-                        top: position.top - 8,
-                        height: height + 16,
+                        left: pos.left,
                         opacity: 1
                     });
                 },
                 function() {
-                    $('#bubulle').css('opacity', 1);
+                    $('#bubulle').css('opacity', '1')
                 }
             );
         });

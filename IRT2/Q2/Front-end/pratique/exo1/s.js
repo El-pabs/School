@@ -15,7 +15,7 @@ function func1()
 
     else {
         $("#image").attr('src', 'traumatized.webp')
-        a += 1
+        a++
     }
 }
 

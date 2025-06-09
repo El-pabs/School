@@ -166,8 +166,8 @@
     <script>
         $(function() {
             // Lightbox ouverture
-            $("figure").on("click", function() {
-                let src = $(this).find("img").attr("src");
+            $("img").on("click", function() {
+                let src = $(this).attr("src");
                 $("#lightbox-img").attr("src", src);
                 $("#lightbox").css("display", "flex");
             });

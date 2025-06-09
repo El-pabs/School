@@ -1,0 +1,44 @@
+Examen de Développement front-end
+
+Cours papier ouvert
+Internet, GSM et clés USB sont interdits.
+Il est interdit d'ouvrir d'autres fichiers que ceux distribués pour cette épreuve.
+
+La page HTML contient : 
+- 1 bloc avec 4 "voyants" contenant les valeurs 2 3 5 et 7
+- un bloc avec le message "Nombre de diviseurs : 0"
+- un bloc contenant un autre bloc orange dont la largeur variera par la suite
+- un bloc "grille" vide qui sera complété de 81 "cases" par JavaScript au chargement de la page
+
+Au chargement de la page, dans la grille, générez 81 blocs de class "case", contenant chacun une valeur.
+Chaque valeur vaut le produit d'un nombre aléatoire entier entre 1 et 7 et d'un autre nombre aléatoire entier entre 1 et 7.
+
+Au survol de chaque "case", 
+	cette case devient beige 
+	testez si la valeur contenue dans cette case est divisible par 2, 3, 5 et 7. 
+	Allumez en vert les "voyants" correspondant.
+	Affichez le nombre de voyants diviseurs (par exemple 12 est divisible par 2 et 3 => affichez "Nombre de diviseurs : 2"
+	Réglez la largeur de la jauge : selon le nombre de diviseurs : 0% (0 diviseur), 25%, 50%, 75% ou 100% (4 diviseurs)
+	Le mouvement de la jauge n'est pas instantané
+	Toutes les cases ayant la même valeur que la case survolée deviennent beiges.
+	
+À la fin du survol de la grille,
+	plus aucune case n'est beige
+	plus aucun voyant n'est vert
+	le nombre de diviseurs est 0
+	la jauge revient à 0% (le mouvement n'est toujours pas instantané)
+
+Exemple : 
+l'utilisateur survole la case 18. 
+18 est divisible par 2 et par 3 mais pas par 5 ni par 7.
+Les voyants 2 et 3 deviennent verts. Les voyants 5 et 7 deviennent blancs.
+Le nombre "2" (car 2 diviseurs) est affiché
+La barre de progression atteint 50% de large.
+
+
+
+
+
+
+
+
