@@ -47,81 +47,73 @@
     </div>
     <script src="jquery.min.js"></script>
     <script>
-        $(function() {
-            const NB_CARTOUCHES = 5;
-            const NB_JETONS = 6;
-            let cartouchesRestantes = NB_CARTOUCHES;
-            let jetons = [];
-            // 0 = libre (gris), 1 = actif (noir)
-            let etats = Array(NB_JETONS).fill(0);
+        $(document).ready(function(){
 
-            // Génération des jetons
-            for(let i=0; i<NB_JETONS; i++) {
-                $('.jetons').append('<div class="jeton" data-index="'+i+'">0</div>');
+            let o = 0
+
+            if (o==0){
+                for (i=0; i<6; i++){
+                        $('.jetons').append('<p class="jeton">' + (Math.floor(Math.random() * 8) + 1) + '</p>')
+                }
+                o = 1
             }
 
-            function pioche() {
-                // Pour chaque jeton libre, nouvelle valeur aléatoire
-                $('.jeton').each(function(i) {
-                    if(etats[i] === 0) {
-                        const val = Math.floor(Math.random()*9)+1;
-                        $(this).text(val);
-                        jetons[i] = val;
+            $('.jeton').on('click', cocher)
+
+            function cocher(){
+                let that = $(this)
+                that.toggleClass('actif')
+                if (that.hasClass('actif')){
+                }
+            }
+
+            $('#pioche').on('click', jeton)
+
+            function jeton(){
+                // On change les jetons non actifs
+                $('.jeton').each(function(){
+                    if (!$(this).hasClass('actif')) {
+                        $(this).text(Math.floor(Math.random() * 8) + 1);
                     }
                 });
-                updateTotal();
-            }
 
-            function updateTotal() {
+                // Si au moins un jeton est actif, on vide une cartouche
+                if ($('.jeton.actif').length > 0) {
+                    $('.cartouche').not('.vide').first().addClass('vide');
+                }
+
+                updateTotal();
+
+                // Vérifier la victoire
                 let total = 0;
-                $('.jeton').each(function(i) {
-                    if(etats[i] === 1) total += parseInt($(this).text());
+                $('.jeton').each(function(){
+                    total += parseInt($(this).text());
                 });
-                $('#total').text('Total : ' + total);
-                if(total >= 44) {
+                if (total >= 44) {
                     $('#victoire').fadeIn();
                     $('#defaite').hide();
+                    $('#pioche').prop('disabled', true);
+                    return;
+                }
+
+                // Vérifier la défaite (toutes les cartouches sont rouges)
+                if ($('.cartouche.vide').length === $('.cartouche').length) {
+                    $('#defaite').fadeIn();
+                    $('#victoire').hide();
                     $('#pioche').prop('disabled', true);
                 }
             }
 
-            // Initialisation
-            pioche();
+            function updateTotal() {
+                let total = 0;
+                $('.jeton').each(function(){
+                    total += parseInt($(this).text());
+                });
+                $('#total').text('Total : ' + total);
+            }
 
-            // Clic sur jeton : change d'état
-            $('.jeton').click(function() {
-                const i = $(this).data('index');
-                if(etats[i] === 0) {
-                    etats[i] = 1;
-                    $(this).addClass('actif');
-                } else {
-                    etats[i] = 0;
-                    $(this).removeClass('actif');
-                }
-                updateTotal();
-            });
-
-            // Clic sur pioche
-            $('#pioche').click(function() {
-                if(cartouchesRestantes > 0) {
-                    pioche();
-                    cartouchesRestantes--;
-                    $('.cartouche').eq(NB_CARTOUCHES-cartouchesRestantes-1).addClass('vide');
-                    if(cartouchesRestantes === 0) {
-                        // Défaite si pas de victoire
-                        let total = 0;
-                        $('.jeton').each(function(i) {
-                            if(etats[i] === 1) total += parseInt($(this).text());
-                        });
-                        if(total < 44) {
-                            $('#defaite').fadeIn();
-                            $('#victoire').hide();
-                            $('#pioche').prop('disabled', true);
-                        }
-                    }
-                }
-            });
-        });
+            updateTotal();
+        })
     </script>
 </body>
 </html>

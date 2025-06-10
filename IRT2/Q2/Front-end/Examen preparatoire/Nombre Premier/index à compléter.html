@@ -36,9 +36,44 @@
 	<script src="jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			let number = []
 			for (i=0; i<=81; i++) {
+				let nombre = Math.floor(Math.random()*7 + 1) * Math.floor(Math.random()*7 + 1)
+				$('#grille').append('<p class="case">'+ nombre + '</p>')
+			}
+			$(".case").mouseenter(check);
+			$(".case").mouseleave(uncheck);
+
+			function check(){
+				let i = 0
 				
+				if (parseInt($(this).text()) % 2 == 0){
+					$('#div2').addClass('vert')
+					i++
+				}
+				if (parseInt($(this).text()) % 3 == 0){
+					$('#div3').addClass('vert')
+					i++
+				}
+				if (parseInt($(this).text()) % 5 == 0){
+					$('#div5').addClass('vert')
+					i++
+				}
+				if (parseInt($(this).text()) % 7 == 0){
+					$('#div7').addClass('vert')
+					i++
+				}
+				$('#nb').text(i)
+				const largeur = (i * 25) + "%";
+    			$('#metre').css('width', largeur)
+			}
+			function uncheck(){
+				$('#div2').removeClass('vert')
+				$('#div3').removeClass('vert')
+				$('#div5').removeClass('vert')
+				$('#div7').removeClass('vert')
+				i = 0
+				$('#nb').text(i)
+			    $('#metre').css('width', '0%')
 			}
 		})
 	</script>

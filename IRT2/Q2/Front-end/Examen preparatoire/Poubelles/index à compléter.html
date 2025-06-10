@@ -64,51 +64,45 @@
 		</section>
 	</main>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Initialisation des conteneurs
-    document.addEventListener("DOMContentLoaded", function () {
-        const contenances = [8, 10, 12, 15, 20]; // Capacités des conteneurs
-        const dechets = ['planches', 'bricaillons', 'briques', 'carrelages', 'poutres', 'sable', 'contreplaqués']; // Types de déchets
+$(function () {
+    const contenances = [8, 10, 12, 15, 20];
+    const dechets = ['planches', 'bricaillons', 'briques', 'carrelages', 'poutres', 'sable', 'contreplaqués'];
 
-        for (let i = 1; i <= 4; i++) {
-            const conteneur = document.getElementById(`conteneur${i}`);
-            const contenanceSpan = document.querySelector(`#conteneur${i}-etiquette .contenance`);
-            const contenuSpan = document.querySelector(`#conteneur${i}-etiquette .contenu`);
+    for (let i = 1; i <= 4; i++) {
+        const $conteneur = $(`#conteneur${i}`);
+        const $contenanceSpan = $(`#conteneur${i}-etiquette .contenance`);
+        const $contenuSpan = $(`#conteneur${i}-etiquette .contenu`);
 
-            // Définir une contenance aléatoire
-            const contenance = contenances[Math.floor(Math.random() * contenances.length)];
-            contenanceSpan.textContent = contenance;
+        const contenance = contenances[Math.floor(Math.random() * contenances.length)];
+        $contenanceSpan.text(contenance);
 
-            // Générer un nombre aléatoire de déchets
-            let contenuTotal = 0;
-            const nombreDechets = Math.floor(Math.random() * 5) + 1;
+        let contenuTotal = 0;
+        const nombreDechets = Math.floor(Math.random() * 5) + 1;
 
-            for (let j = 0; j < nombreDechets; j++) {
-                const dechetNom = dechets[Math.floor(Math.random() * dechets.length)];
-                const dechetVolume = Math.floor(Math.random() * 7) + 1;
-                contenuTotal += dechetVolume;
+        for (let j = 0; j < nombreDechets; j++) {
+            const dechetNom = dechets[Math.floor(Math.random() * dechets.length)];
+            const dechetVolume = Math.floor(Math.random() * 7) + 1;
+            contenuTotal += dechetVolume;
 
-                // Créer et ajouter un déchet
-                const dechetElement = document.createElement("div");
-                dechetElement.className = "dechet";
-                dechetElement.textContent = `${dechetNom} (${dechetVolume} m³)`;
-                dechetElement.dataset.volume = dechetVolume;
+            const $dechetElement = $("<div>")
+                .addClass("dechet")
+                .text(`${dechetNom} (${dechetVolume} m³)`)
+                .attr("data-volume", dechetVolume)
+                .on("click", function () {
+                    contenuTotal -= parseInt($(this).attr("data-volume"));
+                    $(this).remove();
+                    $contenuSpan.text(contenuTotal);
+                    $contenuSpan.toggleClass("trop", contenuTotal > contenance);
+                });
 
-                // Supprimer le déchet au clic
-                dechetElement.onclick = function () {
-                    contenuTotal -= parseInt(dechetElement.dataset.volume);
-                    dechetElement.remove();
-                    contenuSpan.textContent = contenuTotal;
-                    contenuSpan.classList.toggle("trop", contenuTotal > contenance);
-                };
-
-                conteneur.appendChild(dechetElement);
-            }
-
-            // Afficher le contenu initial
-            contenuSpan.textContent = contenuTotal;
-            contenuSpan.classList.toggle("trop", contenuTotal > contenance);
+            $conteneur.append($dechetElement);
         }
-    });
+
+        $contenuSpan.text(contenuTotal);
+        $contenuSpan.toggleClass("trop", contenuTotal > contenance);
+    }
+});
 </script>
 </html>
