@@ -1,0 +1,280 @@
+EXAM BLANC PERSO :
+
+Tâche 1 (Config commutateurs) : 
+
+------------SWLANA1 :
+en 
+conf t 
+vlan 10
+  name compta
+  exit
+
+# si besoin : 
+int vlan 10
+  ip add 10.100.10.254 255.255.255.0
+  exit
+
+interface range FastEthernet0/1-2
+  description To hosts VLAN 10 compta
+  switchport mode access
+  switchport access vlan 10
+  switchport nonegotiate
+  spanning-tree portfast
+  spanning-tree bpduguard enable
+  switchport port-security
+  switchport port-security maximum 1
+  switchport port-security mac-address sticky
+  switchport port-security violation restrict
+  no shutdown
+  end
+  copy running-config startup-config
+
+----------SWLANA2 :
+en 
+conf t 
+vlan 20
+  name info
+  exit
+interface range FastEthernet0/1-2
+  description To hosts VLAN 20 info
+  switchport mode access
+  switchport access vlan 20
+  switchport nonegotiate
+  spanning-tree portfast
+  spanning-tree bpduguard enable
+  switchport port-security
+  switchport port-security maximum 1
+  switchport port-security mac-address sticky
+  switchport port-security violation restrict
+  no shutdown
+  end
+  copy running-config startup-config
+
+
+Tâche 2 (Etherchannel) : 
+
+---------------SWWIFIA1 / SWLAND1 :
+
+interface range F0/16 - fa 0/19
+  no shutdown
+  channel-protocol lacp
+  channel-group 1 mode active
+  switchport mode trunk
+exit
+
+interface port-channel 1
+  switchport mode trunk
+  end
+show etherchannel summary
+show interface FastEthernet0/16 status
+
+
+Tâche 3 (HSRP) : 
+
+---------SWWLAND 1 (ACTIF) :
+
+vlan 10
+  name compta
+exit
+vlan 20
+  name info
+exit
+
+en 
+conf t 
+ip routing 
+interface vlan 10
+no shutdown
+standby 10 ip 10.100.10.254
+standby 10 priority 150
+standby 10 preempt
+standby 10 track fastEthernet 0/1
+exit
+
+interface vlan 20
+no shutdown
+standby 20 ip 10.100.20.254
+standby 20 priority 150
+standby 20 preempt
+standby 20 track fastEthernet 0/1
+exit
+
+
+----------SWLAND2 (PASSIF) : 
+
+en 
+conf t 
+ip routing 
+interface vlan 10
+no shutdown
+standby 10 ip 10.100.10.254
+standby 10 priority 120
+standby 10 preempt
+exit
+
+interface vlan 20
+no shutdown
+standby 20 ip 10.100.20.254
+standby 20 priority 120
+standby 20 preempt
+exit
+
+show standby
+
+
+Tâche 4 (OSPF) : 
+
+
+--------------------------------------------------RWAN 1 :
+
+en 
+conf t 
+# On choisi int de sortie 
+interface GigabitEthernet0/1
+# priorité pour élire le DR et le BDR (routeur qui dirige et son backup)
+  ip ospf priority 60
+  exit
+# Nbr de processus (égal à 10 dans le pdf) :
+router ospf 10
+# un ID pour se le rentrer dans le baltrou 
+  router-id 11.11.11.11
+# "Routeurs RWANx config avec OSPF Zone unique" -> Zone unique = area 0 puis on met les réseaux ciblés avec un wildcardmask 
+# Réseau du routeur de base de gros con
+  network 172.16.1.0 0.0.0.255 area 0 
+# Réseau entre lui et RWAN 4 (aussi partagé avec Erwin 2)
+  network 172.16.7.0 0.0.0.15 area 0
+# Vitesse de coup de jus 
+  auto-cost reference-bandwidth 10000
+# "Ne doivent pas être envoyés sur les int pas utiles -> on les rend passives" 
+  passiv gi 0/0
+exit
+
+!--------------------------------------------------- RWAN2
+!
+!
+!!!!!!!!!! config routage
+!
+interface GigabitEthernet0/1
+# 30 pour le BDR 
+  ip ospf priority 30
+exit
+!
+!
+router ospf 10
+  router-id 10.10.10.10
+  network 172.16.2.0 0.0.0.255 area 0
+  network 172.16.7.0 0.0.0.15 area 0
+  auto-cost reference-bandwidth 10000
+  passiv gi 0/0
+exit
+!
+!---------------------------------------------- RWAN4
+!
+!!!!!!!!!!!!!! ajout BANDWIDTH
+!
+!
+interface Serial0/0/0
+  bandwidth 2000
+exit
+!
+!!!!!!!!!! config routage
+!
+!
+router ospf 10
+  router-id 4.4.4.4
+  network 172.16.4.0 0.0.0.3 area 0
+  network 172.16.7.0 0.0.0.15 area 0
+  auto-cost reference-bandwidth 10000
+exit
+!
+!------------------------------------------------ RWAN3
+!
+!
+interface Serial0/1/1
+  bandwidth 4000
+exit
+!
+!!!!!!!!!!!!!config routage
+!
+!
+router ospf 10
+  router-id 3.3.3.3
+  network 172.16.3.0 0.0.0.255 area 0
+  network 172.16.6.0 0.0.0.3 area 0
+  auto-cost reference-bandwidth 10000
+  passiv gi 0/0
+exit
+!
+!
+!
+!----------------------------------------------- RWAN5
+!
+!
+interface Serial0/0/0
+  bandwidth 2000
+exit
+!
+interface Serial0/0/1
+  bandwidth 2000
+exit
+!
+interface Serial0/1/1
+  bandwidth 4000
+exit
+!
+!
+!!!!!!!!!!! config routage
+!
+router ospf 10
+  router-id 5.5.5.5
+  network 172.16.4.0 0.0.0.3 area 0
+  network 172.16.5.0 0.0.0.3 area 0
+  network 172.16.6.0 0.0.0.3 area 0
+  default-information originate
+  auto-cost reference-bandwidth 10000
+exit
+!
+# Route statique par défauts vers l'int de sortie 
+ip route 0.0.0.0 0.0.0.0  serial 0/0/1
+!
+!
+!---------------------------------------------------- PC 
+!
+!---Ne pas oublier de changer les GW à cause du HSRP (.254)
+!
+
+
+################################### Tâche DHCP ###################################
+-----------------------------config SWD1 ------------------------------
+hostname SwD1
+!
+! Exclusion d’adresses réservées pour les VLANs (évite d’attribuer ces adresses aux clients)
+ip dhcp excluded-address 10.1.10.224 10.1.10.254
+ip dhcp excluded-address 10.1.20.224 10.1.20.254
+!
+! === DHCP pour VLAN 10 ===
+ip dhcp pool Pool.10.1.10.x
+ network 10.1.10.0 255.255.255.0
+ default-router 10.1.10.1
+ dns-server 172.16.50.2
+!
+! === DHCP pour VLAN 20 ===
+ip dhcp pool Pool.10.1.20.x
+ network 10.1.20.0 255.255.255.0
+ default-router 10.1.20.1
+ dns-server 172.16.50.2
+
+
+################################### Tâche ACL ###################################
+-----------------------------config R2 ------------------------------
+! Étape 1 : Création de l’ACL 101
+access-list 101 permit tcp 10.1.10.0 0.0.0.255 host 193.190.198.20 eq www
+access-list 101 deny ip any any
+
+! Étape 2 : Application de l’ACL en sortie sur l’interface connectée à Internet
+interface GigabitEthernet0/1
+ ip access-group 101 out
+
+
+
+

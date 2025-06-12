@@ -1,0 +1,97 @@
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!! Script correction Exam blanc TR2COM !!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+!
+
+!--------------------------------PC dell15ud001
+!
+activer auto speed et duplex sur l'interface
+!
+!--------------------------------PC dell15ud007
+!
+changer l'IP de la GW --> .113
+!
+!--------------------------------SWLAND2
+!
+interface vlan 10
+ip add 10.100.10.252 255.255.255.0
+no shut
+exit
+!
+!
+interface vlan 20
+ip add 10.100.20.252 255.255.255.0
+no shut
+exit
+!
+ip routing
+!
+!--------------------------------hostname ROUT
+!
+!
+no ip route 0.0.0.0 0.0.0.0  serial 0/0/0
+ip route 0.0.0.0 0.0.0.0  serial 0/0/1
+!
+no ip route 10.100.0.0 255.255.224.0 FastEthernet0/1 
+ip route 10.100.0.0 255.255.0.0 10.100.50.2 
+!
+!--------------------------------SWLANA1
+!
+!
+!
+!--------------------------------SWLANA2
+!
+!
+!
+!--------------------------------RWAN3
+!
+conf t
+router ospf 10
+  no network 192.168.1.0 0.0.0.15 area 0
+  network 192.168.1.16 0.0.0.15 area 0
+exit
+!
+!--------------------------------hostname RWAN5
+!
+!
+!!!!!!!!!!! config routage
+!
+!
+router ospf 10
+  no network 192.168.1.16 0.0.0.15 area 1
+  network 192.168.1.16 0.0.0.15 area 0
+exit
+!
+!
+!
+!--------------------------------RWAN4
+!
+!
+router ospf 10
+  network 192.168.1.64 0.0.0.15 area 0
+  no network 192.168.1.96 0.0.0.15 area 0
+  no network 192.168.1.112 0.0.0.15 area 0
+  network 192.168.1.112 0.0.0.15 area 1
+  network 192.168.1.96 0.0.0.15 area 1
+  auto-cost reference-bandwidth 10000
+exit
+!
+interface ser 0/0/0
+   bandwidth 1000
+exit
+!
+!
+!--------------------------------hostname RWAN5
+!
+!
+!
+router ospf 10
+  router-id 5.5.5.5
+  no network 192.168.1.16 0.0.0.15 area 1
+  network 192.168.1.16 0.0.0.15 area 0
+exit
+!
+
+
