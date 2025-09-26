@@ -1,0 +1,12 @@
+FROM ubuntu:latest
+
+RUN apt-get update -y && apt-get install sl cowsay nano -y
+
+WORKDIR /usr/games
+
+COPY Script_train_boucle.sh .
+RUN chmod +x Script_train_boucle.sh
+
+ENV N=2
+
+ENTRYPOINT ["./Script_train_boucle.sh"]
