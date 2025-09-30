@@ -8,3 +8,8 @@
 *.AVHDX
 Reseaux_Routing__Switching_-_Synthese-1.pdf
 *.env
+**/Stage/
+**/Internship/
+**/Aide*stage/
+**/stage*/
+**/internship*/

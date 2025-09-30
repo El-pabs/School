@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  web1:
+    image: nginx:alpine
+    container_name: web1
+    volumes:
+      - ./web1/index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - app-net
+    restart: unless-stopped
+
+  web2:
+    image: nginx:alpine
+    container_name: web2
+    volumes:
+      - ./web2/index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - app-net
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-loadbalancer
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - app-net
+    depends_on:
+      - web1
+      - web2
+    restart: unless-stopped
+
+networks:
+  app-net:
+    driver: bridge
