@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DB=telegraf
+      - INFLUXDB_USER=admin
+      - INFLUXDB_USER_PASSWORD=admin123
+      - INFLUXDB_ADMIN_ENABLED=true
+    volumes:
+      - ./influxdb-data:/var/lib/influxdb
+
+  telegraf:
+    image: telegraf:1.28
+    container_name: telegraf
+    depends_on:
+      - influxdb
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - ./grafana-data:/var/lib/grafana

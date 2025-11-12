@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: www-pod
+  labels:
+    app: www
+spec:
+  containers:
+  - name: www-ctr
+    image: nigelpoulton/k8sbook:latest
+    ports: 
+    - containerPort: 8080
