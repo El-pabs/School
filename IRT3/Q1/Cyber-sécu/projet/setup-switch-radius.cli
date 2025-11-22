@@ -1,0 +1,80 @@
+! ===================================================================
+! SETUP CISCO SWITCH RADIUS AAA - Configuration complète
+! À copier-coller sur le switch via console/telnet/SSH
+! ===================================================================
+
+configure terminal
+
+! ===== 1. SUPPRIME les vieilles déclarations RADIUS =====
+no radius-server host 172.27.50.2
+no radius-server host 172.27.50.1
+no aaa group server radius GROUPE-RADIUS-AG08
+no aaa group server radius GROUPE-RADIUS-SRV
+
+! ===== 2. DÉCLARE le serveur RADIUS moderne =====
+radius server RADIUS-MAIN
+ address ipv4 172.27.50.2 auth-port 1812 acct-port 1813
+ timeout 5
+ retransmit 3
+ key SuperSecretRadius2025!
+ exit
+
+! ===== 3. CRÉE le groupe RADIUS =====
+aaa group server radius GROUPE-RADIUS-AG08
+ server name RADIUS-MAIN
+ exit
+
+! ===== 4. ACTIVE AAA new-model (si pas déjà fait) =====
+aaa new-model
+
+! ===== 5. CONFIGURE L'AUTHENTIFICATION =====
+! Login (SSH/Telnet/Console)
+aaa authentication login default group GROUPE-RADIUS-AG08 local
+aaa authentication login console group GROUPE-RADIUS-AG08 local
+
+! Enable (passage en mode privilegié)
+aaa authentication enable default group GROUPE-RADIUS-AG08 enable
+
+! ===== 6. CONFIGURE L'AUTORISATION (optionnel mais recommandé) =====
+aaa authorization commands 0 default group GROUPE-RADIUS-AG08 local
+aaa authorization commands 1 default group GROUPE-RADIUS-AG08 local
+aaa authorization commands 15 default group GROUPE-RADIUS-AG08 local
+
+! ===== 7. CONFIGURE L'ACCOUNTING (traçabilité) =====
+aaa accounting exec default start-stop group GROUPE-RADIUS-AG08
+aaa accounting commands 0 default start-stop group GROUPE-RADIUS-AG08
+aaa accounting commands 1 default start-stop group GROUPE-RADIUS-AG08
+aaa accounting commands 15 default start-stop group GROUPE-RADIUS-AG08
+
+! ===== 8. FORCE L'INTERFACE SOURCE RADIUS =====
+ip radius source-interface Vlan50
+
+! ===== 9. CONFIGURE LES LIGNES (console + VTY) =====
+line con 0
+ login authentication console
+ exit
+
+line vty 0 4
+ login authentication default
+ exit
+
+line vty 5 15
+ login authentication default
+ exit
+
+! ===== 10. ACTIVE SSH (recommandé) =====
+ip ssh version 2
+ip ssh authentication-retries 3
+ip ssh time-out 120
+
+! ===== 11. SAUVEGARDE =====
+end
+write memory
+
+! ===== FIN =====
+! ✅ Configuration RADIUS terminée
+! 
+! VÉRIFICATION :
+! show running-config | section radius
+! show running-config | section aaa
+! test aaa group GROUPE-RADIUS-AG08 admin AdminPassword123 new-code

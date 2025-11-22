@@ -1,0 +1,518 @@
+[
+  {
+    "ID": "17",
+    "Name": "IntervlanFull",
+    "Source": [
+      "all"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "NAT",
+    "Type": "Standard",
+    "Security Profiles": [
+      "no-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "AGG-TRUNK,AGG-TRUNK"
+  },
+  {
+    "ID": "16",
+    "Name": "Syslog",
+    "Source": [
+      "all"
+    ],
+    "Destination": [
+      "Vlan50-Gestion address",
+      "Vlan60 address"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "no-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "30.88 MB",
+    "Interface Pair": "any,Vlan50-Gestion"
+  },
+  {
+    "ID": "18",
+    "Name": "Radius",
+    "Source": [
+      "all"
+    ],
+    "Destination": [
+      "Vlan50-Gestion address"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "RADIUS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "no-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "any,Vlan50-Gestion"
+  },
+  {
+    "ID": "16",
+    "Name": "Syslog",
+    "Source": [
+      "all"
+    ],
+    "Destination": [
+      "Vlan50-Gestion address",
+      "Vlan60 address"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "no-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "30.88 MB",
+    "Interface Pair": "any,Vlan60"
+  },
+  {
+    "ID": "4",
+    "Name": "VLAN100=>Exterieur",
+    "Source": [
+      "Vlan100 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL_ICMP",
+      "HTTPS",
+      "DNS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan100,Link-AG080"
+  },
+  {
+    "ID": "7",
+    "Name": "VLAN10=>Exterieur",
+    "Source": [
+      "Vlan10 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL_ICMP",
+      "DNS",
+      "HTTPS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan10,Link-AG080"
+  },
+  {
+    "ID": "5",
+    "Name": "VLAN15=>Exterieur",
+    "Source": [
+      "Vlan15 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL_ICMP",
+      "DNS",
+      "HTTPS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan15,Link-AG080"
+  },
+  {
+    "ID": "6",
+    "Name": "VLAN20=>Exterieur",
+    "Source": [
+      "Vlan20 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL_ICMP",
+      "DNS",
+      "HTTPS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan20,Link-AG080"
+  },
+  {
+    "ID": "3",
+    "Name": "VLAN25=>Exterieur",
+    "Source": [
+      "Vlan25 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL_ICMP",
+      "DNS",
+      "HTTPS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan25,Link-AG080"
+  },
+  {
+    "ID": "8",
+    "Name": "VLAN30 -> Exterieur",
+    "Source": [
+      "Vlan30 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "DNS",
+      "HTTPS",
+      "ALL_ICMP"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan30,Link-AG080"
+  },
+  {
+    "ID": "9",
+    "Name": "VLAN 35 -> Exterieur",
+    "Source": [
+      "Vlan35 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "DNS",
+      "ALL_ICMP",
+      "HTTPS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan35,Link-AG080"
+  },
+  {
+    "ID": "10",
+    "Name": "Vlan 40 -> Exterieur",
+    "Source": [
+      "Vlan40 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL_ICMP",
+      "DNS",
+      "HTTPS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan40,Link-AG080"
+  },
+  {
+    "ID": "13",
+    "Name": "Vlan 45 -> Exterieur",
+    "Source": [
+      "Vlan45 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL_ICMP",
+      "DNS",
+      "HTTPS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan45,Link-AG080"
+  },
+  {
+    "ID": "15",
+    "Name": "Vlan 50 to fortigate",
+    "Source": [
+      "Vlan50-Gestion address"
+    ],
+    "Destination": [
+      "Fortigate gestion"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "24.22 kB",
+    "Interface Pair": "Vlan50-Gestion,any"
+  },
+  {
+    "ID": "2",
+    "Name": "Test",
+    "Source": [
+      "Vlan50-Gestion address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "476.3 MB",
+    "Interface Pair": "Vlan50-Gestion,Link-AG080"
+  },
+  {
+    "ID": "11",
+    "Name": "VLAN 60 -> Exterieur",
+    "Source": [
+      "Vlan60 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "DNS",
+      "HTTPS",
+      "ALL_ICMP"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan60,Link-AG080"
+  },
+  {
+    "ID": "12",
+    "Name": "Vlan 65 -> Exterieur",
+    "Source": [
+      "Vlan65 address"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "DNS",
+      "ALL_ICMP",
+      "HTTPS"
+    ],
+    "Action": "ACCEPT",
+    "IP Pool": [],
+    "NAT": "Disabled",
+    "Type": "Standard",
+    "Security Profiles": [
+      "Antivirus-God",
+      "Internet-Block",
+      "certificate-inspection"
+    ],
+    "Log": "UTM",
+    "Bytes": "0 B",
+    "Interface Pair": "Vlan65,Link-AG080"
+  },
+  {
+    "ID": "0",
+    "Name": "Implicit Deny",
+    "Source": [
+      "all"
+    ],
+    "Destination": [
+      "all"
+    ],
+    "Schedule": [
+      "always"
+    ],
+    "Service": [
+      "ALL"
+    ],
+    "Action": "DENY",
+    "IP Pool": [],
+    "NAT": "",
+    "Type": "",
+    "Security Profiles": [],
+    "Log": "Disabled",
+    "Bytes": "16.44 MB",
+    "Interface Pair": "Implicit"
+  }
+]
