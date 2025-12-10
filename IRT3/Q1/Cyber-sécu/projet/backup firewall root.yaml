@@ -1,0 +1,5677 @@
+#config-version=FGT60E-7.4.3-FW-build2573-240201:opmode=0:vdom=1:user=admin
+#conf_file_ver=385752487779912
+#buildno=2573
+#global_vdom=0:vd_name=root/root
+#password_mask=1
+system_interface:
+    - wan1:
+        vdom: "root"
+        ip: 172.27.0.2 255.255.255.252
+        allowaccess: ping https ssh snmp http fgfm fabric
+        type: physical
+        role: wan
+        snmp-index: 1
+
+    - wan2:
+        vdom: "root"
+        ip: 192.168.2.11 255.255.255.0
+        allowaccess: ping https ssh snmp http fgfm fabric
+        type: physical
+        role: wan
+        snmp-index: 2
+
+    - internal1:
+        vdom: "root"
+        type: physical
+        snmp-index: 4
+
+    - modem:
+        vdom: "root"
+        mode: pppoe
+        status: down
+        type: physical
+        snmp-index: 11
+
+    - naf.root:
+        vdom: "root"
+        type: tunnel
+        src-check: disable
+        snmp-index: 12
+
+    - l2t.root:
+        vdom: "root"
+        type: tunnel
+        snmp-index: 13
+
+    - ssl.root:
+        vdom: "root"
+        type: tunnel
+        alias: "SSL VPN interface"
+        snmp-index: 14
+
+    - npu0_vlink0:
+        vdom: "root"
+        allowaccess: ping
+        type: physical
+        snmp-index: 17
+
+    - npu0_vlink1:
+        vdom: "root"
+        allowaccess: ping
+        type: physical
+        snmp-index: 18
+
+    - LINK-AG091:
+        vdom: "root"
+        ip: 172.28.251.5 255.255.255.252
+        allowaccess: ping ssh fabric
+        type: vdom-link
+        snmp-index: 52
+
+    - internal:
+        vdom: "root"
+        ip: 192.168.1.99 255.255.255.0
+        allowaccess: ping https ssh http
+        type: hard-switch
+        stp: enable
+        device-identification: enable
+        role: lan
+        snmp-index: 15
+
+    - fortilink:
+        vdom: "root"
+        fortilink: enable
+        ip: 10.255.1.1 255.255.255.0
+        allowaccess: ping fabric
+        type: aggregate
+        lldp-reception: enable
+        lldp-transmission: enable
+        snmp-index: 16
+
+    - Link-AG081:
+        vdom: "root"
+        ip: 172.27.251.5 255.255.255.252
+        allowaccess: ping ssh snmp fabric
+        type: vdom-link
+        snmp-index: 38
+
+    - VPN-68:
+        vdom: "root"
+        type: tunnel
+        snmp-index: 56
+        interface: "wan2"
+
+    - VPNSITE1:
+        vdom: "root"
+        type: tunnel
+        snmp-index: 57
+        interface: "wan2"
+
+
+system_admin:
+    - admin:
+        trusthost1: 192.168.1.0 255.255.255.0
+        trusthost2: 172.27.50.0 255.255.255.0
+        trusthost3: 172.100.0.0 255.255.255.0
+        trusthost4: 172.28.50.0 255.255.255.0
+        trusthost5: 172.28.60.0 255.255.255.0
+        trusthost6: 172.28.60.100 255.255.255.255
+        accprofile: "super_admin"
+        vdom: "root"
+        gui-dashboard:
+            - 1:
+                name: "Status"
+                vdom: "root"
+                permanent: enable
+                widget:
+                    - 1:
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: licinfo
+                        x-pos: 1
+                        width: 1
+                        height: 1
+
+                    - 3:
+                        type: forticloud
+                        x-pos: 2
+                        width: 1
+                        height: 1
+
+                    - 4:
+                        type: security-fabric
+                        x-pos: 3
+                        width: 1
+                        height: 1
+
+                    - 5:
+                        type: admins
+                        x-pos: 4
+                        width: 1
+                        height: 1
+
+                    - 6:
+                        type: cpu-usage
+                        x-pos: 5
+                        width: 2
+                        height: 1
+
+                    - 7:
+                        type: memory-usage
+                        x-pos: 6
+                        width: 2
+                        height: 1
+
+                    - 8:
+                        type: sessions
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 2:
+                name: "Security"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 2
+                        height: 1
+                        fortiview-type: "compromisedHosts"
+                        fortiview-sort-by: "verdict"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 2:
+                        type: fortiview
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        fortiview-type: "threats"
+                        fortiview-sort-by: "threatLevel"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 3:
+                        type: device-vulnerability
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+
+
+            - 3:
+                name: "Network"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: routing
+                        width: 2
+                        height: 1
+                        router-view-type: "staticdynamic"
+
+                    - 2:
+                        type: dhcp
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: virtual-wan
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: ipsec-vpn
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 4:
+                name: "Assets & Identities"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: device-inventory
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: identities
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: firewall-user
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: quarantine
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+                    - 5:
+                        type: nac-vlans
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+
+
+            - 5:
+                name: "WiFi"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: ap-status
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: channel-utilization
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 3:
+                        type: clients-by-ap
+                        x-pos: 2
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 4:
+                        type: client-signal-strength
+                        x-pos: 3
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 5:
+                        type: rogue-ap
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+                    - 6:
+                        type: historical-clients
+                        x-pos: 5
+                        width: 2
+                        height: 1
+                        timeframe: 1-hour
+                        wifi-band: "both"
+
+                    - 7:
+                        type: interfering-ssids
+                        x-pos: 6
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 8:
+                        type: wifi-login-failures
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 6:
+                name: "FortiView Sources"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "source"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 7:
+                name: "FortiView Destinations"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "destination"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 8:
+                name: "FortiView Applications"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "application"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 9:
+                name: "FortiView Web Sites"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "website"
+                        fortiview-sort-by: "sessions"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 10:
+                name: "FortiView Policies"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "policy"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 11:
+                name: "FortiView Sessions"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "realtimeSessions"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "realtime"
+                        fortiview-visualization: "table"
+
+
+
+            - 12:
+                name: "Status"
+                permanent: enable
+                widget:
+                    - 1:
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: licinfo
+                        x-pos: 1
+                        width: 1
+                        height: 1
+
+                    - 3:
+                        type: forticloud
+                        x-pos: 2
+                        width: 1
+                        height: 1
+
+                    - 4:
+                        type: security-fabric
+                        x-pos: 3
+                        width: 1
+                        height: 1
+
+                    - 5:
+                        type: admins
+                        x-pos: 4
+                        width: 1
+                        height: 1
+
+                    - 6:
+                        type: cpu-usage
+                        x-pos: 5
+                        width: 2
+                        height: 1
+
+                    - 7:
+                        type: memory-usage
+                        x-pos: 6
+                        width: 2
+                        height: 1
+
+                    - 8:
+                        type: sessions
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 13:
+                name: "Status"
+                vdom: "VDOM-AG008"
+                permanent: enable
+                widget:
+                    - 1:
+                        type: security-fabric
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: cpu-usage
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: memory-usage
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: sessions
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 14:
+                name: "Security"
+                vdom: "VDOM-AG008"
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 2
+                        height: 1
+                        fortiview-type: "compromisedHosts"
+                        fortiview-sort-by: "verdict"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 2:
+                        type: fortiview
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        fortiview-type: "threats"
+                        fortiview-sort-by: "threatLevel"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 3:
+                        type: device-vulnerability
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+
+
+            - 15:
+                name: "Network"
+                vdom: "VDOM-AG008"
+                widget:
+                    - 1:
+                        type: routing
+                        width: 2
+                        height: 1
+                        router-view-type: "staticdynamic"
+
+                    - 2:
+                        type: dhcp
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: virtual-wan
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: ipsec-vpn
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 16:
+                name: "Assets & Identities"
+                vdom: "VDOM-AG008"
+                widget:
+                    - 1:
+                        type: device-inventory
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: identities
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: firewall-user
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: quarantine
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+                    - 5:
+                        type: nac-vlans
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+
+
+            - 17:
+                name: "WiFi"
+                vdom: "VDOM-AG008"
+                widget:
+                    - 1:
+                        type: ap-status
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: channel-utilization
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 3:
+                        type: clients-by-ap
+                        x-pos: 2
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 4:
+                        type: client-signal-strength
+                        x-pos: 3
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 5:
+                        type: rogue-ap
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+                    - 6:
+                        type: historical-clients
+                        x-pos: 5
+                        width: 2
+                        height: 1
+                        timeframe: 1-hour
+                        wifi-band: "both"
+
+                    - 7:
+                        type: interfering-ssids
+                        x-pos: 6
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 8:
+                        type: wifi-login-failures
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 18:
+                name: "FortiView Sources"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "source"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 19:
+                name: "FortiView Destinations"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "destination"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 20:
+                name: "FortiView Applications"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "application"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 21:
+                name: "FortiView Web Sites"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "website"
+                        fortiview-sort-by: "sessions"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 22:
+                name: "FortiView Policies"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "policy"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 23:
+                name: "FortiView Sessions"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "realtimeSessions"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "realtime"
+                        fortiview-visualization: "table"
+
+
+
+            - 24:
+                name: "Status"
+                vdom: "VDOM-AG009"
+                permanent: enable
+                widget:
+                    - 1:
+                        type: security-fabric
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: cpu-usage
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: memory-usage
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: sessions
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 25:
+                name: "Security"
+                vdom: "VDOM-AG009"
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 2
+                        height: 1
+                        fortiview-type: "compromisedHosts"
+                        fortiview-sort-by: "verdict"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 2:
+                        type: fortiview
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        fortiview-type: "threats"
+                        fortiview-sort-by: "threatLevel"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 3:
+                        type: device-vulnerability
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+
+
+            - 26:
+                name: "Network"
+                vdom: "VDOM-AG009"
+                widget:
+                    - 1:
+                        type: routing
+                        width: 2
+                        height: 1
+                        router-view-type: "staticdynamic"
+
+                    - 2:
+                        type: dhcp
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: virtual-wan
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: ipsec-vpn
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 27:
+                name: "Assets & Identities"
+                vdom: "VDOM-AG009"
+                widget:
+                    - 1:
+                        type: device-inventory
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: identities
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: firewall-user
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: quarantine
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+                    - 5:
+                        type: nac-vlans
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+
+
+            - 28:
+                name: "WiFi"
+                vdom: "VDOM-AG009"
+                widget:
+                    - 1:
+                        type: ap-status
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: channel-utilization
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 3:
+                        type: clients-by-ap
+                        x-pos: 2
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 4:
+                        type: client-signal-strength
+                        x-pos: 3
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 5:
+                        type: rogue-ap
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+                    - 6:
+                        type: historical-clients
+                        x-pos: 5
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 7:
+                        type: interfering-ssids
+                        x-pos: 6
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 8:
+                        type: wifi-login-failures
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 29:
+                name: "FortiView Sources"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "source"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 30:
+                name: "FortiView Destinations"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "destination"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 31:
+                name: "FortiView Applications"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "application"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 32:
+                name: "FortiView Web Sites"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "website"
+                        fortiview-sort-by: "sessions"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 33:
+                name: "FortiView Policies"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "policy"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 34:
+                name: "FortiView Sessions"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "realtimeSessions"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "realtime"
+                        fortiview-visualization: "table"
+
+
+
+            - 35:
+                name: "Status"
+                vdom: "31"
+                permanent: enable
+                widget:
+                    - 1:
+                        type: security-fabric
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: cpu-usage
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: memory-usage
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: sessions
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 36:
+                name: "Security"
+                vdom: "31"
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 2
+                        height: 1
+                        fortiview-type: "compromisedHosts"
+                        fortiview-sort-by: "verdict"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 2:
+                        type: fortiview
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        fortiview-type: "threats"
+                        fortiview-sort-by: "threatLevel"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 3:
+                        type: device-vulnerability
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+
+
+            - 37:
+                name: "Network"
+                vdom: "31"
+                widget:
+                    - 1:
+                        type: routing
+                        width: 2
+                        height: 1
+                        router-view-type: "staticdynamic"
+
+                    - 2:
+                        type: dhcp
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: virtual-wan
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: ipsec-vpn
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 38:
+                name: "Assets & Identities"
+                vdom: "31"
+                widget:
+                    - 1:
+                        type: device-inventory
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: identities
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: firewall-user
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: quarantine
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+                    - 5:
+                        type: nac-vlans
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+
+
+            - 39:
+                name: "WiFi"
+                vdom: "31"
+                widget:
+                    - 1:
+                        type: ap-status
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: channel-utilization
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 3:
+                        type: clients-by-ap
+                        x-pos: 2
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 4:
+                        type: client-signal-strength
+                        x-pos: 3
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 5:
+                        type: rogue-ap
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+                    - 6:
+                        type: historical-clients
+                        x-pos: 5
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 7:
+                        type: interfering-ssids
+                        x-pos: 6
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 8:
+                        type: wifi-login-failures
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 40:
+                name: "FortiView Sources"
+                vdom: "31"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "source"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 41:
+                name: "FortiView Destinations"
+                vdom: "31"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "destination"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 42:
+                name: "FortiView Applications"
+                vdom: "31"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "application"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 43:
+                name: "FortiView Web Sites"
+                vdom: "31"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "website"
+                        fortiview-sort-by: "sessions"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 44:
+                name: "FortiView Policies"
+                vdom: "31"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "policy"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 45:
+                name: "FortiView Sessions"
+                vdom: "31"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "realtimeSessions"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "realtime"
+                        fortiview-visualization: "table"
+
+
+
+            - 46:
+                name: "monitor"
+                vdom: "VDOM-AG009"
+
+
+        gui-default-dashboard-template: "minimal"
+        gui-ignore-release-overview-version: "7.4"
+        password: FortinetPasswordMask
+
+    - Robin:
+        trusthost1: 192.168.1.0 255.255.255.0
+        trusthost2: 172.27.50.0 255.255.255.0
+        accprofile: "prof_admin"
+        vdom: "root" "VDOM-AG008"
+        gui-dashboard:
+            - 1:
+                name: "Status"
+                vdom: "root"
+                permanent: enable
+                widget:
+                    - 1:
+                        type: security-fabric
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: cpu-usage
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: memory-usage
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: sessions
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 2:
+                name: "Security"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 2
+                        height: 1
+                        fortiview-type: "compromisedHosts"
+                        fortiview-sort-by: "verdict"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 2:
+                        type: fortiview
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        fortiview-type: "threats"
+                        fortiview-sort-by: "threatLevel"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 3:
+                        type: device-vulnerability
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+
+
+            - 3:
+                name: "Network"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: routing
+                        width: 2
+                        height: 1
+                        router-view-type: "staticdynamic"
+
+                    - 2:
+                        type: dhcp
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: virtual-wan
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: ipsec-vpn
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 4:
+                name: "Assets & Identities"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: device-inventory
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: identities
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: firewall-user
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: quarantine
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+                    - 5:
+                        type: nac-vlans
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+
+
+            - 5:
+                name: "WiFi"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: ap-status
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: channel-utilization
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 3:
+                        type: clients-by-ap
+                        x-pos: 2
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 4:
+                        type: client-signal-strength
+                        x-pos: 3
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 5:
+                        type: rogue-ap
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+                    - 6:
+                        type: historical-clients
+                        x-pos: 5
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 7:
+                        type: interfering-ssids
+                        x-pos: 6
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 8:
+                        type: wifi-login-failures
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 6:
+                name: "FortiView Sources"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "source"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 7:
+                name: "FortiView Destinations"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "destination"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 8:
+                name: "FortiView Applications"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "application"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 9:
+                name: "FortiView Web Sites"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "website"
+                        fortiview-sort-by: "sessions"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 10:
+                name: "FortiView Policies"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "policy"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 11:
+                name: "FortiView Sessions"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "realtimeSessions"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "realtime"
+                        fortiview-visualization: "table"
+
+
+
+            - 12:
+                name: "Status"
+                vdom: "VDOM-AG008"
+                permanent: enable
+                widget:
+                    - 1:
+                        type: security-fabric
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: cpu-usage
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: memory-usage
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: sessions
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 13:
+                name: "Security"
+                vdom: "VDOM-AG008"
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 2
+                        height: 1
+                        fortiview-type: "compromisedHosts"
+                        fortiview-sort-by: "verdict"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 2:
+                        type: fortiview
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        fortiview-type: "threats"
+                        fortiview-sort-by: "threatLevel"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 3:
+                        type: device-vulnerability
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+
+
+            - 14:
+                name: "Network"
+                vdom: "VDOM-AG008"
+                widget:
+                    - 1:
+                        type: routing
+                        width: 2
+                        height: 1
+                        router-view-type: "staticdynamic"
+
+                    - 2:
+                        type: dhcp
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: virtual-wan
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: ipsec-vpn
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 15:
+                name: "Assets & Identities"
+                vdom: "VDOM-AG008"
+                widget:
+                    - 1:
+                        type: device-inventory
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: identities
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: firewall-user
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: quarantine
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+                    - 5:
+                        type: nac-vlans
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+
+
+            - 16:
+                name: "WiFi"
+                vdom: "VDOM-AG008"
+                widget:
+                    - 1:
+                        type: ap-status
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: channel-utilization
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 3:
+                        type: clients-by-ap
+                        x-pos: 2
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 4:
+                        type: client-signal-strength
+                        x-pos: 3
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 5:
+                        type: rogue-ap
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+                    - 6:
+                        type: historical-clients
+                        x-pos: 5
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 7:
+                        type: interfering-ssids
+                        x-pos: 6
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 8:
+                        type: wifi-login-failures
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 17:
+                name: "FortiView Sources"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "source"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 18:
+                name: "FortiView Destinations"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "destination"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 19:
+                name: "FortiView Applications"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "application"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 20:
+                name: "FortiView Web Sites"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "website"
+                        fortiview-sort-by: "sessions"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 21:
+                name: "FortiView Policies"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "policy"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 22:
+                name: "FortiView Sessions"
+                vdom: "VDOM-AG008"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "realtimeSessions"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "realtime"
+                        fortiview-visualization: "table"
+
+
+
+
+        gui-ignore-release-overview-version: "7.4"
+        password: FortinetPasswordMask
+
+    - Aimerik:
+        trusthost1: 172.28.50.0 255.255.255.0
+        trusthost2: 192.168.1.0 255.255.255.0
+        trusthost3: 172.27.50.0 255.255.255.0
+        accprofile: "prof_admin"
+        vdom: "root" "VDOM-AG009"
+        gui-dashboard:
+            - 1:
+                name: "Status"
+                vdom: "root"
+                permanent: enable
+                widget:
+                    - 1:
+                        type: security-fabric
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: cpu-usage
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: memory-usage
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: sessions
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 2:
+                name: "Security"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 2
+                        height: 1
+                        fortiview-type: "compromisedHosts"
+                        fortiview-sort-by: "verdict"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 2:
+                        type: fortiview
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        fortiview-type: "threats"
+                        fortiview-sort-by: "threatLevel"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 3:
+                        type: device-vulnerability
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+
+
+            - 3:
+                name: "Network"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: routing
+                        width: 2
+                        height: 1
+                        router-view-type: "staticdynamic"
+
+                    - 2:
+                        type: dhcp
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: virtual-wan
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: ipsec-vpn
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 4:
+                name: "Assets & Identities"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: device-inventory
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: identities
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: firewall-user
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: quarantine
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+                    - 5:
+                        type: nac-vlans
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+
+
+            - 5:
+                name: "WiFi"
+                vdom: "root"
+                widget:
+                    - 1:
+                        type: ap-status
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: channel-utilization
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 3:
+                        type: clients-by-ap
+                        x-pos: 2
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 4:
+                        type: client-signal-strength
+                        x-pos: 3
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 5:
+                        type: rogue-ap
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+                    - 6:
+                        type: historical-clients
+                        x-pos: 5
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 7:
+                        type: interfering-ssids
+                        x-pos: 6
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 8:
+                        type: wifi-login-failures
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 6:
+                name: "FortiView Sources"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "source"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 7:
+                name: "FortiView Destinations"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "destination"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 8:
+                name: "FortiView Applications"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "application"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 9:
+                name: "FortiView Web Sites"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "website"
+                        fortiview-sort-by: "sessions"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 10:
+                name: "FortiView Policies"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "policy"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 11:
+                name: "FortiView Sessions"
+                vdom: "root"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "realtimeSessions"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "realtime"
+                        fortiview-visualization: "table"
+
+
+
+            - 12:
+                name: "Status"
+                vdom: "VDOM-AG009"
+                permanent: enable
+                widget:
+                    - 1:
+                        type: security-fabric
+                        width: 1
+                        height: 1
+
+                    - 2:
+                        type: cpu-usage
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: memory-usage
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: sessions
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 13:
+                name: "Security"
+                vdom: "VDOM-AG009"
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 2
+                        height: 1
+                        fortiview-type: "compromisedHosts"
+                        fortiview-sort-by: "verdict"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 2:
+                        type: fortiview
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        fortiview-type: "threats"
+                        fortiview-sort-by: "threatLevel"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+                    - 3:
+                        type: device-vulnerability
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+
+
+            - 14:
+                name: "Network"
+                vdom: "VDOM-AG009"
+                widget:
+                    - 1:
+                        type: routing
+                        width: 2
+                        height: 1
+                        router-view-type: "staticdynamic"
+
+                    - 2:
+                        type: dhcp
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: virtual-wan
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: ipsec-vpn
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+
+
+            - 15:
+                name: "Assets & Identities"
+                vdom: "VDOM-AG009"
+                widget:
+                    - 1:
+                        type: device-inventory
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: identities
+                        x-pos: 1
+                        width: 2
+                        height: 1
+
+                    - 3:
+                        type: firewall-user
+                        x-pos: 2
+                        width: 2
+                        height: 1
+
+                    - 4:
+                        type: quarantine
+                        x-pos: 3
+                        width: 2
+                        height: 1
+
+                    - 5:
+                        type: nac-vlans
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+
+
+            - 16:
+                name: "WiFi"
+                vdom: "VDOM-AG009"
+                widget:
+                    - 1:
+                        type: ap-status
+                        width: 2
+                        height: 1
+
+                    - 2:
+                        type: channel-utilization
+                        x-pos: 1
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 3:
+                        type: clients-by-ap
+                        x-pos: 2
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 4:
+                        type: client-signal-strength
+                        x-pos: 3
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 5:
+                        type: rogue-ap
+                        x-pos: 4
+                        width: 2
+                        height: 1
+
+                    - 6:
+                        type: historical-clients
+                        x-pos: 5
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 7:
+                        type: interfering-ssids
+                        x-pos: 6
+                        width: 2
+                        height: 1
+                        wifi-band: "both"
+
+                    - 8:
+                        type: wifi-login-failures
+                        x-pos: 7
+                        width: 2
+                        height: 1
+
+
+
+            - 17:
+                name: "FortiView Sources"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "source"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 18:
+                name: "FortiView Destinations"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "destination"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 19:
+                name: "FortiView Applications"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "application"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 20:
+                name: "FortiView Web Sites"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "website"
+                        fortiview-sort-by: "sessions"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 21:
+                name: "FortiView Policies"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "policy"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "hour"
+                        fortiview-visualization: "table"
+
+
+
+            - 22:
+                name: "FortiView Sessions"
+                vdom: "VDOM-AG009"
+                layout-type: standalone
+                csf: disable
+                widget:
+                    - 1:
+                        type: fortiview
+                        width: 6
+                        height: 3
+                        fortiview-type: "realtimeSessions"
+                        fortiview-sort-by: "bytes"
+                        fortiview-timeframe: "realtime"
+                        fortiview-visualization: "table"
+
+
+
+
+        gui-ignore-release-overview-version: "7.4"
+        password: FortinetPasswordMask
+
+
+system_object-tagging:
+    - default:
+
+
+switch-controller_traffic-policy:
+    - quarantine:
+        description: "Rate control for quarantined traffic"
+        guaranteed-bandwidth: 163840
+        guaranteed-burst: 8192
+        maximum-burst: 163840
+        cos-queue: 0
+        id: 1
+
+    - sniffer:
+        description: "Rate control for sniffer mirrored traffic"
+        guaranteed-bandwidth: 50000
+        guaranteed-burst: 8192
+        maximum-burst: 163840
+        cos-queue: 0
+        id: 2
+
+
+system_settings:
+    gui-dynamic-routing: enable
+    gui-advanced-policy: enable
+
+system_replacemsg-group:
+    - default:
+        comment: "Default replacement message group."
+
+
+system_dhcp_server:
+    - 1:
+        dns-service: default
+        default-gateway: 172.100.0.99
+        netmask: 255.255.255.0
+        interface: "internal"
+        ip-range:
+            - 1:
+                start-ip: 192.168.1.110
+                end-ip: 192.168.1.210
+
+
+
+    - 2:
+        ntp-service: local
+        default-gateway: 10.255.1.1
+        netmask: 255.255.255.0
+        interface: "fortilink"
+        ip-range:
+            - 1:
+                start-ip: 10.255.1.2
+                end-ip: 10.255.1.254
+
+
+        vci-match: enable
+        vci-string: "FortiSwitch" "FortiExtender"
+
+
+firewall_address:
+    - EMS_ALL_UNKNOWN_CLIENTS:
+        uuid: 54905bc2-0af1-51f0-a865-f3992af75426
+        type: dynamic
+        sub-type: ems-tag
+        dirty: clean
+
+    - EMS_ALL_UNMANAGEABLE_CLIENTS:
+        uuid: 5490a596-0af1-51f0-3c03-b7b9ef3e8640
+        type: dynamic
+        sub-type: ems-tag
+        dirty: clean
+
+    - none:
+        uuid: 43ecf532-0af1-51f0-2a47-83664f0bd0f9
+        subnet: 0.0.0.0 255.255.255.255
+
+    - login.microsoftonline.com:
+        uuid: 43ed285e-0af1-51f0-f4d6-6f8889dc2d10
+        type: fqdn
+        fqdn: "login.microsoftonline.com"
+
+    - login.microsoft.com:
+        uuid: 43ed5810-0af1-51f0-3dec-6d2a439fde9c
+        type: fqdn
+        fqdn: "login.microsoft.com"
+
+    - login.windows.net:
+        uuid: 43ed804c-0af1-51f0-2038-8e1c9462b76a
+        type: fqdn
+        fqdn: "login.windows.net"
+
+    - gmail.com:
+        uuid: 43eda8a6-0af1-51f0-1932-3d321d984c3d
+        type: fqdn
+        fqdn: "gmail.com"
+
+    - wildcard.google.com:
+        uuid: 43edd02e-0af1-51f0-2c86-9d029f46c8b0
+        type: fqdn
+        fqdn: "*.google.com"
+
+    - wildcard.dropbox.com:
+        uuid: 43edf7de-0af1-51f0-952c-3d3391ff1496
+        type: fqdn
+        fqdn: "*.dropbox.com"
+
+    - all:
+        uuid: 5490d5de-0af1-51f0-6f4d-8eec80240cf6
+
+    - FIREWALL_AUTH_PORTAL_ADDRESS:
+        uuid: 5490e5a6-0af1-51f0-91aa-62cc675d2bea
+
+    - FABRIC_DEVICE:
+        uuid: 5490f3e8-0af1-51f0-99e3-1784fbcbd0ed
+        comment: "IPv4 addresses of Fabric Devices."
+
+    - SSLVPN_TUNNEL_ADDR1:
+        uuid: 549552ee-0af1-51f0-16d7-5253f27965ae
+        type: iprange
+        start-ip: 10.212.134.200
+        end-ip: 10.212.134.210
+
+    - internal:
+        uuid: 58dd5c3e-0af1-51f0-f3c7-83483034447a
+        type: interface-subnet
+        subnet: 192.168.1.0 255.255.255.0
+        interface: "internal"
+
+    - VLAN50-AG09:
+        uuid: b2a629a6-36ef-51f0-6a9f-f739f3164aff
+        type: iprange
+        start-ip: 172.28.50.1
+        end-ip: 172.28.50.254
+
+    - FCTEMS_ALL_FORTICLOUD_SERVERS:
+        uuid: 5374ed9e-c3aa-51f0-4903-56e53bebaedb
+        type: dynamic
+        sub-type: ems-tag
+        dirty: clean
+
+    - VPNSiteAg6-7_local_subnet_1:
+        uuid: 41344d88-c561-51f0-f19a-713ed871c84c
+        allow-routing: enable
+        subnet: 172.27.0.0 255.255.255.0
+
+    - VPNSiteAg6-7_local_subnet_2:
+        uuid: 413d55a4-c561-51f0-a70b-a4d3b87b4b40
+        allow-routing: enable
+        subnet: 172.28.0.0 255.255.255.0
+
+    - VPNSiteAg6-7_remote_subnet_1:
+        uuid: 414dc34e-c561-51f0-289e-10421a51d8ee
+        allow-routing: enable
+        subnet: 172.25.0.0 255.255.0.0
+
+    - VpnAg6-7_local_subnet_1:
+        uuid: e3cc7fae-c5e6-51f0-440d-902041600ba6
+        allow-routing: enable
+        subnet: 172.27.0.0 255.255.0.0
+
+    - VpnAg6-7_remote_subnet_1:
+        uuid: e3dfa520-c5e6-51f0-47b6-c8796397a377
+        allow-routing: enable
+        subnet: 172.25.0.0 255.255.0.0
+
+    - Vpn-AG6-AG8_local_subnet_1:
+        uuid: e7d655e0-c5ee-51f0-4e38-50ea6a5d311a
+        allow-routing: enable
+
+    - Vpn-AG6-AG8_remote_subnet_1:
+        uuid: e7eca200-c5ee-51f0-9f9d-4be935b54604
+        allow-routing: enable
+
+    - VPNTest_local_subnet_1:
+        uuid: a1d6f880-c5f1-51f0-e0b1-9da356925790
+        allow-routing: enable
+        subnet: 172.27.0.0 255.255.0.0
+
+    - VPNTest_local_subnet_2:
+        uuid: a1e06956-c5f1-51f0-2d2c-14fd4ad01f42
+        allow-routing: enable
+        subnet: 172.28.0.0 255.255.0.0
+
+    - VPNTest_remote_subnet_1:
+        uuid: a1f00c4e-c5f1-51f0-fc28-e8df3d6d07b7
+        allow-routing: enable
+        subnet: 172.25.0.0 255.255.0.0
+
+    - VPN-CACA_local_subnet_1:
+        uuid: a6bf3e7c-c5f4-51f0-4423-ca7f56c85943
+        allow-routing: enable
+        subnet: 172.27.251.4 255.255.255.252
+
+    - VPN-CACA_local_subnet_2:
+        uuid: a6d0569e-c5f4-51f0-0e90-f6f2aeefadb5
+        allow-routing: enable
+        subnet: 172.28.251.4 255.255.255.252
+
+    - VPN-CACA_remote_subnet_1:
+        uuid: a6de0b86-c5f4-51f0-d319-d30c9e25c785
+        allow-routing: enable
+        subnet: 172.25.0.0 255.255.0.0
+
+    - VPN-68_local_subnet_1:
+        uuid: bc9315c6-c5f8-51f0-1ed2-5c496837f8c2
+        allow-routing: enable
+        subnet: 172.27.0.0 255.255.0.0
+
+    - VPN-68_remote_subnet_1:
+        uuid: bca3c344-c5f8-51f0-8f7a-d946d7ce5a5f
+        allow-routing: enable
+        subnet: 172.25.0.0 255.255.0.0
+
+    - VPNSITE1_local_subnet_1:
+        uuid: 089c6a26-c603-51f0-a620-f795b8ff8210
+        allow-routing: enable
+        subnet: 172.27.0.0 255.255.0.0
+
+    - VPNSITE1_remote_subnet_1:
+        uuid: 08a9c680-c603-51f0-4641-800939d86c57
+        allow-routing: enable
+        subnet: 172.17.0.0 255.255.0.0
+
+
+firewall_multicast-address:
+    - all:
+        start-ip: 224.0.0.0
+        end-ip: 239.255.255.255
+
+    - all_hosts:
+        start-ip: 224.0.0.1
+        end-ip: 224.0.0.1
+
+    - all_routers:
+        start-ip: 224.0.0.2
+        end-ip: 224.0.0.2
+
+    - Bonjour:
+        start-ip: 224.0.0.251
+        end-ip: 224.0.0.251
+
+    - EIGRP:
+        start-ip: 224.0.0.10
+        end-ip: 224.0.0.10
+
+    - OSPF:
+        start-ip: 224.0.0.5
+        end-ip: 224.0.0.6
+
+
+firewall_address6:
+    - SSLVPN_TUNNEL_IPv6_ADDR1:
+        uuid: 54956a68-0af1-51f0-3b4f-47e881e92c07
+        ip6: fdff:ffff::/120
+
+    - all:
+        uuid: 43ee9fc2-0af1-51f0-9ff7-4fe6903bd462
+
+    - none:
+        uuid: 43eec2d6-0af1-51f0-71ca-1bb71ba7dfa0
+        ip6: ::/128
+
+
+firewall_multicast-address6:
+    - all:
+        ip6: ff00::/8
+
+
+firewall_addrgrp:
+    - G Suite:
+        uuid: 43ee239e-0af1-51f0-6f00-5039f1a53eb6
+        member: "gmail.com" "wildcard.google.com"
+
+    - Microsoft Office 365:
+        uuid: 43ee5b84-0af1-51f0-b6ef-ad2bac67446a
+        member: "login.microsoftonline.com" "login.microsoft.com" "login.windows.net"
+
+    - VPNSiteAg6-7_local:
+        uuid: 414563e8-c561-51f0-f3f4-cbbfef1123a6
+        allow-routing: enable
+        member: "VPNSiteAg6-7_local_subnet_1" "VPNSiteAg6-7_local_subnet_2"
+        comment: "VPN: VPNSiteAg6-7 (Created by VPN wizard)"
+
+    - VPNSiteAg6-7_remote:
+        uuid: 415435c6-c561-51f0-ce7e-69ef2428f7c7
+        allow-routing: enable
+        member: "VPNSiteAg6-7_remote_subnet_1"
+        comment: "VPN: VPNSiteAg6-7 (Created by VPN wizard)"
+
+    - VpnAg6-7_local:
+        uuid: e3d6e99e-c5e6-51f0-39e7-e9af97292577
+        allow-routing: enable
+        member: "VpnAg6-7_local_subnet_1"
+        comment: "VPN: VpnAg6-7 (Created by VPN wizard)"
+
+    - VpnAg6-7_remote:
+        uuid: e3e6747c-c5e6-51f0-5758-b00944c5e595
+        allow-routing: enable
+        member: "VpnAg6-7_remote_subnet_1"
+        comment: "VPN: VpnAg6-7 (Created by VPN wizard)"
+
+    - Vpn-AG6-AG8_local:
+        uuid: e7e23888-c5ee-51f0-f89a-20e2eafb3eed
+        allow-routing: enable
+        member: "Vpn-AG6-AG8_local_subnet_1"
+        comment: "VPN: Vpn-AG6-AG8 (Created by VPN wizard)"
+
+    - Vpn-AG6-AG8_remote:
+        uuid: e7f46134-c5ee-51f0-e8a8-d05bdce7249f
+        allow-routing: enable
+        member: "Vpn-AG6-AG8_remote_subnet_1"
+        comment: "VPN: Vpn-AG6-AG8 (Created by VPN wizard)"
+
+    - VPNTest_local:
+        uuid: a1e75e46-c5f1-51f0-97ad-8b972cc27ed4
+        allow-routing: enable
+        member: "VPNTest_local_subnet_1" "VPNTest_local_subnet_2"
+        comment: "VPN: VPNTest (Created by VPN wizard)"
+
+    - VPNTest_remote:
+        uuid: a1f6a6ee-c5f1-51f0-cf67-3ad7132f2e91
+        allow-routing: enable
+        member: "VPNTest_remote_subnet_1"
+        comment: "VPN: VPNTest (Created by VPN wizard)"
+
+    - VPN-CACA_local:
+        uuid: a6d67d58-c5f4-51f0-9727-c3aa7aff52aa
+        allow-routing: enable
+        member: "VPN-CACA_local_subnet_1" "VPN-CACA_local_subnet_2"
+        comment: "VPN: VPN-CACA (Created by VPN wizard)"
+
+    - VPN-CACA_remote:
+        uuid: a6e3c724-c5f4-51f0-23f4-2a3a70f11e6e
+        allow-routing: enable
+        member: "VPN-CACA_remote_subnet_1"
+        comment: "VPN: VPN-CACA (Created by VPN wizard)"
+
+    - VPN-68_local:
+        uuid: bc9db828-c5f8-51f0-a364-8b406f8d3c14
+        allow-routing: enable
+        member: "VPN-68_local_subnet_1"
+        comment: "VPN: VPN-68 (Created by VPN wizard)"
+
+    - VPN-68_remote:
+        uuid: bcb1eef6-c5f8-51f0-3cf7-da9e9c51269b
+        allow-routing: enable
+        member: "VPN-68_remote_subnet_1"
+        comment: "VPN: VPN-68 (Created by VPN wizard)"
+
+    - VPNSITE1_local:
+        uuid: 08a282ee-c603-51f0-65d2-c11f5c04c835
+        allow-routing: enable
+        member: "VPNSITE1_local_subnet_1"
+        comment: "VPN: VPNSITE1 (Created by VPN wizard)"
+
+    - VPNSITE1_remote:
+        uuid: 08bdd60c-c603-51f0-ead4-fc8defe385dd
+        allow-routing: enable
+        member: "VPNSITE1_remote_subnet_1"
+        comment: "VPN: VPNSITE1 (Created by VPN wizard)"
+
+
+firewall_service_category:
+    - General:
+        comment: "General services."
+
+    - Web Access:
+        comment: "Web access."
+
+    - File Access:
+        comment: "File access."
+
+    - Email:
+        comment: "Email services."
+
+    - Network Services:
+        comment: "Network services."
+
+    - Authentication:
+        comment: "Authentication service."
+
+    - Remote Access:
+        comment: "Remote access."
+
+    - Tunneling:
+        comment: "Tunneling service."
+
+    - VoIP, Messaging & Other Applications:
+        comment: "VoIP, messaging, and other applications."
+
+    - Web Proxy:
+        comment: "Explicit web proxy."
+
+
+firewall_service_custom:
+    - ALL:
+        uuid: 44003f70-0af1-51f0-6cde-fc825a93b63a
+        category: "General"
+        protocol: IP
+
+    - FTP:
+        uuid: 4400e5a6-0af1-51f0-8acb-ed878dada9f0
+        category: "File Access"
+        tcp-portrange: 21
+
+    - FTP_GET:
+        uuid: 4400f26c-0af1-51f0-0b70-a9c18e72e852
+        category: "File Access"
+        tcp-portrange: 21
+
+    - FTP_PUT:
+        uuid: 4400ff28-0af1-51f0-2da3-a46f1942a64f
+        category: "File Access"
+        tcp-portrange: 21
+
+    - ALL_TCP:
+        uuid: 44004dda-0af1-51f0-8a2f-dbc61a51911d
+        category: "General"
+        tcp-portrange: 1-65535
+
+    - ALL_UDP:
+        uuid: 44005ae6-0af1-51f0-f2f2-70417a28f88e
+        category: "General"
+        udp-portrange: 1-65535
+
+    - ALL_ICMP:
+        uuid: 44006784-0af1-51f0-cf62-996126950b39
+        category: "General"
+        protocol: ICMP
+        icmptype: ~
+
+    - ALL_ICMP6:
+        uuid: 4400747c-0af1-51f0-40f5-7ccff2bee238
+        category: "General"
+        protocol: ICMP6
+        icmptype: ~
+
+    - GRE:
+        uuid: 44008174-0af1-51f0-b17f-5d2322b9b5f8
+        category: "Tunneling"
+        protocol: IP
+        protocol-number: 47
+
+    - AH:
+        uuid: 44008ed0-0af1-51f0-c4c0-8b5397104311
+        category: "Tunneling"
+        protocol: IP
+        protocol-number: 51
+
+    - ESP:
+        uuid: 44009bc8-0af1-51f0-ab9c-ff8975b52ba2
+        category: "Tunneling"
+        protocol: IP
+        protocol-number: 50
+
+    - AOL:
+        uuid: 4400a884-0af1-51f0-d222-e9ff50f34593
+        tcp-portrange: 5190-5194
+
+    - BGP:
+        uuid: 4400b39c-0af1-51f0-a89b-bc456ed8557f
+        category: "Network Services"
+        tcp-portrange: 179
+
+    - DHCP:
+        uuid: 4400c06c-0af1-51f0-499a-f217536b2a90
+        category: "Network Services"
+        udp-portrange: 67-68
+
+    - DNS:
+        uuid: 4400cd8c-0af1-51f0-8648-f3926853c7c1
+        category: "Network Services"
+        tcp-portrange: 53
+        udp-portrange: 53
+
+    - FINGER:
+        uuid: 4400da34-0af1-51f0-dfae-3293aea4161a
+        tcp-portrange: 79
+
+    - GOPHER:
+        uuid: 44011756-0af1-51f0-8ce3-2e643bf8e913
+        tcp-portrange: 70
+
+    - H323:
+        uuid: 440123ea-0af1-51f0-76f5-3916c4d428f3
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 1720 1503
+        udp-portrange: 1719
+
+    - HTTP:
+        uuid: 440130ba-0af1-51f0-3d47-53859473cfab
+        category: "Web Access"
+        tcp-portrange: 80
+
+    - HTTPS:
+        uuid: 44013d58-0af1-51f0-aff0-fdcf58907c6e
+        category: "Web Access"
+        tcp-portrange: 443
+
+    - IKE:
+        uuid: 44014a6e-0af1-51f0-87ff-0780be2ba8b0
+        category: "Tunneling"
+        udp-portrange: 500 4500
+
+    - IMAP:
+        uuid: 44015734-0af1-51f0-b60e-095280c22a80
+        category: "Email"
+        tcp-portrange: 143
+
+    - IMAPS:
+        uuid: 440163f0-0af1-51f0-def5-85d188ed4982
+        category: "Email"
+        tcp-portrange: 993
+
+    - Internet-Locator-Service:
+        uuid: 44017098-0af1-51f0-fdb0-1e42ad396523
+        tcp-portrange: 389
+
+    - IRC:
+        uuid: 44017bc4-0af1-51f0-b17c-c548569d56e6
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 6660-6669
+
+    - L2TP:
+        uuid: 4401889e-0af1-51f0-51cf-9563171cc1ad
+        category: "Tunneling"
+        tcp-portrange: 1701
+        udp-portrange: 1701
+
+    - LDAP:
+        uuid: 440195a0-0af1-51f0-af28-f09119d2fc15
+        category: "Authentication"
+        tcp-portrange: 389
+
+    - NetMeeting:
+        uuid: 4401a2b6-0af1-51f0-0bda-a4454469e0c7
+        tcp-portrange: 1720
+
+    - NFS:
+        uuid: 4401ae14-0af1-51f0-163f-b306a590763e
+        category: "File Access"
+        tcp-portrange: 111 2049
+        udp-portrange: 111 2049
+
+    - NNTP:
+        uuid: 4401bb70-0af1-51f0-ef16-69b133715f5e
+        tcp-portrange: 119
+
+    - NTP:
+        uuid: 4401c6d8-0af1-51f0-2ad2-582b3baf232d
+        category: "Network Services"
+        tcp-portrange: 123
+        udp-portrange: 123
+
+    - OSPF:
+        uuid: 4401d3bc-0af1-51f0-0402-f0abf8a1e0de
+        category: "Network Services"
+        protocol: IP
+        protocol-number: 89
+
+    - PC-Anywhere:
+        uuid: 4401e5b4-0af1-51f0-ef47-948556d9bcd6
+        category: "Remote Access"
+        tcp-portrange: 5631
+        udp-portrange: 5632
+
+    - PING:
+        uuid: 4401f662-0af1-51f0-e1d7-8bb1d2d22ccf
+        category: "Network Services"
+        protocol: ICMP
+        icmptype: 8
+        icmpcode: ~
+
+    - TIMESTAMP:
+        uuid: 44020396-0af1-51f0-b8fe-8c0715c41fb7
+        protocol: ICMP
+        icmptype: 13
+        icmpcode: ~
+
+    - INFO_REQUEST:
+        uuid: 44020f80-0af1-51f0-558b-0e840c61ce8b
+        protocol: ICMP
+        icmptype: 15
+        icmpcode: ~
+
+    - INFO_ADDRESS:
+        uuid: 44021b56-0af1-51f0-98bb-d9e9d968b624
+        protocol: ICMP
+        icmptype: 17
+        icmpcode: ~
+
+    - ONC-RPC:
+        uuid: 440226dc-0af1-51f0-095c-4c91e4b3ba6e
+        category: "Remote Access"
+        tcp-portrange: 111
+        udp-portrange: 111
+
+    - DCE-RPC:
+        uuid: 44023460-0af1-51f0-0e41-38cb333ab9cc
+        category: "Remote Access"
+        tcp-portrange: 135
+        udp-portrange: 135
+
+    - POP3:
+        uuid: 4402419e-0af1-51f0-ce05-bf4e3f4189e3
+        category: "Email"
+        tcp-portrange: 110
+
+    - POP3S:
+        uuid: 44024eb4-0af1-51f0-8ac9-c990072206cd
+        category: "Email"
+        tcp-portrange: 995
+
+    - PPTP:
+        uuid: 44025bc0-0af1-51f0-4a4d-73922a800e61
+        category: "Tunneling"
+        tcp-portrange: 1723
+
+    - QUAKE:
+        uuid: 440268ea-0af1-51f0-0597-df1482f8edc1
+        udp-portrange: 26000 27000 27910 27960
+
+    - RAUDIO:
+        uuid: 44027498-0af1-51f0-db90-f33fa20da15b
+        udp-portrange: 7070
+
+    - REXEC:
+        uuid: 4402856e-0af1-51f0-9eb9-a39e7168d218
+        tcp-portrange: 512
+
+    - RIP:
+        uuid: 44029298-0af1-51f0-44cd-62d058cf38c2
+        category: "Network Services"
+        udp-portrange: 520
+
+    - RLOGIN:
+        uuid: 44029fae-0af1-51f0-6b1d-ed00a11496b7
+        tcp-portrange: 513:512-1023
+
+    - RSH:
+        uuid: 4402ab2a-0af1-51f0-1707-35f3bc878dd2
+        tcp-portrange: 514:512-1023
+
+    - SCCP:
+        uuid: 4402bd40-0af1-51f0-b2a1-1b7d491b9010
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 2000
+
+    - SIP:
+        uuid: 4402ce0c-0af1-51f0-a1de-2e6848b1917c
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 5060
+        udp-portrange: 5060
+
+    - SIP-MSNmessenger:
+        uuid: 4402db4a-0af1-51f0-0b2c-d4a16bf36f9f
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 1863
+
+    - SAMBA:
+        uuid: 4402e89c-0af1-51f0-4503-c8bab2994bff
+        category: "File Access"
+        tcp-portrange: 139
+
+    - SMTP:
+        uuid: 4402f5b2-0af1-51f0-884f-d9b78f3c94aa
+        category: "Email"
+        tcp-portrange: 25
+
+    - SMTPS:
+        uuid: 440302f0-0af1-51f0-d74c-04031f086f86
+        category: "Email"
+        tcp-portrange: 465
+
+    - SNMP:
+        uuid: 440310ba-0af1-51f0-c434-d842e0302e47
+        category: "Network Services"
+        tcp-portrange: 161-162
+        udp-portrange: 161-162
+
+    - SSH:
+        uuid: 44031dda-0af1-51f0-b3e4-5f1a7b3e2a30
+        category: "Remote Access"
+        tcp-portrange: 22
+
+    - SYSLOG:
+        uuid: 44032b0e-0af1-51f0-3df7-727e660d020c
+        category: "Network Services"
+        udp-portrange: 514
+
+    - TALK:
+        uuid: 44033824-0af1-51f0-5332-6ec7961519fb
+        udp-portrange: 517-518
+
+    - TELNET:
+        uuid: 440343a0-0af1-51f0-abdc-b8f4cb8bcf0b
+        category: "Remote Access"
+        tcp-portrange: 23
+
+    - TFTP:
+        uuid: 440350fc-0af1-51f0-ac39-48232c926915
+        category: "File Access"
+        udp-portrange: 69
+
+    - MGCP:
+        uuid: 44035e9e-0af1-51f0-c0fa-3f45a6370d11
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 2428
+        udp-portrange: 2427 2727
+
+    - UUCP:
+        uuid: 44036e84-0af1-51f0-311f-7507bc3fee84
+        tcp-portrange: 540
+
+    - VDOLIVE:
+        uuid: 44037a3c-0af1-51f0-8c94-ee582d6226a9
+        tcp-portrange: 7000-7010
+
+    - WAIS:
+        uuid: 440385d6-0af1-51f0-4a12-640936590070
+        tcp-portrange: 210
+
+    - WINFRAME:
+        uuid: 4403979c-0af1-51f0-5f36-38d2c12e943c
+        tcp-portrange: 1494 2598
+
+    - X-WINDOWS:
+        uuid: 4403a6f6-0af1-51f0-5fba-705b9a3f9dab
+        category: "Remote Access"
+        tcp-portrange: 6000-6063
+
+    - PING6:
+        uuid: 4403b4ac-0af1-51f0-fcc7-700d0a52d038
+        protocol: ICMP6
+        icmptype: 128
+        icmpcode: ~
+
+    - MS-SQL:
+        uuid: 4403c0aa-0af1-51f0-0453-88fc17439b0b
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 1433 1434
+
+    - MYSQL:
+        uuid: 4403cde8-0af1-51f0-f4b2-6c5143f2df5d
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 3306
+
+    - RDP:
+        uuid: 4403db44-0af1-51f0-25fe-4290d69543ba
+        category: "Remote Access"
+        tcp-portrange: 3389
+
+    - VNC:
+        uuid: 4403e8c8-0af1-51f0-979f-80b3aea01910
+        category: "Remote Access"
+        tcp-portrange: 5900
+
+    - DHCP6:
+        uuid: 4403f656-0af1-51f0-f7a9-66cfc9120872
+        category: "Network Services"
+        udp-portrange: 546 547
+
+    - SQUID:
+        uuid: 4404039e-0af1-51f0-59c4-8a44b2e9afb2
+        category: "Tunneling"
+        tcp-portrange: 3128
+
+    - SOCKS:
+        uuid: 4404121c-0af1-51f0-05c4-b0b53f142425
+        category: "Tunneling"
+        tcp-portrange: 1080
+        udp-portrange: 1080
+
+    - WINS:
+        uuid: 44041f96-0af1-51f0-77b2-c8b95f4dcd6a
+        category: "Remote Access"
+        tcp-portrange: 1512
+        udp-portrange: 1512
+
+    - RADIUS:
+        uuid: 44042d6a-0af1-51f0-7cb7-92caf4b4ea76
+        category: "Authentication"
+        udp-portrange: 1812 1813
+
+    - RADIUS-OLD:
+        uuid: 44043b20-0af1-51f0-1df4-d03299aa80a0
+        udp-portrange: 1645 1646
+
+    - CVSPSERVER:
+        uuid: 44044700-0af1-51f0-4fff-e5f0cf74d083
+        tcp-portrange: 2401
+        udp-portrange: 2401
+
+    - AFS3:
+        uuid: 440452ea-0af1-51f0-e180-caa526111def
+        category: "File Access"
+        tcp-portrange: 7000-7009
+        udp-portrange: 7000-7009
+
+    - TRACEROUTE:
+        uuid: 44046082-0af1-51f0-db5a-3ba721f18153
+        category: "Network Services"
+        udp-portrange: 33434-33535
+
+    - RTSP:
+        uuid: 4404740a-0af1-51f0-13bd-2e419f52e874
+        category: "VoIP, Messaging & Other Applications"
+        tcp-portrange: 554 7070 8554
+        udp-portrange: 554
+
+    - MMS:
+        uuid: 44048544-0af1-51f0-6ab2-6a83fd00a793
+        tcp-portrange: 1755
+        udp-portrange: 1024-5000
+
+    - KERBEROS:
+        uuid: 44049174-0af1-51f0-fb90-f31f82acdab4
+        category: "Authentication"
+        tcp-portrange: 88 464
+        udp-portrange: 88 464
+
+    - LDAP_UDP:
+        uuid: 44049eee-0af1-51f0-f14f-482314410477
+        category: "Authentication"
+        udp-portrange: 389
+
+    - SMB:
+        uuid: 4404ac9a-0af1-51f0-113d-36fbcc76bad7
+        category: "File Access"
+        tcp-portrange: 445
+
+    - NONE:
+        uuid: 4404ba0a-0af1-51f0-7d31-3d78b66c7076
+        tcp-portrange: 0
+
+    - webproxy:
+        uuid: 548f55ba-0af1-51f0-0e12-eae934945f5b
+        proxy: enable
+        category: "Web Proxy"
+        protocol: ALL
+        tcp-portrange: 0-65535:0-65535
+
+
+firewall_service_group:
+    - Email Access:
+        uuid: 548fc3e2-0af1-51f0-2ba0-2248df42272b
+        member: "DNS" "IMAP" "IMAPS" "POP3" "POP3S" "SMTP" "SMTPS"
+
+    - Web Access:
+        uuid: 548feb60-0af1-51f0-9603-311f4062e8e3
+        member: "DNS" "HTTP" "HTTPS"
+
+    - Windows AD:
+        uuid: 548fffe2-0af1-51f0-47e0-f87eef271b53
+        member: "DCE-RPC" "DNS" "KERBEROS" "LDAP" "LDAP_UDP" "SAMBA" "SMB"
+
+    - Exchange Server:
+        uuid: 5490236e-0af1-51f0-7c8e-55c741eb4335
+        member: "DCE-RPC" "DNS" "HTTPS"
+
+
+vpn_certificate_ca:
+
+vpn_certificate_local:
+    - Fortinet_CA_SSL:
+        comments: "This is the default CA certificate the SSL Inspection will use when generating new server certificates."
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_CA_Untrusted:
+        comments: "This is the default CA certificate the SSL Inspection will use when generating new server certificates."
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_SSL:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_GUI_Server:
+        comments: "This is the default CA certificate the SSL Inspection will use when generating new server certificates."
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_SSL_RSA1024:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_SSL_RSA2048:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_SSL_RSA4096:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_SSL_DSA1024:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_SSL_DSA2048:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069178
+
+    - Fortinet_SSL_ECDSA256:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069179
+
+    - Fortinet_SSL_ECDSA384:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069179
+
+    - Fortinet_SSL_ECDSA521:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069179
+
+    - Fortinet_SSL_ED25519:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069179
+
+    - Fortinet_SSL_ED448:
+        comments: "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        range: global
+        source: factory
+        last-updated: 1743069179
+
+
+webfilter_ftgd-local-cat:
+    - custom1:
+        id: 140
+
+    - custom2:
+        id: 141
+
+
+ips_sensor:
+    - all_default:
+        comment: "All predefined signatures with default setting."
+        entries:
+            - 1:
+
+
+
+    - all_default_pass:
+        comment: "All predefined signatures with PASS action."
+        entries:
+            - 1:
+                action: pass
+
+
+
+    - protect_http_server:
+        comment: "Protect against HTTP server-side vulnerabilities."
+        entries:
+            - 1:
+                location: server
+                protocol: HTTP
+
+
+
+    - protect_email_server:
+        comment: "Protect against email server-side vulnerabilities."
+        entries:
+            - 1:
+                location: server
+                protocol: SMTP POP3 IMAP
+
+
+
+    - protect_client:
+        comment: "Protect against client-side vulnerabilities."
+        entries:
+            - 1:
+                location: client
+
+
+
+    - high_security:
+        comment: "Blocks all Critical/High/Medium and some Low severity vulnerabilities"
+        block-malicious-url: enable
+        entries:
+            - 1:
+                severity: medium high critical
+                status: enable
+                action: block
+
+            - 2:
+                severity: low
+
+
+
+
+firewall_shaper_traffic-shaper:
+    - high-priority:
+        maximum-bandwidth: 1048576
+        per-policy: enable
+
+    - medium-priority:
+        maximum-bandwidth: 1048576
+        priority: medium
+        per-policy: enable
+
+    - low-priority:
+        maximum-bandwidth: 1048576
+        priority: low
+        per-policy: enable
+
+    - guarantee-100kbps:
+        guaranteed-bandwidth: 100
+        maximum-bandwidth: 1048576
+        per-policy: enable
+
+    - shared-1M-pipe:
+        maximum-bandwidth: 1024
+
+
+firewall_proxy-address:
+    - IPv4-address:
+        uuid: 54911a8a-0af1-51f0-d209-e4e69317aa80
+        type: host-regex
+        host-regex: "^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])){3}$"
+
+    - IPv6-address:
+        uuid: 549127aa-0af1-51f0-9898-c6d9dbe1bf02
+        type: host-regex
+        host-regex: "^\\[(([0-9a-f]{0,4}:){1,7}[0-9a-f]{1,4})\\]$"
+
+
+web-proxy_global:
+    proxy-fqdn: "default.fqdn"
+
+application_list:
+    - block-high-risk:
+        entries:
+            - 1:
+                category: 2 6
+
+            - 2:
+                action: pass
+
+
+
+
+dlp_filepattern:
+    - 1:
+        name: "builtin-patterns"
+        entries:
+            - *.bat:
+
+            - *.com:
+
+            - *.dll:
+
+            - *.doc:
+
+            - *.exe:
+
+            - *.gz:
+
+            - *.hta:
+
+            - *.ppt:
+
+            - *.rar:
+
+            - *.scr:
+
+            - *.tar:
+
+            - *.tgz:
+
+            - *.vb?:
+
+            - *.wps:
+
+            - *.xl?:
+
+            - *.zip:
+
+            - *.pif:
+
+            - *.cpl:
+
+
+
+    - 2:
+        name: "all_executables"
+        entries:
+            - bat:
+                filter-type: type
+                file-type: bat
+
+            - exe:
+                filter-type: type
+                file-type: exe
+
+            - elf:
+                filter-type: type
+                file-type: elf
+
+            - hta:
+                filter-type: type
+                file-type: hta
+
+
+
+
+dlp_profile:
+    - Content_Summary:
+        summary-proto: smtp pop3 imap http-get http-post ftp nntp cifs
+
+    - Content_Archive:
+        summary-proto: smtp pop3 imap http-get http-post ftp nntp cifs
+
+    - Large-File:
+        rule:
+            - 1:
+                name: "Large-File-Filter"
+                proto: smtp pop3 imap http-get http-post
+                file-size: 5120
+                action: log-only
+
+
+
+
+webfilter_ips-urlfilter-setting:
+
+webfilter_ips-urlfilter-setting6:
+
+log_threat-weight:
+    web:
+        - 1:
+            category: 26
+            level: high
+
+        - 2:
+            category: 61
+            level: high
+
+        - 3:
+            category: 86
+            level: high
+
+        - 4:
+            category: 1
+            level: medium
+
+        - 5:
+            category: 3
+            level: medium
+
+        - 6:
+            category: 4
+            level: medium
+
+        - 7:
+            category: 5
+            level: medium
+
+        - 8:
+            category: 6
+            level: medium
+
+        - 9:
+            category: 12
+            level: medium
+
+        - 10:
+            category: 59
+            level: medium
+
+        - 11:
+            category: 62
+            level: medium
+
+        - 12:
+            category: 83
+            level: medium
+
+        - 13:
+            category: 72
+
+        - 14:
+            category: 14
+
+        - 15:
+            category: 96
+            level: medium
+
+
+    application:
+        - 1:
+            category: 2
+
+        - 2:
+            category: 6
+            level: medium
+
+
+
+icap_profile:
+    - default:
+        icap-headers:
+            - 1:
+                name: "X-Authenticated-User"
+                content: "$auth_user_uri"
+                base64-encoding: enable
+
+            - 2:
+                name: "X-Authenticated-Groups"
+                content: "$auth_group_uri"
+                base64-encoding: enable
+
+
+
+
+user_local:
+    - guest:
+        type: password
+        passwd: FortinetPasswordMask
+
+
+user_setting:
+    auth-cert: "Fortinet_Factory"
+
+user_group:
+    - SSO_Guest_Users:
+
+    - Guest-group:
+        member: "guest"
+
+
+vpn_ssl_web_host-check-software:
+    - FortiClient-AV:
+        guid: "1A0271D5-3D4F-46DB-0C2C-AB37BA90D9F7"
+
+    - FortiClient-FW:
+        type: fw
+        guid: "528CB157-D384-4593-AAAA-E42DFF111CED"
+
+    - FortiClient-AV-Vista:
+        guid: "385618A6-2256-708E-3FB9-7E98B93F91F9"
+
+    - FortiClient-FW-Vista:
+        type: fw
+        guid: "006D9983-6839-71D6-14E6-D7AD47ECD682"
+
+    - FortiClient5-AV:
+        guid: "5EEDDB8C-C27A-6714-3657-DBD811D1F1B7"
+
+    - AVG-Internet-Security-AV:
+        guid: "17DDD097-36FF-435F-9E1B-52D74245D6BF"
+
+    - AVG-Internet-Security-FW:
+        type: fw
+        guid: "8DECF618-9569-4340-B34A-D78D28969B66"
+
+    - AVG-Internet-Security-AV-Vista-Win7:
+        guid: "0C939084-9E57-CBDB-EA61-0B0C7F62AF82"
+
+    - AVG-Internet-Security-FW-Vista-Win7:
+        type: fw
+        guid: "34A811A1-D438-CA83-C13E-A23981B1E8F9"
+
+    - CA-Anti-Virus:
+        guid: "17CFD1EA-56CF-40B5-A06B-BD3A27397C93"
+
+    - CA-Internet-Security-AV:
+        guid: "6B98D35F-BB76-41C0-876B-A50645ED099A"
+
+    - CA-Internet-Security-FW:
+        type: fw
+        guid: "38102F93-1B6E-4922-90E1-A35D8DC6DAA3"
+
+    - CA-Internet-Security-AV-Vista-Win7:
+        guid: "3EED0195-0A4B-4EF3-CC4F-4F401BDC245F"
+
+    - CA-Internet-Security-FW-Vista-Win7:
+        type: fw
+        guid: "06D680B0-4024-4FAB-E710-E675E50F6324"
+
+    - CA-Personal-Firewall:
+        type: fw
+        guid: "14CB4B80-8E52-45EA-905E-67C1267B4160"
+
+    - F-Secure-Internet-Security-AV:
+        guid: "E7512ED5-4245-4B4D-AF3A-382D3F313F15"
+
+    - F-Secure-Internet-Security-FW:
+        type: fw
+        guid: "D4747503-0346-49EB-9262-997542F79BF4"
+
+    - F-Secure-Internet-Security-AV-Vista-Win7:
+        guid: "15414183-282E-D62C-CA37-EF24860A2F17"
+
+    - F-Secure-Internet-Security-FW-Vista-Win7:
+        type: fw
+        guid: "2D7AC0A6-6241-D774-E168-461178D9686C"
+
+    - Kaspersky-AV:
+        guid: "2C4D4BC6-0793-4956-A9F9-E252435469C0"
+
+    - Kaspersky-FW:
+        type: fw
+        guid: "2C4D4BC6-0793-4956-A9F9-E252435469C0"
+
+    - Kaspersky-AV-Vista-Win7:
+        guid: "AE1D740B-8F0F-D137-211D-873D44B3F4AE"
+
+    - Kaspersky-FW-Vista-Win7:
+        type: fw
+        guid: "9626F52E-C560-D06F-0A42-2E08BA60B3D5"
+
+    - McAfee-Internet-Security-Suite-AV:
+        guid: "84B5EE75-6421-4CDE-A33A-DD43BA9FAD83"
+
+    - McAfee-Internet-Security-Suite-FW:
+        type: fw
+        guid: "94894B63-8C7F-4050-BDA4-813CA00DA3E8"
+
+    - McAfee-Internet-Security-Suite-AV-Vista-Win7:
+        guid: "86355677-4064-3EA7-ABB3-1B136EB04637"
+
+    - McAfee-Internet-Security-Suite-FW-Vista-Win7:
+        type: fw
+        guid: "BE0ED752-0A0B-3FFF-80EC-B2269063014C"
+
+    - McAfee-Virus-Scan-Enterprise:
+        guid: "918A2B0B-2C60-4016-A4AB-E868DEABF7F0"
+
+    - Norton-360-2.0-AV:
+        guid: "A5F1BC7C-EA33-4247-961C-0217208396C4"
+
+    - Norton-360-2.0-FW:
+        type: fw
+        guid: "371C0A40-5A0C-4AD2-A6E5-69C02037FBF3"
+
+    - Norton-360-3.0-AV:
+        guid: "E10A9785-9598-4754-B552-92431C1C35F8"
+
+    - Norton-360-3.0-FW:
+        type: fw
+        guid: "7C21A4C9-F61F-4AC4-B722-A6E19C16F220"
+
+    - Norton-Internet-Security-AV:
+        guid: "E10A9785-9598-4754-B552-92431C1C35F8"
+
+    - Norton-Internet-Security-FW:
+        type: fw
+        guid: "7C21A4C9-F61F-4AC4-B722-A6E19C16F220"
+
+    - Norton-Internet-Security-AV-Vista-Win7:
+        guid: "88C95A36-8C3B-2F2C-1B8B-30FCCFDC4855"
+
+    - Norton-Internet-Security-FW-Vista-Win7:
+        type: fw
+        guid: "B0F2DB13-C654-2E74-30D4-99C9310F0F2E"
+
+    - Symantec-Endpoint-Protection-AV:
+        guid: "FB06448E-52B8-493A-90F3-E43226D3305C"
+
+    - Symantec-Endpoint-Protection-FW:
+        type: fw
+        guid: "BE898FE3-CD0B-4014-85A9-03DB9923DDB6"
+
+    - Symantec-Endpoint-Protection-AV-Vista-Win7:
+        guid: "88C95A36-8C3B-2F2C-1B8B-30FCCFDC4855"
+
+    - Symantec-Endpoint-Protection-FW-Vista-Win7:
+        type: fw
+        guid: "B0F2DB13-C654-2E74-30D4-99C9310F0F2E"
+
+    - Panda-Antivirus+Firewall-2008-AV:
+        guid: "EEE2D94A-D4C1-421A-AB2C-2CE8FE51747A"
+
+    - Panda-Antivirus+Firewall-2008-FW:
+        type: fw
+        guid: "7B090DC0-8905-4BAF-8040-FD98A41C8FB8"
+
+    - Panda-Internet-Security-AV:
+        guid: "4570FB70-5C9E-47E9-B16C-A3A6A06C4BF0"
+
+    - Panda-Internet-Security-2006~2007-FW:
+        type: fw
+        guid: "4570FB70-5C9E-47E9-B16C-A3A6A06C4BF0"
+
+    - Panda-Internet-Security-2008~2009-FW:
+        type: fw
+        guid: "7B090DC0-8905-4BAF-8040-FD98A41C8FB8"
+
+    - Sophos-Anti-Virus:
+        guid: "3F13C776-3CBE-4DE9-8BF6-09E5183CA2BD"
+
+    - Sophos-Enpoint-Secuirty-and-Control-FW:
+        type: fw
+        guid: "0786E95E-326A-4524-9691-41EF88FB52EA"
+
+    - Sophos-Enpoint-Secuirty-and-Control-AV-Vista-Win7:
+        guid: "479CCF92-4960-B3E0-7373-BF453B467D2C"
+
+    - Sophos-Enpoint-Secuirty-and-Control-FW-Vista-Win7:
+        type: fw
+        guid: "7FA74EB7-030F-B2B8-582C-1670C5953A57"
+
+    - Trend-Micro-AV:
+        guid: "7D2296BC-32CC-4519-917E-52E652474AF5"
+
+    - Trend-Micro-FW:
+        type: fw
+        guid: "3E790E9E-6A5D-4303-A7F9-185EC20F3EB6"
+
+    - Trend-Micro-AV-Vista-Win7:
+        guid: "48929DFC-7A52-A34F-8351-C4DBEDBD9C50"
+
+    - Trend-Micro-FW-Vista-Win7:
+        type: fw
+        guid: "70A91CD9-303D-A217-A80E-6DEE136EDB2B"
+
+    - ZoneAlarm-AV:
+        guid: "5D467B10-818C-4CAB-9FF7-6893B5B8F3CF"
+
+    - ZoneAlarm-FW:
+        type: fw
+        guid: "829BDA32-94B3-44F4-8446-F8FCFF809F8B"
+
+    - ZoneAlarm-AV-Vista-Win7:
+        guid: "D61596DF-D219-341C-49B3-AD30538CBC5B"
+
+    - ZoneAlarm-FW-Vista-Win7:
+        type: fw
+        guid: "EE2E17FA-9876-3544-62EC-0405AD5FFB20"
+
+    - ESET-Smart-Security-AV:
+        guid: "19259FAE-8396-A113-46DB-15B0E7DFA289"
+
+    - ESET-Smart-Security-FW:
+        type: fw
+        guid: "211E1E8B-C9F9-A04B-6D84-BC85190CE5F2"
+
+
+vpn_ssl_web_portal:
+    - full-access:
+        tunnel-mode: enable
+        ipv6-tunnel-mode: enable
+        web-mode: enable
+        ip-pools: "SSLVPN_TUNNEL_ADDR1"
+        ipv6-pools: "SSLVPN_TUNNEL_IPv6_ADDR1"
+
+    - web-access:
+        web-mode: enable
+
+    - tunnel-access:
+        tunnel-mode: enable
+        ipv6-tunnel-mode: enable
+        ip-pools: "SSLVPN_TUNNEL_ADDR1"
+        ipv6-pools: "SSLVPN_TUNNEL_IPv6_ADDR1"
+
+
+vpn_ssl_settings:
+    banned-cipher: SHA1 SHA256 SHA384
+    servercert: ''
+    port: 443
+
+voip_profile:
+    - default:
+        comment: "Default VoIP profile."
+        sip:
+
+
+    - strict:
+        sip:
+            malformed-request-line: discard
+            malformed-header-via: discard
+            malformed-header-from: discard
+            malformed-header-to: discard
+            malformed-header-call-id: discard
+            malformed-header-cseq: discard
+            malformed-header-rack: discard
+            malformed-header-rseq: discard
+            malformed-header-contact: discard
+            malformed-header-record-route: discard
+            malformed-header-route: discard
+            malformed-header-expires: discard
+            malformed-header-content-type: discard
+            malformed-header-content-length: discard
+            malformed-header-max-forwards: discard
+            malformed-header-allow: discard
+            malformed-header-p-asserted-identity: discard
+            malformed-header-sdp-v: discard
+            malformed-header-sdp-o: discard
+            malformed-header-sdp-s: discard
+            malformed-header-sdp-i: discard
+            malformed-header-sdp-c: discard
+            malformed-header-sdp-b: discard
+            malformed-header-sdp-z: discard
+            malformed-header-sdp-k: discard
+            malformed-header-sdp-a: discard
+            malformed-header-sdp-t: discard
+            malformed-header-sdp-r: discard
+            malformed-header-sdp-m: discard
+
+
+
+system_sdwan:
+    status: enable
+    zone:
+        - virtual-wan-link:
+
+
+    health-check:
+        - Default_DNS:
+            system-dns: enable
+            interval: 1000
+            probe-timeout: 1000
+            recoverytime: 10
+            sla:
+                - 1:
+                    latency-threshold: 250
+                    jitter-threshold: 50
+                    packetloss-threshold: 5
+
+
+
+        - Default_Office_365:
+            server: "www.office.com"
+            protocol: https
+            interval: 1000
+            probe-timeout: 1000
+            recoverytime: 10
+            sla:
+                - 1:
+                    latency-threshold: 250
+                    jitter-threshold: 50
+                    packetloss-threshold: 5
+
+
+
+        - Default_Gmail:
+            server: "gmail.com"
+            interval: 1000
+            probe-timeout: 1000
+            recoverytime: 10
+            sla:
+                - 1:
+                    latency-threshold: 250
+                    jitter-threshold: 50
+                    packetloss-threshold: 2
+
+
+
+        - Default_Google Search:
+            server: "www.google.com"
+            protocol: https
+            interval: 1000
+            probe-timeout: 1000
+            recoverytime: 10
+            sla:
+                - 1:
+                    latency-threshold: 250
+                    jitter-threshold: 50
+                    packetloss-threshold: 5
+
+
+
+        - Default_FortiGuard:
+            server: "fortiguard.com"
+            protocol: https
+            interval: 1000
+            probe-timeout: 1000
+            recoverytime: 10
+            sla:
+                - 1:
+                    latency-threshold: 250
+                    jitter-threshold: 50
+                    packetloss-threshold: 5
+
+
+
+
+
+vpn_ipsec_phase1-interface:
+    - VPN-68:
+        interface: "wan2"
+        peertype: any
+        net-device: disable
+        proposal: aes128-sha256 aes256-sha256 aes128-sha1 aes256-sha1
+        comments: "VPN: VPN-68 (Created by VPN wizard)"
+        wizard-type: static-fortigate
+        remote-gw: 192.168.2.8
+        psksecret: FortinetPasswordMask
+
+    - VPNSITE1:
+        interface: "wan2"
+        peertype: any
+        net-device: disable
+        proposal: aes128-sha256 aes256-sha256 aes128-sha1 aes256-sha1
+        comments: "VPN: VPNSITE1 (Created by VPN wizard)"
+        wizard-type: static-fortigate
+        remote-gw: 192.168.2.1
+        psksecret: FortinetPasswordMask
+
+
+vpn_ipsec_phase2-interface:
+    - VPN-68:
+        phase1name: "VPN-68"
+        proposal: aes128-sha1 aes256-sha1 aes128-sha256 aes256-sha256 aes128gcm aes256gcm chacha20poly1305
+        comments: "VPN: VPN-68 (Created by VPN wizard)"
+        src-addr-type: name
+        dst-addr-type: name
+        src-name: "VPN-68_local"
+        dst-name: "VPN-68_remote"
+
+    - VPNSITE1:
+        phase1name: "VPNSITE1"
+        proposal: aes128-sha1 aes256-sha1 aes128-sha256 aes256-sha256 aes128gcm aes256gcm chacha20poly1305
+        comments: "VPN: VPNSITE1 (Created by VPN wizard)"
+        src-addr-type: name
+        dst-addr-type: name
+        src-name: "VPNSITE1_local"
+        dst-name: "VPNSITE1_remote"
+
+
+dnsfilter_profile:
+    - default:
+        comment: "Default dns filtering."
+        ftgd-dns:
+            filters:
+                - 1:
+                    category: 2
+
+                - 2:
+                    category: 7
+
+                - 3:
+                    category: 8
+
+                - 4:
+                    category: 9
+
+                - 5:
+                    category: 11
+
+                - 6:
+                    category: 12
+
+                - 7:
+                    category: 13
+
+                - 8:
+                    category: 14
+
+                - 9:
+                    category: 15
+
+                - 10:
+                    category: 16
+
+                - 11:
+
+                - 12:
+                    category: 57
+
+                - 13:
+                    category: 63
+
+                - 14:
+                    category: 64
+
+                - 15:
+                    category: 65
+
+                - 16:
+                    category: 66
+
+                - 17:
+                    category: 67
+
+                - 18:
+                    category: 26
+                    action: block
+
+                - 19:
+                    category: 61
+                    action: block
+
+                - 20:
+                    category: 86
+                    action: block
+
+                - 21:
+                    category: 88
+                    action: block
+
+                - 22:
+                    category: 90
+                    action: block
+
+                - 23:
+                    category: 91
+                    action: block
+
+                - 24:
+                    category: 96
+                    action: block
+
+                - 25:
+                    category: 98
+                    action: block
+
+                - 26:
+                    category: 99
+                    action: block
+
+
+
+        block-botnet: enable
+
+
+antivirus_settings:
+    machine-learning-detection: enable
+    grayware: enable
+
+webfilter_profile:
+    - monitor-all:
+        comment: "Monitor and log all visited URLs, flow-based."
+        ftgd-wf:
+            options: ~
+            filters:
+                - 1:
+                    category: 1
+
+                - 2:
+                    category: 3
+
+                - 3:
+                    category: 4
+
+                - 4:
+                    category: 5
+
+                - 5:
+                    category: 6
+
+                - 6:
+                    category: 12
+
+                - 7:
+                    category: 59
+
+                - 8:
+                    category: 62
+
+                - 9:
+                    category: 83
+
+                - 10:
+                    category: 2
+
+                - 11:
+                    category: 7
+
+                - 12:
+                    category: 8
+
+                - 13:
+                    category: 9
+
+                - 14:
+                    category: 11
+
+                - 15:
+                    category: 13
+
+                - 16:
+                    category: 14
+
+                - 17:
+                    category: 15
+
+                - 18:
+                    category: 16
+
+                - 19:
+                    category: 57
+
+                - 20:
+                    category: 63
+
+                - 21:
+                    category: 64
+
+                - 22:
+                    category: 65
+
+                - 23:
+                    category: 66
+
+                - 24:
+                    category: 67
+
+                - 25:
+                    category: 19
+
+                - 26:
+                    category: 24
+
+                - 27:
+                    category: 25
+
+                - 28:
+                    category: 72
+
+                - 29:
+                    category: 75
+
+                - 30:
+                    category: 76
+
+                - 31:
+                    category: 26
+
+                - 32:
+                    category: 61
+
+                - 33:
+                    category: 86
+
+                - 34:
+                    category: 17
+
+                - 35:
+                    category: 18
+
+                - 36:
+                    category: 20
+
+                - 37:
+                    category: 23
+
+                - 38:
+                    category: 28
+
+                - 39:
+                    category: 29
+
+                - 40:
+                    category: 30
+
+                - 41:
+                    category: 33
+
+                - 42:
+                    category: 34
+
+                - 43:
+                    category: 35
+
+                - 44:
+                    category: 36
+
+                - 45:
+                    category: 37
+
+                - 46:
+                    category: 38
+
+                - 47:
+                    category: 39
+
+                - 48:
+                    category: 40
+
+                - 49:
+                    category: 42
+
+                - 50:
+                    category: 44
+
+                - 51:
+                    category: 46
+
+                - 52:
+                    category: 47
+
+                - 53:
+                    category: 48
+
+                - 54:
+                    category: 54
+
+                - 55:
+                    category: 55
+
+                - 56:
+                    category: 58
+
+                - 57:
+                    category: 68
+
+                - 58:
+                    category: 69
+
+                - 59:
+                    category: 70
+
+                - 60:
+                    category: 71
+
+                - 61:
+                    category: 77
+
+                - 62:
+                    category: 78
+
+                - 63:
+                    category: 79
+
+                - 64:
+                    category: 80
+
+                - 65:
+                    category: 82
+
+                - 66:
+                    category: 85
+
+                - 67:
+                    category: 87
+
+                - 68:
+                    category: 31
+
+                - 69:
+                    category: 41
+
+                - 70:
+                    category: 43
+
+                - 71:
+                    category: 49
+
+                - 72:
+                    category: 50
+
+                - 73:
+                    category: 51
+
+                - 74:
+                    category: 52
+
+                - 75:
+                    category: 53
+
+                - 76:
+                    category: 56
+
+                - 77:
+                    category: 81
+
+                - 78:
+                    category: 84
+
+                - 79:
+
+                - 80:
+                    category: 88
+
+                - 81:
+                    category: 89
+
+                - 82:
+                    category: 90
+
+                - 83:
+                    category: 91
+
+                - 84:
+                    category: 92
+
+                - 85:
+                    category: 93
+
+                - 86:
+                    category: 94
+
+                - 87:
+                    category: 95
+
+                - 88:
+                    category: 96
+
+                - 89:
+                    category: 97
+
+                - 90:
+                    category: 98
+
+                - 91:
+                    category: 99
+
+                - 92:
+                    category: 100
+
+                - 93:
+                    category: 101
+
+
+
+        log-all-url: enable
+        web-content-log: disable
+        web-filter-command-block-log: disable
+        web-filter-cookie-log: disable
+        web-url-log: disable
+        web-invalid-domain-log: disable
+        web-ftgd-err-log: disable
+
+
+emailfilter_profile:
+    - sniffer-profile:
+        comment: "Malware and phishing URL monitoring."
+        imap:
+
+        pop3:
+
+        smtp:
+
+
+    - default:
+        comment: "Malware and phishing URL filtering."
+        imap:
+
+        pop3:
+
+        smtp:
+
+
+
+log_memory_setting:
+    status: enable
+
+log_null-device_setting:
+    status: disable
+
+firewall_schedule_recurring:
+    - always:
+        day: sunday monday tuesday wednesday thursday friday saturday
+
+    - none:
+
+    - default-darrp-optimize:
+        start: 01:00
+        end: 01:30
+        day: sunday monday tuesday wednesday thursday friday saturday
+
+
+firewall_ssh_setting:
+    caname: "g-Fortinet_SSH_CA"
+    untrusted-caname: "g-Fortinet_SSH_CA_Untrusted"
+    hostkey-rsa2048: "g-Fortinet_SSH_RSA2048"
+    hostkey-dsa1024: "g-Fortinet_SSH_DSA1024"
+    hostkey-ecdsa256: "g-Fortinet_SSH_ECDSA256"
+    hostkey-ecdsa384: "g-Fortinet_SSH_ECDSA384"
+    hostkey-ecdsa521: "g-Fortinet_SSH_ECDSA521"
+    hostkey-ed25519: "g-Fortinet_SSH_ED25519"
+
+firewall_profile-protocol-options:
+    - default:
+        comment: "All default services."
+        http:
+            ports: 80
+            options: ~
+            post-lang: ~
+
+        ftp:
+            ports: 21
+            options: splice
+
+        imap:
+            ports: 143
+            options: fragmail
+
+        mapi:
+            ports: 135
+            options: fragmail
+
+        pop3:
+            ports: 110
+            options: fragmail
+
+        smtp:
+            ports: 25
+            options: fragmail splice
+
+        nntp:
+            ports: 119
+            options: splice
+
+        ssh:
+            options: ~
+
+        dns:
+            ports: 53
+
+        cifs:
+            ports: 445
+            options: ~
+
+
+
+firewall_ssl-ssh-profile:
+    - deep-inspection:
+        comment: "Read-only deep inspection profile."
+        https:
+            ports: 443
+            status: deep-inspection
+            quic: inspect
+
+        ftps:
+            ports: 990
+            status: deep-inspection
+
+        imaps:
+            ports: 993
+            status: deep-inspection
+
+        pop3s:
+            ports: 995
+            status: deep-inspection
+
+        smtps:
+            ports: 465
+            status: deep-inspection
+
+        ssh:
+            ports: 22
+            status: disable
+
+        dot:
+            status: disable
+            quic: inspect
+
+        ssl-exempt:
+            - 1:
+                fortiguard-category: 31
+
+            - 2:
+                fortiguard-category: 33
+
+            - 3:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-adobe"
+
+            - 4:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-Adobe Login"
+
+            - 5:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-android"
+
+            - 6:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-apple"
+
+            - 7:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-appstore"
+
+            - 8:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-auth.gfx.ms"
+
+            - 9:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-citrix"
+
+            - 10:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-dropbox.com"
+
+            - 11:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-eease"
+
+            - 12:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-firefox update server"
+
+            - 13:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-fortinet"
+
+            - 14:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-googleapis.com"
+
+            - 15:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-google-drive"
+
+            - 16:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-google-play2"
+
+            - 17:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-google-play3"
+
+            - 18:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-Gotomeeting"
+
+            - 19:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-icloud"
+
+            - 20:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-itunes"
+
+            - 21:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-microsoft"
+
+            - 22:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-skype"
+
+            - 23:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-softwareupdate.vmware.com"
+
+            - 24:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-verisign"
+
+            - 25:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-Windows update 2"
+
+            - 26:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-live.com"
+
+            - 27:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-google-play"
+
+            - 28:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-update.microsoft.com"
+
+            - 29:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-swscan.apple.com"
+
+            - 30:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-autoupdate.opera.com"
+
+            - 31:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-cdn-apple"
+
+            - 32:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-mzstatic-apple"
+
+
+
+    - custom-deep-inspection:
+        comment: "Customizable deep inspection profile."
+        https:
+            ports: 443
+            status: deep-inspection
+            quic: inspect
+
+        ftps:
+            ports: 990
+            status: deep-inspection
+
+        imaps:
+            ports: 993
+            status: deep-inspection
+
+        pop3s:
+            ports: 995
+            status: deep-inspection
+
+        smtps:
+            ports: 465
+            status: deep-inspection
+
+        ssh:
+            ports: 22
+            status: disable
+
+        dot:
+            status: disable
+            quic: inspect
+
+        ssl-exempt:
+            - 1:
+                fortiguard-category: 31
+
+            - 2:
+                fortiguard-category: 33
+
+            - 3:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-adobe"
+
+            - 4:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-Adobe Login"
+
+            - 5:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-android"
+
+            - 6:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-apple"
+
+            - 7:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-appstore"
+
+            - 8:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-auth.gfx.ms"
+
+            - 9:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-citrix"
+
+            - 10:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-dropbox.com"
+
+            - 11:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-eease"
+
+            - 12:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-firefox update server"
+
+            - 13:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-fortinet"
+
+            - 14:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-googleapis.com"
+
+            - 15:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-google-drive"
+
+            - 16:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-google-play2"
+
+            - 17:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-google-play3"
+
+            - 18:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-Gotomeeting"
+
+            - 19:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-icloud"
+
+            - 20:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-itunes"
+
+            - 21:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-microsoft"
+
+            - 22:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-skype"
+
+            - 23:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-softwareupdate.vmware.com"
+
+            - 24:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-verisign"
+
+            - 25:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-Windows update 2"
+
+            - 26:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-live.com"
+
+            - 27:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-google-play"
+
+            - 28:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-update.microsoft.com"
+
+            - 29:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-swscan.apple.com"
+
+            - 30:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-autoupdate.opera.com"
+
+            - 31:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-cdn-apple"
+
+            - 32:
+                type: wildcard-fqdn
+                wildcard-fqdn: "g-mzstatic-apple"
+
+
+
+    - no-inspection:
+        comment: "Read-only profile that does no inspection."
+        https:
+            ports: 443
+            status: disable
+            quic: inspect
+
+        ftps:
+            status: disable
+
+        imaps:
+            status: disable
+
+        pop3s:
+            status: disable
+
+        smtps:
+            status: disable
+
+        ssh:
+            ports: 22
+            status: disable
+
+        dot:
+            status: disable
+            quic: inspect
+
+
+    - certificate-inspection:
+        comment: "Read-only SSL handshake inspection profile."
+        https:
+            ports: 443
+            status: certificate-inspection
+            quic: inspect
+
+        ftps:
+            status: disable
+
+        imaps:
+            status: disable
+
+        pop3s:
+            status: disable
+
+        smtps:
+            status: disable
+
+        ssh:
+            ports: 22
+            status: disable
+
+        dot:
+            status: disable
+            quic: inspect
+
+
+
+waf_profile:
+    - default:
+        signature:
+            main-class_100000000:
+                action: block
+                severity: high
+
+            main-class_20000000:
+
+            main-class_30000000:
+                status: enable
+                action: block
+                severity: high
+
+            main-class_40000000:
+
+            main-class_50000000:
+                status: enable
+                action: block
+                severity: high
+
+            main-class_60000000:
+
+            main-class_70000000:
+                status: enable
+                action: block
+                severity: high
+
+            main-class_80000000:
+                status: enable
+                severity: low
+
+            main-class_110000000:
+                status: enable
+                severity: high
+
+            main-class_90000000:
+                status: enable
+                action: block
+                severity: high
+
+            disabled-signature: 80080005 80200001 60030001 60120001 80080003 90410001 90410002
+
+        constraint:
+            header-length:
+                status: enable
+                log: enable
+                severity: low
+
+            content-length:
+                status: enable
+                log: enable
+                severity: low
+
+            param-length:
+                status: enable
+                log: enable
+                severity: low
+
+            line-length:
+                status: enable
+                log: enable
+                severity: low
+
+            url-param-length:
+                status: enable
+                log: enable
+                severity: low
+
+            version:
+                log: enable
+
+            method:
+                action: block
+                log: enable
+
+            hostname:
+                action: block
+                log: enable
+
+            malformed:
+                log: enable
+
+            max-cookie:
+                status: enable
+                log: enable
+                severity: low
+
+            max-header-line:
+                status: enable
+                log: enable
+                severity: low
+
+            max-url-param:
+                status: enable
+                log: enable
+                severity: low
+
+            max-range-segment:
+                status: enable
+                log: enable
+                severity: high
+
+
+
+
+casb_saas-application:
+
+casb_user-activity:
+
+casb_profile:
+    - default:
+
+
+firewall_policy:
+    - 14:
+        name: "8 -> wan2"
+        uuid: cfa33af6-d5a2-51f0-a736-3c76cabf0012
+        srcintf: "Link-AG081"
+        dstintf: "wan2"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+        nat: enable
+
+    - 1:
+        name: "Internal"
+        uuid: 590886fc-0af1-51f0-2838-c013c6b59eaf
+        srcintf: "internal"
+        dstintf: "wan1"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+        nat: enable
+
+    - 13:
+        name: "89"
+        uuid: 9175064a-d1d0-51f0-5723-7dd6b3ac9f4b
+        srcintf: "Link-AG081"
+        dstintf: "LINK-AG091"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+
+    - 2:
+        name: "AG008-to-outside"
+        uuid: 53a69808-1f4f-51f0-1b06-09b22a6b3f5d
+        srcintf: "Link-AG081"
+        dstintf: "wan1"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+
+    - 4:
+        name: "AG009-to-outside"
+        uuid: 87494a1a-3652-51f0-d380-28dd9537c41f
+        srcintf: "LINK-AG091"
+        dstintf: "wan1"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+
+    - 5:
+        name: "Test"
+        uuid: c2ef4976-36dd-51f0-1efb-2a21ff2846a6
+        srcintf: "wan1"
+        dstintf: "LINK-AG091"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+
+    - 6:
+        name: "Connexion config web AG09"
+        uuid: c36be35c-36ef-51f0-14e4-14ae21c691bd
+        srcintf: "LINK-AG091"
+        dstintf: "internal"
+        action: accept
+        srcaddr: "VLAN50-AG09"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+
+    - 7:
+        name: "Internet -intern"
+        uuid: c44cf15c-c39f-51f0-83e5-f75a28a68f61
+        srcintf: "wan1"
+        dstintf: "Link-AG081"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+
+    - 9:
+        name: "testsnmp"
+        uuid: f8737d3a-c5ec-51f0-8119-3065034ec05f
+        srcintf: "wan1"
+        dstintf: "LINK-AG091"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "all"
+        schedule: "always"
+        service: "ALL"
+
+    - 8:
+        name: "vpn_VPN-68_local_0"
+        uuid: bcd58e1a-c5f8-51f0-0b8b-a920ba58420d
+        srcintf: "Link-AG081"
+        dstintf: "VPN-68"
+        action: accept
+        srcaddr: "all"
+        dstaddr: "VPN-68_remote"
+        schedule: "always"
+        service: "ALL"
+        comments: "VPN: VPN-68 (Created by VPN wizard)"
+
+    - 10:
+        name: "vpn_VPN-68_remote_0"
+        uuid: bcf2c3cc-c5f8-51f0-bd10-f99af7798480
+        srcintf: "VPN-68"
+        dstintf: "Link-AG081"
+        action: accept
+        srcaddr: "VPN-68_remote"
+        dstaddr: "VPN-68_local"
+        schedule: "always"
+        service: "ALL"
+        comments: "VPN: VPN-68 (Created by VPN wizard)"
+
+    - 11:
+        name: "vpn_VPNSITE1_local_0"
+        uuid: 09d11982-c603-51f0-721c-d415e78ed4d8
+        srcintf: "Link-AG081"
+        dstintf: "VPNSITE1"
+        action: accept
+        srcaddr: "VPNSITE1_local"
+        dstaddr: "VPNSITE1_remote"
+        schedule: "always"
+        service: "ALL"
+        comments: "VPN: VPNSITE1 (Created by VPN wizard)"
+
+    - 12:
+        name: "vpn_VPNSITE1_remote_0"
+        uuid: 0a3371fe-c603-51f0-e7bd-eeef7fbca2e2
+        srcintf: "VPNSITE1"
+        dstintf: "Link-AG081"
+        action: accept
+        srcaddr: "VPNSITE1_remote"
+        dstaddr: "VPNSITE1_local"
+        schedule: "always"
+        service: "ALL"
+        comments: "VPN: VPNSITE1 (Created by VPN wizard)"
+
+
+switch-controller_security-policy_802-1X:
+    - 802-1X-policy-default:
+        user-group: "SSO_Guest_Users"
+        mac-auth-bypass: disable
+        open-auth: disable
+        eap-passthru: enable
+        eap-auto-untagged-vlans: enable
+        guest-vlan: disable
+        auth-fail-vlan: disable
+        framevid-apply: enable
+        radius-timeout-overwrite: disable
+        authserver-timeout-vlan: disable
+
+
+switch-controller_security-policy_local-access:
+    - default:
+        mgmt-allowaccess: https ping ssh
+        internal-allowaccess: https ping ssh
+
+
+switch-controller_lldp-profile:
+    - default:
+        med-tlvs: inventory-management network-policy location-identification
+        auto-isl: disable
+        med-network-policy:
+            - voice:
+
+            - voice-signaling:
+
+            - guest-voice:
+
+            - guest-voice-signaling:
+
+            - softphone-voice:
+
+            - video-conferencing:
+
+            - streaming-video:
+
+            - video-signaling:
+
+
+        med-location-service:
+            - coordinates:
+
+            - address-civic:
+
+            - elin-number:
+
+
+
+    - default-auto-isl:
+
+    - default-auto-mclag-icl:
+        auto-mclag-icl: enable
+
+
+switch-controller_qos_dot1p-map:
+    - voice-dot1p:
+        priority-0: queue-4
+        priority-1: queue-4
+        priority-2: queue-3
+        priority-3: queue-2
+        priority-4: queue-3
+        priority-5: queue-1
+        priority-6: queue-2
+        priority-7: queue-2
+
+
+switch-controller_qos_ip-dscp-map:
+    - voice-dscp:
+        map:
+            - 1:
+                cos-queue: 1
+                value: 46
+
+            - 2:
+                cos-queue: 2
+                value: 24,26,48,56
+
+            - 5:
+                cos-queue: 3
+                value: 34
+
+
+
+
+switch-controller_qos_queue-policy:
+    - default:
+        schedule: round-robin
+        rate-by: kbps
+        cos-queue:
+            - queue-0:
+
+            - queue-1:
+
+            - queue-2:
+
+            - queue-3:
+
+            - queue-4:
+
+            - queue-5:
+
+            - queue-6:
+
+            - queue-7:
+
+
+
+    - voice-egress:
+        schedule: weighted
+        rate-by: kbps
+        cos-queue:
+            - queue-0:
+
+            - queue-1:
+                weight: 0
+
+            - queue-2:
+                weight: 6
+
+            - queue-3:
+                weight: 37
+
+            - queue-4:
+                weight: 12
+
+            - queue-5:
+
+            - queue-6:
+
+            - queue-7:
+
+
+
+
+switch-controller_qos_qos-policy:
+    - default:
+
+    - voice-qos:
+        trust-dot1p-map: "voice-dot1p"
+        trust-ip-dscp-map: "voice-dscp"
+        queue-policy: "voice-egress"
+
+
+switch-controller_storm-control-policy:
+    - default:
+        description: "default storm control on all port"
+
+    - auto-config:
+        description: "storm control policy for fortilink-isl-icl port"
+        storm-control-mode: disabled
+
+
+switch-controller_auto-config_policy:
+    - pse:
+
+    - default:
+
+    - default-icl:
+        poe-status: disable
+        igmp-flood-report: enable
+        igmp-flood-traffic: enable
+
+
+switch-controller_initial-config_template:
+    - _default:
+        vlanid: 1
+
+    - quarantine:
+        vlanid: 4093
+        dhcp-server: enable
+
+    - rspan:
+        vlanid: 4092
+        dhcp-server: enable
+
+    - voice:
+        vlanid: 4091
+
+    - video:
+        vlanid: 4090
+
+    - onboarding:
+        vlanid: 4089
+
+    - nac_segment:
+        vlanid: 4088
+        dhcp-server: enable
+
+
+switch-controller_switch-profile:
+    - default:
+
+
+switch-controller_ptp_profile:
+    - default:
+
+
+switch-controller_ptp_interface-policy:
+    - default:
+
+
+switch-controller_remote-log:
+    - syslogd:
+
+    - syslogd2:
+
+
+wireless-controller_setting:
+    darrp-optimize-schedules: "default-darrp-optimize"
+
+wireless-controller_arrp-profile:
+    - arrp-default:
+
+
+wireless-controller_wids-profile:
+    - default:
+        comment: "Default WIDS profile."
+        ap-scan: enable
+        wireless-bridge: enable
+        deauth-broadcast: enable
+        null-ssid-probe-resp: enable
+        long-duration-attack: enable
+        invalid-mac-oui: enable
+        weak-wep-iv: enable
+        auth-frame-flood: enable
+        assoc-frame-flood: enable
+        spoofed-deauth: enable
+        asleap-attack: enable
+        eapol-start-flood: enable
+        eapol-logoff-flood: enable
+        eapol-succ-flood: enable
+        eapol-fail-flood: enable
+        eapol-pre-succ-flood: enable
+        eapol-pre-fail-flood: enable
+
+    - default-wids-apscan-enabled:
+        ap-scan: enable
+
+
+wireless-controller_ble-profile:
+    - fortiap-discovery:
+        advertising: ibeacon eddystone-uid eddystone-url
+        ibeacon-uuid: "wtp-uuid"
+
+
+router_rip:
+    redistribute_connected:
+
+    redistribute_static:
+
+    redistribute_ospf:
+
+    redistribute_bgp:
+
+    redistribute_isis:
+
+
+router_ripng:
+    redistribute_connected:
+
+    redistribute_static:
+
+    redistribute_ospf:
+
+    redistribute_bgp:
+
+    redistribute_isis:
+
+
+router_static:
+    - 1:
+        dst: 172.27.0.0 255.255.0.0
+        gateway: 172.27.251.6
+        device: "Link-AG081"
+
+    - 3:
+        dst: 172.28.0.0 255.255.0.0
+        gateway: 172.28.251.6
+        device: "LINK-AG091"
+
+    - 4:
+        gateway: 172.27.0.1
+        device: "wan1"
+
+    - 5:
+        device: "VPN-68"
+        comment: "VPN: VPN-68 (Created by VPN wizard)"
+        dstaddr: "VPN-68_remote"
+
+    - 6:
+        distance: 254
+        comment: "VPN: VPN-68 (Created by VPN wizard)"
+        blackhole: enable
+        dstaddr: "VPN-68_remote"
+        vrf: 0
+
+    - 7:
+        device: "VPNSITE1"
+        comment: "VPN: VPNSITE1 (Created by VPN wizard)"
+        dstaddr: "VPNSITE1_remote"
+
+    - 8:
+        distance: 254
+        comment: "VPN: VPNSITE1 (Created by VPN wizard)"
+        blackhole: enable
+        dstaddr: "VPNSITE1_remote"
+        vrf: 0
+
+    - 9:
+        gateway: 192.168.2.254
+        device: "wan2"
+
+
+router_ospf:
+    redistribute_connected:
+
+    redistribute_static:
+
+    redistribute_rip:
+
+    redistribute_bgp:
+
+    redistribute_isis:
+
+
+router_ospf6:
+    redistribute_connected:
+
+    redistribute_static:
+
+    redistribute_rip:
+
+    redistribute_bgp:
+
+    redistribute_isis:
+
+
+router_bgp:
+    redistribute_connected:
+
+    redistribute_rip:
+
+    redistribute_ospf:
+
+    redistribute_static:
+
+    redistribute_isis:
+
+    redistribute6_connected:
+
+    redistribute6_rip:
+
+    redistribute6_ospf:
+
+    redistribute6_static:
+
+    redistribute6_isis:
+
+
+router_isis:
+    redistribute_connected:
+
+    redistribute_rip:
+
+    redistribute_ospf:
+
+    redistribute_bgp:
+
+    redistribute_static:
+
+    redistribute6_connected:
+
+    redistribute6_rip:
+
+    redistribute6_ospf:
+
+    redistribute6_bgp:
+
+    redistribute6_static:
+
+
+router_multicast:
+
