@@ -14,3 +14,70 @@ Reseaux_Routing__Switching_-_Synthese-1.pdf
 **/stage*/
 **/internship*/
 **/exemples_terraform
+
+# Additional ignores
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / éditeurs
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln
+*.swp
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+build/
+dist/
+venv/
+.venv/
+.env.*
+.pytest_cache/
+pip-wheel-metadata/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker / runtime
+docker-compose.override.yml
+*.log
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.tfplan
+crash.log
+
+# Clés / certificats
+id_rsa
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+
+# Temporaires / sauvegardes
+*.bak
+*.tmp
+*.cache
+*.pid
+
+# Captures / analyses réseau
+*.pkt
+*.pcap
+*.pcapng
