@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress # Ingress pour diriger le trafic vers les services de vote et de résultats, ingress sert à faire le lien entre l'extérieur et les services internes du cluster
+metadata:
+  name: voting-domain
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: vote.votingapp.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vote-lb
+            port:
+              number: 9000
+  - host: result.votingapp.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: result-lb
+            port:
+              number: 9001

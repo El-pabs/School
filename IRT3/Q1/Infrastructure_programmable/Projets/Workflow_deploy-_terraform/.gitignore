@@ -1,0 +1,39 @@
+# Local Terraform directories
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+terraform.tfstate
+terraform.tfstate.backup
+
+# Crash log
+crash.log
+
+# Ignore override files (local tweaks)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Variable files that may contain secrets
+*.tfvars
+*.tfvars.json
+
+# CLI config files
+.terraformrc
+terraform.rc
+
+# Environment files
+.env
+.env.local
+
+# OS / editor files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~ 
+
+# Optional: keep .terraform.lock.hcl for provider version locking (recommended)
+# .terraform.lock.hcl

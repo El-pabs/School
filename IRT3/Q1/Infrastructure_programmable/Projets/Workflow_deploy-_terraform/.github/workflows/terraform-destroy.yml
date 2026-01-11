@@ -1,0 +1,78 @@
+name: Terraform Destroy Infrastructure
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'Type DESTROY to confirm'
+        required: true
+        type: string
+
+jobs:
+  terraform-destroy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate confirmation
+        run: |
+          if [ "${{ github.event.inputs.confirmation }}" != "DESTROY" ]; then
+            echo "Error: You must type DESTROY to confirm infrastructure deletion"
+            exit 1
+          fi
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.0
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan Destroy
+        run: terraform plan -destroy -out=tfdestroy
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
+
+      # VERSION ROBUSTE : Nettoyage des versions S3 avant suppression
+      - name: Cleanup Backend Infrastructure
+        run: |
+          BUCKET="terraform-state-heh-workflow-terraform"
+          echo "Cleaning up bucket versions for: $BUCKET"
+
+          # 1. Supprimer toutes les versions d'objets (si elles existent)
+          VERSIONS=$(aws s3api list-object-versions --bucket $BUCKET --query='Versions[].{Key:Key,VersionId:VersionId}' --output json)
+          if [ "$VERSIONS" != "null" ] && [ "$VERSIONS" != "[]" ]; then
+            echo "Deleting object versions..."
+            echo '{ "Objects": ' > versions.json
+            echo $VERSIONS >> versions.json
+            echo ', "Quiet": true }' >> versions.json
+            aws s3api delete-objects --bucket $BUCKET --delete file://versions.json
+          fi
+
+          # 2. Supprimer tous les marqueurs de suppression (DeleteMarkers)
+          MARKERS=$(aws s3api list-object-versions --bucket $BUCKET --query='DeleteMarkers[].{Key:Key,VersionId:VersionId}' --output json)
+          if [ "$MARKERS" != "null" ] && [ "$MARKERS" != "[]" ]; then
+            echo "Deleting delete markers..."
+            echo '{ "Objects": ' > markers.json
+            echo $MARKERS >> markers.json
+            echo ', "Quiet": true }' >> markers.json
+            aws s3api delete-objects --bucket $BUCKET --delete file://markers.json
+          fi
+
+          # 3. Suppression finale du bucket (maintenant vraiment vide)
+          echo "Deleting empty bucket..."
+          aws s3 rb s3://$BUCKET --force
+
+      - name: Confirm Destruction
+        run: echo "Infrastructure has been destroyed successfully"

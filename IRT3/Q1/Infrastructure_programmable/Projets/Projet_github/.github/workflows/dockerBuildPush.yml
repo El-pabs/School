@@ -1,0 +1,88 @@
+name: Docker build and push images to docker hub
+
+# Trigger qui déclenchent l'action
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'k8s/**' # Déclenche le workflow si des fichiers dans le dossier k8s/ ou app/ sont modifiés
+      - 'app/**'
+  pull_request:
+    branches: [ "main" ]
+
+# Variable d'environnement
+env: 
+  REGISTRY: docker.io
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/ci-cd-actions-dockerhub-argo 
+  K8S_PATH: k8s/deployment.yml
+
+
+jobs:
+  build: # Job pour construire et pousser l'image docker
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Pour pouvoir push les changements dans le repo
+      packages: write # Pour pouvoir push les images dans le registry
+      id-token: write # Pour pouvoir signer les images avec cosign
+
+    steps:
+      - name: Checkout repository # checkout du code pour accéder au Dockerfile et au code source
+        uses: actions/checkout@v4 
+
+      - name: Generate image tag from commit SHA
+        run: |
+          TAG=$(echo "${GITHUB_SHA}" | cut -c1-7)
+          echo "IMAGE_TAG=$TAG" >> $GITHUB_ENV
+        
+      - name: Set up Docker Buildx # pour construire des images multi-plateformes
+        uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 
+
+
+      - name: Log into registry ${{ env.REGISTRY }} # login au registry docker hub
+      # ne pas se logger sur les PR pour des raisons de sécurité
+        if: github.event_name != 'pull_request' 
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d  # sert à se logger sur un registry docker
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Build and push image docker 
+      - name: Build and push Docker image
+        id: build-and-push # identifiant du step pour réutiliser ses outputs
+        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
+        with:
+          context: ./app # chemin vers le Dockerfile
+          push: ${{ github.event_name != 'pull_request' }} # ne pas push les images pour les PRs
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} # tag de l'image
+          cache-from: type=gha # utiliser le cache GitHub Actions pour accélérer les builds
+          cache-to: type=gha,mode=max # stocker le cache dans GitHub Actions
+
+      # Install cosign avant signature
+      - name: Install cosign 
+        uses: sigstore/cosign-installer@v3.5.0
+      
+      # Signer l'image docker publiée pour garantir son intégrité
+      - name: Sign the published Docker image
+        if: ${{ github.event_name != 'pull_request' }}
+        env:
+          IMAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+        run: |
+          cosign sign --yes ${IMAGE}@${DIGEST}
+          
+      - name: Replace image tag by new sha
+        run: |
+          sed -i "s|image: .*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}|" ${{ env.K8S_PATH }}
+
+      - name: Check sed
+        run: cat ${{ env.K8S_PATH }}
+
+      - name: Commit and push 
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "chore(k8s): update image to ${{ env.IMAGE_TAG }} in deployment.yml"
+          git push
+        

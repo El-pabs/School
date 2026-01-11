@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: result-lb
+spec:
+  type: ClusterIP # type de service ClusterIP pour exposer le service en interne dans le cluster
+  ports:
+    - port: 9001
+      targetPort: 80
+  selector:
+    app: result

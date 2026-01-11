@@ -1,0 +1,33 @@
+# Déploiement des microservices
+kubectl apply -f db.yml
+kubectl apply -f redis.yml
+kubectl apply -f vote.yml
+kubectl apply -f worker.yml
+kubectl apply -f result.yml
+
+# Attendre que tout soit bon
+
+# Vérifier que tous les pods nécessaires sont en cours d'exécution
+kubectl get pods
+
+# Vérifier que les services sont exposés sur les ports adéquats
+kubectl get svc
+
+Vote App : http://localhost:31000
+Result App : http://localhost:31001
+
+!!!!!!!!!!!!!!!!!!! ingress
+
+# Déployer l’Ingress Nginx Controller dans le cluster
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.0-beta.0/deploy/static/provider/cloud/deploy.yaml
+
+# Vérifier que le déploiement est fonctionnel en vérifiant les pods
+kubectl get pods -n ingress-nginx
+
+# Déploiement des nouveaux services
+kubectl apply -f vote-lb.yml
+kubectl apply -f result-lb.yml
+kubectl apply -f ingress.yml
+
+# Vérifier que l'Ingress est bien défini
+kubectl get ingress

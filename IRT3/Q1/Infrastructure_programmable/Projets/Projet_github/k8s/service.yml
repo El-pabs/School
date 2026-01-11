@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service # Service -> point d'accès réseau stable.
+metadata:
+  name: flask-app
+spec:
+  type: NodePort  # Ouvre un port sur CHAQUE serveur (Node) du cluster pour l'accès externe.
+  selector:  # vers qui je redirige le traffic
+    app: flask-app # Vers moi mon bichon
+  ports:
+    - protocol: TCP
+      port: 5000 # Port interne du cluster
+      targetPort: 5000 # Port du conteneur vers lequel je redirige
+      nodePort: 30007 # port sur le noeud (host) pour accéder au service depuis l'extérieur du cluster
+
+#Si j'avais mis ClusterIP -> uniquement accessible depuis l'intérieur

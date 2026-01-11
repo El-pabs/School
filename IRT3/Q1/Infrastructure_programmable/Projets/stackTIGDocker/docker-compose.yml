@@ -1,0 +1,76 @@
+#------------------------
+# SERVICES
+#------------------------
+services: # Définition des services Docker
+
+# Service grafana
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD}
+    networks:
+      - monitoring # Connexion au réseau 'monitoring' pour com avec InfluxDB et Telegraf
+
+# Service telegraf
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    restart: unless-stopped
+    volumes:
+      - ./Telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    networks:
+      - monitoring
+    environment:
+      - INFLUXDB_HOST=${INFLUXDB_HOST}
+      - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
+      - INFLUXDB_ORG=${INFLUXDB_ORG}
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET}
+      - HOSTNAME=telegraf
+
+# Service InfluxDB 3 Core
+  influxdb3-core:
+    image: influxdb:3-core
+    container_name: influxdb3-core
+    restart: unless-stopped
+    command:
+      - influxdb3
+      - serve
+      - --node-id=${INFLUXDB_NODE_ID}
+      - --object-store=file
+      - --data-dir=/var/lib/influxdb3/data
+      - --plugin-dir=/var/lib/influxdb3/plugins
+    volumes:
+      - type: bind # (dossier du host mappé), si named volume, Docker gère le stockage (crée fichier etc)
+        # chemin pour stocker les données sur système hôte
+        source: ~/.influxdb3/data
+        # chemin pour stocker les données dans le conteneur
+        target: /var/lib/influxdb3/data
+      - type: bind
+        # chemin pour stocker les plugins sur système hôte
+        source: ~/.influxdb3/plugins
+        # chemin pour stocker les plugins dans le conteneur
+        target: /var/lib/influxdb3/plugins
+    networks:
+      - monitoring
+
+#------------------------
+# VOLUMES, un volume c'est un espace de stockage persistant pour les données des conteneurs
+#------------------------
+volumes:
+  grafana-storage: {}
+  influxdb_data:
+
+#------------------------
+# NETWORKS
+#------------------------
+networks:
+  monitoring:
+    driver: bridge # Utilisation du driver 'bridge' pour le réseau 'monitoring'
+    # bridge est le driver par défaut, il crée un réseau isolé pour les conteneurs connectés
