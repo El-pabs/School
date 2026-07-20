@@ -1,0 +1,27 @@
+# syntax=docker/dockerfile:1
+
+# Define the base image
+ARG PYTHON_VERSION=3.14.0a2
+ARG ALPINE_RELEASE=3.21
+FROM python:${PYTHON_VERSION}-alpine${ALPINE_RELEASE} AS base
+
+# Install packages
+RUN apk add --update --no-cache \
+    openssh \
+    nano \
+    openrc
+
+# Configure init system
+RUN openrc default
+
+# Configure SSH
+COPY id_rsa.pub /root/.ssh/authorized_keys
+RUN sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
+    && echo "root:root" | chpasswd \
+    && chmod 400 /root/.ssh/authorized_keys
+EXPOSE 22
+
+# Define the entrypoint
+COPY start.sh /start.sh
+RUN chmod +xs /start.sh
+ENTRYPOINT ["/start.sh"]

@@ -1,0 +1,47 @@
+---
+services:
+  # Container pour Ansible
+  master:
+    container_name: master
+    hostname: master
+    tty: true
+    volumes:
+      - ./shared:/shared
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.2
+    build:
+      context: .
+      dockerfile: Dockerfile.ansible
+  # Container pour le serveur web
+  web:
+    container_name: web
+    hostname: web
+    tty: true
+    ports:
+      - "8080:80"
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.3
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+  # Container pour la base de données
+  db:
+    container_name: db
+    hostname: db
+    tty: true
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.4
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/24
+          gateway: 10.5.0.1

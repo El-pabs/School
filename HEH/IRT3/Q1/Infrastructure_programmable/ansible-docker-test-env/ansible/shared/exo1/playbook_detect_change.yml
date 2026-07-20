@@ -1,0 +1,32 @@
+- hosts: web_servers
+  vars:
+    server_name: "web"
+    message: "Bienvenue au DST"
+    porta : 8888
+  tasks:
+    # 1. Installer
+    - name: Install apache2
+      package:
+        name: apache2
+        state: present
+
+    # 2. COPIER LA CONFIG D'ABORD (C'est ici qu'on corrige l'erreur)
+    - name: Template a file to /etc/file.conf
+      template:
+        src: httpd.conf.j2
+        dest: /etc/apache2/httpd.conf
+      # Pas de notify ici car le service n'est pas encore démarré
+
+    # 3. Ajouter index.html
+    - name: Add the index.html file
+      template:
+        src: index.html.j2
+        dest: /var/www/localhost/htdocs/index.html
+
+    # 4. ENFIN Démarrer le service
+    - name: Start the apache2 server
+      service:
+        name: apache2
+        state: started 
+      # Si la config a changé lors d'une prochaine exécution, on restart
+      # Mais pour la première fois, "started" suffit.

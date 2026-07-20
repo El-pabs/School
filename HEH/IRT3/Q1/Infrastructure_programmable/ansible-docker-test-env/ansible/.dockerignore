@@ -1,0 +1,7 @@
+# Ignore Docker-related files
+Dockerfile
+Dockerfile.*
+.dockerignore
+
+# Ignore Ansible-related files
+shared/

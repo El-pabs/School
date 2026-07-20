@@ -1,0 +1,10 @@
+- hosts: web_servers
+  tasks:
+    - name: Install apache2
+      package:
+        name: apache2
+        state: present
+    - name: Start the apache2 server
+      service:
+        name: apache2
+        state: started

@@ -1,0 +1,13 @@
+- hosts: web_servers
+  vars:
+    apache_package: apache2
+    apache_service: apache2
+  tasks:
+    - name: Install apache2
+      package:
+        name: "{{ apache_package }}"
+        state: present
+    - name: Start the apache2 server
+      service:
+        name: "{{ apache_service }}"
+        state: started
