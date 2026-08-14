@@ -3,10 +3,6 @@
     src: url("font/harlow.TTF");
 }
 
-html {
-    background-color: salmon;
-}
-
 body {
     margin:0;
     font-family: "Calibri","Arial",sans-serif;
@@ -16,7 +12,10 @@ body {
 header {
     background-color: blue;
     color: white;
-    text-align: center; 
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header a {
@@ -39,8 +38,9 @@ h1{
 
 #navtop {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
+
 #navtopright {
     display: flex;
     justify-content: center;
@@ -48,31 +48,17 @@ h1{
 
 #logo {
     height: 50px;
-
 }
 
-@media screen and (min-width: 1024px) {
-    html {
-        background-color: aqua;
-    }
+@media screen and (max-width: 1024px) {
 
     #navtop {
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
     }
 
     header {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    header a {
-        display: flex;
+        flex-direction: column;
         align-items: center;
     }
-
-    #navtopright a {
-        display: flex;
-        align-items: center;
-    }
-    
 }

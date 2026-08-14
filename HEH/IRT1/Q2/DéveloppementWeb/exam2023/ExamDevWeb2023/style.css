@@ -36,7 +36,7 @@ body header h1, body main h2, body main h3, body header li {
 
 /* Styles pour la navigation dans l'en-tête */
 body header nav {
-    order: 2; /* Définit l'ordre des éléments (le nav viendra après le h1) */
+    order: 1; /* Définit l'ordre des éléments (le nav viendra après le h1) */
     align-items: flex-end; /* Aligne les enfants à la fin (en bas) */
     text-align: center; /* Centre le texte */
 }
@@ -115,7 +115,7 @@ main article p {
         display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
         align-items: center; /* Centre verticalement les enfants */
         justify-content: end; /* Aligne les enfants à la fin (à droite) */
-    }
+T    }
 
     header nav ul {
         display: flex; /* Utilise le modèle flexbox pour disposer les éléments enfants */
