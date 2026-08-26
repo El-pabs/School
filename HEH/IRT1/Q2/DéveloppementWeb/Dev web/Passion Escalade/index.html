@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Démo : CSS Grid vs CSS Position</title>
+  <style>
+    /* Reset de base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f9;
+      padding-bottom: 50px;
+    }
+
+    /* =========================================================
+       1. POSITION STICKY : La barre de navigation reste collée
+       ========================================================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cart-icon {
+      /* POSITION RELATIVE pour le badge de panier */
+      position: relative;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .cart-badge {
+      /* POSITION ABSOLUTE pour le chiffre sur l'icône */
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background-color: #e74c3c;
+      color: white;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* =========================================================
+       2. CSS GRID : L'organisation globale des cartes
+       ========================================================= */
+    .product-grid {
+      display: grid;
+      /* Définition automatique du nombre de colonnes adaptatives */
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px; /* Espace régulier géré automatiquement */
+    }
+
+    /* =========================================================
+       3. POSITION RELATIVE + ABSOLUTE : Badges sur les cartes
+       ========================================================= */
+    .product-card {
+      /* POSITION RELATIVE : La carte devient le repère de ses enfants */
+      position: relative; 
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 150px;
+      background-color: #ddd;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+    }
+
+    /* Éléments sortis du flux grâce à POSITION ABSOLUTE */
+    .badge-promo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #e67e22;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .btn-favorite {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #27ae60;
+    }
+
+    button.add-to-cart {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>Mon E-Shop</h2>
+    <div class="cart-icon">
+      🛒 <span class="cart-badge">3</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Nos Produits</h1>
+    <p style="margin-bottom: 20px; color: #666;">
+      Redimensionnez la fenêtre : la **Grid** réorganise les cartes, tandis que les badges restent scotchés grâce aux **Positions**.
+    </p>
+
+    <!-- Structure en GRID -->
+    <div class="product-grid">
+
+      <!-- Produit 1 -->
+      <div class="product-card">
+        <!-- Badges en POSITION ABSOLUTE -->
+        <span class="badge-promo">-30%</span>
+        <button class="btn-favorite">❤️</button>
+        
+        <div class="image-placeholder">Image Produit</div>
+        <h3>Chaussures Sport</h3>
+        <p class="price">70 €</p>
+        <button class="add-to-cart">Acheter</button>
+      </div>
+
+      <!-- Produit 2 -->
+      <div class="product-card">
+        <button class="btn-favorite">🤍</button>
+        
+        <div class="image-placeholder">Image Produit</div>
+        <h3>Sac à dos</h3>
+        <p class="price">45 €</p>
+        <button class="add-to-cart">Acheter</button>
+      </div>
+
+      <!-- Produit 3 -->
+      <div class="product-card">
+        <span class="badge-promo">Nouveau</span>
+        <button class="btn-favorite">❤️</button>
+        
+        <div class="image-placeholder">Image Produit</div>
+        <h3>Montre Connectée</h3>
+        <p class="price">120 €</p>
+        <button class="add-to-cart">Acheter</button>
+      </div>
+
+      <!-- Produit 4 -->
+      <div class="product-card">
+        <div class="image-placeholder">Image Produit</div>
+        <h3>Casque Audio</h3>
+        <p class="price">89 €</p>
+        <button class="add-to-cart">Acheter</button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
