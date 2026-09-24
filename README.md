@@ -1,43 +1,76 @@
 # 🎓 School Repository
 
-> A personal archive of coursework, study notes, exercises, projects, and practical work from my IT studies at [Haute École en Hainaut (HEH)](https://www.heh.be/).
+> A personal archive of coursework, study notes, exercises, projects, and technical references from my studies at HEH and ULB.
 
 ## 👋 Welcome
 
-This repository collects material from my studies in the **IRT (Informatique et Réseaux / IT and networking)** programme. It contains both reference material and work produced during courses, including source code, reports, notes, diagrams, media, and project files.
+This repository brings together material from two parts of my academic journey:
 
-The repository is primarily an archive and is not intended to present every item as a finished or production-ready project. If you reuse anything, please respect the original authors' rights and course requirements.
+- **HEH (Haute École en Hainaut):** coursework and projects from the IRT programme, covering IT, networks, systems, programming, cybersecurity, electronics, and infrastructure.
+- **ULB (Université libre de Bruxelles):** coursework related to computer science and security, including fundamental computer science, discrete mathematics, cryptography, embedded security, and software security.
+
+The repository is an evolving personal archive. It contains course material, exercises, notes, source code, reports, diagrams, project files, and reference documents. The content is organised by institution, programme, academic year, and course where possible.
 
 ## 📂 Repository structure
 
-The current default branch is `Cours`. Most academic material is organised under `HEH/`:
+The current default branch is `Cours`.
 
 ```text
-HEH/
-├── IRT1/
-│   ├── Q1/                 # First year, first term
-│   └── Q2/                 # First year, second term
-├── IRT2/
-│   ├── Q1/                 # Second year, first term
-│   ├── Q2/                 # Second year, second term
-│   └── Q1 ET Q2/           # Material covering both terms
-├── IRT3/
-│   └── Q1/                 # Third year, first term
-├── Bonus/                  # Additional resources and personal practice
-└── AIDEMÉMOIRE GITHUB GIT.pdf
+School/
+├── HEH/                         # Haute École en Hainaut
+│   ├── IRT1/                    # IRT first year
+│   │   ├── Q1/
+│   │   └── Q2/
+│   ├── IRT2/                    # IRT second year
+│   │   ├── Q1/
+│   │   ├── Q2/
+│   │   └── Q1 ET Q2/
+│   ├── IRT3/                    # IRT third year
+│   │   └── Q1/
+│   ├── Bonus/                   # Additional technical resources
+│   └── AIDEMÉMOIRE GITHUB GIT.pdf
+│
+├── ULB/                         # Université libre de Bruxelles
+│   ├── M0/                      # Foundation-level coursework
+│   │   ├── Anglais/
+│   │   ├── Informatique fondamentale/
+│   │   └── Math discrete/
+│   └── M1/                      # Master-level coursework
+│       ├── Embeded security/
+│       ├── Introduction to cryptography/
+│       └── Software security/
+│
+├── .gitattributes
+└── .gitignore
 ```
 
-The archive is organised by course and project rather than by one common build system. Examples of material currently included are:
+## 🏫 HEH — IRT coursework
 
-- **Programming:** Python exercises, Pygame projects, C and assembly work, and Jupyter notebooks
-- **Web development:** HTML/CSS/JavaScript exercises and React/Vite project files
-- **Networks and telecommunications:** Cisco Packet Tracer activities and course notes
-- **Electronics and digital technology:** Multisim, Proteus, MikroC, LARP, and hardware-project files
-- **Systems and infrastructure:** PowerShell scripts and Windows Server / Active Directory documentation
-- **Mathematics and theory:** summaries, exercises, exams, presentations, and reference documents
-- **Bonus resources:** Git/GitHub material, cybersecurity practice, and other technical references
+The HEH section contains material from the **Informatique et Réseaux (IRT)** programme, including:
 
-> Folder names and file names are kept close to the original coursework. Some contain spaces, accents, legacy names, or exported files from different tools.
+- Python programming, Pygame, C, assembly, and Jupyter notebooks
+- HTML, CSS, JavaScript, React, and front-end development
+- Computer networks, telecommunications, Cisco Packet Tracer, and Wireshark
+- Linux, Windows Server, PowerShell, Active Directory, and infrastructure administration
+- Cybersecurity, firewalls, RADIUS, SNMP, monitoring, and penetration-testing material
+- Electronics, digital systems, Multisim, Proteus, MikroC, and embedded projects
+- Databases, PHP, SQL, mathematics, algorithms, UML, and project management
+- Cloud computing, Docker, Kubernetes, Ansible, Terraform, and GitHub Actions
+
+The third-year material currently includes subjects such as cloud computing, cybersecurity, business management, programmable infrastructure, advanced PowerShell/Windows work, and a multi-site Windows Server project.
+
+## 🎓 ULB — computer science and security coursework
+
+The ULB section currently contains coursework from **M0 and M1**, including:
+
+- English and oral-presentation material
+- Fundamental computer science
+- Discrete mathematics and introductory proofs
+- Introduction to cryptography
+- Embedded security
+- Software security
+
+This section is separate from the HEH archive and reflects a different academic programme and set of courses.
 
 ## 🛠️ Languages and file formats
 
@@ -50,34 +83,36 @@ GitHub currently reports the following language composition for this repository:
 ![CSS](https://img.shields.io/badge/CSS-5.5%25-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-3.9%25-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
-The remaining **10.9%** is made up of other languages and file types. The repository also contains documents and project assets such as PDF, DOCX, PPTX, ZIP, images, audio, circuit-design files, and other tool-specific formats.
+The remaining **10.9%** is made up of other languages and file types. The repository also contains PDF, DOC/DOCX, PPT/PPTX, ZIP, images, audio, circuit-design files, configuration files, notebooks, and other tool-specific formats.
 
 ## 🎯 Main subject areas
 
-- 🌐 Web development and programming
-- 🐍 Python and game development with Pygame
-- 🔌 Electronics, digital systems, and embedded projects
-- 📡 Computer networks and telecommunications
-- 🖥️ Windows Server, PowerShell, and infrastructure administration
-- 🔒 Cybersecurity and technical practice
+- 💻 Programming and software development
+- 🌐 Web development and front-end frameworks
+- 📡 Networks and telecommunications
+- 🔒 Cybersecurity and security engineering
+- 🖥️ Operating systems, servers, and system administration
+- ☁️ Cloud computing and programmable infrastructure
+- 🐳 Docker, Kubernetes, Ansible, Terraform, and automation
+- 🔐 Cryptography, embedded security, and software security
+- 🔌 Electronics and embedded systems
 - 📐 Mathematics, algorithms, UML, and technical documentation
 
-## 📚 Reference material
+## 📚 Useful resources
 
-Useful resources include:
-
-- [`HEH/AIDEMÉMOIRE GITHUB GIT.pdf`](HEH/AIDEMÉMOIRE%20GITHUB%20GIT.pdf) — Git and GitHub quick reference
-- Course summaries and revision documents in the corresponding `IRT1`, `IRT2`, and `IRT3` folders
+- [`HEH/AIDEMÉMOIRE GITHUB GIT.pdf`](HEH/AIDEME%CC%81MOIRE%20GITHUB%20GIT.pdf) — Git and GitHub quick reference
+- Course summaries and revision material in the `HEH/` and `ULB/` directories
 - Project-specific README files where available
-- Additional material in [`HEH/Bonus`](HEH/Bonus)
+- Additional practice and reference material in [`HEH/Bonus`](HEH/Bonus)
 
 ## ⚠️ Notes before using the material
 
-- This is a personal school archive, so quality, completeness, and organisation vary between folders.
-- Many projects depend on course tools or software such as Python/Pygame, Jupyter, Cisco Packet Tracer, Multisim, Proteus, MikroC, or Windows Server.
-- Check each project folder for its own instructions and prerequisites.
-- Do not treat example credentials, addresses, names, or configuration values found in old coursework as safe production settings.
-- Respect licenses, attribution requirements, privacy, and the rules of the relevant course before copying or redistributing anything.
+- This is a personal academic archive; quality, completeness, and organisation vary between folders.
+- Many projects depend on specific tools or environments, such as Python/Pygame, Jupyter, Cisco Packet Tracer, Multisim, Proteus, MikroC, React/Vite, Docker, Kubernetes, or Windows Server.
+- Check the relevant course or project directory for its own instructions and prerequisites.
+- Do not treat example credentials, addresses, names, or configuration values found in coursework as safe production settings.
+- Respect licenses, attribution requirements, privacy, and the rules of the relevant institution before copying or redistributing anything.
+- Some files are personal notes or coursework from other contributors and may not represent my own work.
 
 ## 🤝 Contact
 
